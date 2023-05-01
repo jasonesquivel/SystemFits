@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/login">
+
+    <fragment
+        android:id="@+id/login"
+        android:name="ni.edu.uca.systemfits.Login"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/login_menu"
+            app:destination="@id/menuPrincipal" />
+        <action
+            android:id="@+id/login_registro"
+            app:destination="@id/registro" />
+    </fragment>
+    <fragment
+        android:id="@+id/menuPrincipal"
+        android:name="ni.edu.uca.systemfits.MenuPrincipal"
+        android:label="fragment_menu_principal"
+        tools:layout="@layout/fragment_menu_principal" />
+    <fragment
+        android:id="@+id/registro"
+        android:name="ni.edu.uca.systemfits.Registro"
+        android:label="fragment_registro"
+        tools:layout="@layout/fragment_registro" >
+        <action
+            android:id="@+id/registro_menuPrincipal"
+            app:destination="@id/menuPrincipal" />
+    </fragment>
+    <fragment
+        android:id="@+id/comida"
+        android:name="ni.edu.uca.systemfits.Comida"
+        android:label="fragment_comida"
+        tools:layout="@layout/fragment_comida" />
+    <fragment
+        android:id="@+id/ejercicios"
+        android:name="ni.edu.uca.systemfits.Ejercicios"
+        android:label="fragment_ejercicios"
+        tools:layout="@layout/fragment_ejercicios" />
+    <fragment
+        android:id="@+id/medidas"
+        android:name="ni.edu.uca.systemfits.Medidas"
+        android:label="fragment_medidas"
+        tools:layout="@layout/fragment_medidas" />
+    <fragment
+        android:id="@+id/recetas"
+        android:name="ni.edu.uca.systemfits.Recetas"
+        android:label="fragment_recetas"
+        tools:layout="@layout/fragment_recetas" />
+</navigation>
