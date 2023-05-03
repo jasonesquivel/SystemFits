@@ -51,4 +51,9 @@
         android:name="ni.edu.uca.systemfits.Recetas"
         android:label="fragment_recetas"
         tools:layout="@layout/fragment_recetas" />
+    <fragment
+        android:id="@+id/popUp"
+        android:name="ni.edu.uca.systemfits.PopUpCalorias"
+        android:label="fragment_pop_up"
+        tools:layout="@layout/fragment_pop_up_calorias" />
 </navigation>
