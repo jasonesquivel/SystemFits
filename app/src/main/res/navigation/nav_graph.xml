@@ -90,4 +90,9 @@
         android:name="ni.edu.uca.systemfits.dialog_input_editar_medida"
         android:label="fragment_dialog_input_editar_medida"
         tools:layout="@layout/fragment_dialog_input_editar_medida" />
+    <fragment
+        android:id="@+id/semanaEjercicios"
+        android:name="ni.edu.uca.systemfits.SemanaEjercicios"
+        android:label="fragment_semana_ejercicios"
+        tools:layout="@layout/fragment_semana_ejercicios" />
 </navigation>

@@ -97,6 +97,13 @@ private lateinit var binding: FragmentEjerciciosBinding
         showPopupButton.setOnClickListener {
             showCustomPopupAgregarMedida()
         }
+        binding.btnEditarSemana.setOnClickListener{
+            val semanaEjercicios = SemanaEjercicios()
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.container, semanaEjercicios)
+                .addToBackStack(null)
+                .commit()
+        }
 
     }
 
