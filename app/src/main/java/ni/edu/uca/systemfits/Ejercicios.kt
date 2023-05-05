@@ -11,7 +11,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.PopupWindow
 import ni.edu.uca.systemfits.databinding.FragmentEjerciciosBinding
-
+import java.util.*
 
 
 class Ejercicios : Fragment() {
@@ -57,6 +57,42 @@ private lateinit var binding: FragmentEjerciciosBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val calendar = Calendar.getInstance()
+        val diaActual = calendar.get(Calendar.DAY_OF_WEEK)
+
+        when (diaActual) {
+            Calendar.MONDAY -> {
+
+                binding.lunesRadioButton.isChecked = true
+                binding.tvDiaSemana.setText("Lunes")
+            }
+            Calendar.TUESDAY -> {
+                binding.martesRadioButton.isChecked = true
+                binding.tvDiaSemana.setText("Martes")
+            }
+            Calendar.WEDNESDAY -> {
+                binding.miercolesRadioButton.isChecked = true
+                binding.tvDiaSemana.setText("Miercoles")
+            }
+            Calendar.THURSDAY -> {
+                binding.juevesRadioButton.isChecked = true
+                binding.tvDiaSemana.setText("Jueves")
+            }
+
+            Calendar.FRIDAY -> {
+                binding.tvDiaSemana.setText("Viernes")
+                binding.viernesRadioButton.isChecked = true
+            } Calendar.SATURDAY -> {
+            binding.sabadoRadioButton.isChecked = true
+            binding.tvDiaSemana.setText("Sabado")
+        }
+            Calendar.SUNDAY -> {
+                binding.domingoRadioButton.isChecked = true
+                binding.tvDiaSemana.setText("Domingo")
+            }
+
+
+        }
         val showPopupButton = binding.btnAgregarEjercicio
         showPopupButton.setOnClickListener {
             showCustomPopupAgregarMedida()
