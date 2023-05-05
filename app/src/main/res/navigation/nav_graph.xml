@@ -35,7 +35,14 @@
         android:id="@+id/comida"
         android:name="ni.edu.uca.systemfits.Comida"
         android:label="fragment_comida"
-        tools:layout="@layout/fragment_comida" />
+        tools:layout="@layout/fragment_comida" >
+        <action
+            android:id="@+id/action_comida_to_dialog_input"
+            app:destination="@id/dialog_input_agregar_comida" />
+        <action
+            android:id="@+id/action_comida_to_dialog_input_editar_comida"
+            app:destination="@id/dialog_input_editar_comida" />
+    </fragment>
     <fragment
         android:id="@+id/ejercicios"
         android:name="ni.edu.uca.systemfits.Ejercicios"
@@ -45,7 +52,14 @@
         android:id="@+id/medidas"
         android:name="ni.edu.uca.systemfits.Medidas"
         android:label="fragment_medidas"
-        tools:layout="@layout/fragment_medidas" />
+        tools:layout="@layout/fragment_medidas" >
+        <action
+            android:id="@+id/action_medidas_to_dialog_input_agregar_medida"
+            app:destination="@id/dialog_input_agregar_medida" />
+        <action
+            android:id="@+id/action_medidas_to_dialog_input_editar_medida"
+            app:destination="@id/dialog_input_editar_medida" />
+    </fragment>
     <fragment
         android:id="@+id/recetas"
         android:name="ni.edu.uca.systemfits.Recetas"
@@ -56,4 +70,24 @@
         android:name="ni.edu.uca.systemfits.PopUpCalorias"
         android:label="fragment_pop_up"
         tools:layout="@layout/fragment_pop_up_calorias" />
+    <fragment
+        android:id="@+id/dialog_input_agregar_comida"
+        android:name="ni.edu.uca.systemfits.dialog_input_agregar_comida"
+        android:label="fragment_dialog_input_agregar_comida"
+        tools:layout="@layout/fragment_dialog_input_agregar_comida" />
+    <fragment
+        android:id="@+id/dialog_input_editar_comida"
+        android:name="ni.edu.uca.systemfits.dialog_input_editar_comida"
+        android:label="fragment_dialog_input_editar_comida"
+        tools:layout="@layout/fragment_dialog_input_editar_comida" />
+    <fragment
+        android:id="@+id/dialog_input_agregar_medida"
+        android:name="ni.edu.uca.systemfits.dialog_input_agregar_medida"
+        android:label="fragment_dialog_input_agregar_medida"
+        tools:layout="@layout/fragment_dialog_input_agregar_medida" />
+    <fragment
+        android:id="@+id/dialog_input_editar_medida"
+        android:name="ni.edu.uca.systemfits.dialog_input_editar_medida"
+        android:label="fragment_dialog_input_editar_medida"
+        tools:layout="@layout/fragment_dialog_input_editar_medida" />
 </navigation>

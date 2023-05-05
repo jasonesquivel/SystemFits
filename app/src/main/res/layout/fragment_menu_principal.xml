@@ -3,18 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_700"
+    android:background="@color/white"
     tools:context=".MenuPrincipal">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Menu Principal"
-        android:textSize="30sp"
-        android:textAlignment="center"
         android:gravity="center"
-        android:textColor="@color/white"
-        />
+        android:text="Menu Principal"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30sp" />
 
 </FrameLayout>
