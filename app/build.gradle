@@ -6,9 +6,9 @@ plugins {
 android {
     namespace 'ni.edu.uca.systemfits'
     compileSdk 33
-buildFeatures{
-    viewBinding true
-}
+    buildFeatures{
+        viewBinding true
+    }
     defaultConfig {
         applicationId "ni.edu.uca.systemfits"
         minSdk 21

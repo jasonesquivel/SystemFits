@@ -1,21 +1,221 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Ejercicios"
     android:background="@color/white"
+
   >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Ejercicios"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        android:gravity="center"
-        android:textColor="@color/black"
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardViewSemanaEjercicios"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="26dp"
+        app:cardElevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+            <TextView
+                android:id="@+id/tvSemana"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:text="Semana de Ejericicos"
+                android:paddingBottom="9dp"/>
+        <TextView
+            android:id="@+id/tvDiaSemana"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:text=""
+            android:paddingBottom="11dp"
+            />
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="L"
+               android:textSize="15dp"
+                android:layout_marginStart="10dp"/>
+
+                />
+
+                <TextView
+                    android:textSize="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="M"
+                    android:layout_marginStart="39dp"/>
+                <TextView
+                    android:textSize="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="M"
+                    android:layout_marginStart="34dp"/>
+                <TextView
+                    android:textSize="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="J"
+
+                    android:layout_marginStart="37dp"/>
+                <TextView
+                    android:textSize="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="V"
+                    android:layout_marginStart="39dp"/>
+                <TextView
+                    android:textSize="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="S"
+                    android:layout_marginStart="40dp"/>
+
+                <TextView
+                    android:textSize="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="D"
+                    android:layout_marginStart="40dp"
+                    />
+
+            </LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <RadioButton
+        android:id="@+id/lunesRadioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="false"
         />
 
-</FrameLayout>
+    <RadioButton
+        android:id="@+id/martesRadioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+         />
+
+    <RadioButton
+        android:id="@+id/miercolesRadioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        />
+
+    <RadioButton
+        android:clickable="false"
+        android:id="@+id/juevesRadioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       />
+    <RadioButton
+        android:clickable="false"
+        android:id="@+id/viernesRadioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+    <RadioButton
+        android:clickable="false"
+        android:id="@+id/sabadoRadioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         />
+
+    <RadioButton
+        android:clickable="false"
+        android:id="@+id/domingoRadioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+        </LinearLayout>
+            <Button
+                android:id="@+id/btnEditarSemana"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginLeft="177dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/button_border"
+                android:text="Editar Semana"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardViewMedidas"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardViewSemanaEjercicios">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:cardCornerRadius="16dp">
+
+            <TextView
+                android:id="@+id/tvEjercicios"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ejercicios"
+                android:textAppearance="?attr/textAppearanceHeadline6" />
+
+
+
+
+            <Button
+                android:id="@+id/btnAgregarEjercicio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginLeft="177dp"
+                android:layout_marginTop="160dp"
+                android:background="@drawable/button_border"
+                android:text="Agregar Ejercicio"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
