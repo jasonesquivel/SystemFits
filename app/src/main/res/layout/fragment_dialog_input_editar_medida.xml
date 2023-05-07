@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#99000000"
     tools:context=".dialog_input_editar_medida">
 
@@ -17,11 +17,11 @@
 
         <ImageView
             android:id="@+id/close_popup_button"
-            app:tint="@android:color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|top"
-            android:src="@android:drawable/ic_menu_close_clear_cancel" />
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            app:tint="@android:color/black" />
 
         <EditText
             android:id="@+id/etNombreEdit"
@@ -55,10 +55,10 @@
                 android:id="@+id/btnEliminarMedida"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/button_border"
                 android:text="Eliminar"
-                android:layout_marginRight="10dp"
                 android:textColor="@android:color/white" />
 
             <Button

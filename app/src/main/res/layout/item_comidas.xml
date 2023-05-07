@@ -15,7 +15,7 @@
         android:padding="8dp">
 
         <TextView
-            android:id="@+id/tvmusculo"
+            android:id="@+id/tvcomida"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
@@ -25,7 +25,7 @@
             tools:text="" />
 
         <TextView
-            android:id="@+id/tvmedida"
+            android:id="@+id/tvcalorias"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"

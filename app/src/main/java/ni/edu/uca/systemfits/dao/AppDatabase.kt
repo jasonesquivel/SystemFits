@@ -4,14 +4,15 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import android.content.Context
 import androidx.room.Room
+import ni.edu.uca.systemfits.modelo.Comidas
 import ni.edu.uca.systemfits.modelo.Medidas
 
-//PARA QUE AGREGUEN SUS ENTIDADES SOLO PONGAN UNA COMDA
-//DESPUES DE DONDE DICE ::class//
-@Database(entities = [Medidas::class], version = 1)
+
+@Database(entities = [Medidas::class, Comidas::class], version = 2)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun medidasDao(): MedidasDao
+    abstract fun ComidasDao(): ComidasDao
 
     companion object {
         @Volatile
