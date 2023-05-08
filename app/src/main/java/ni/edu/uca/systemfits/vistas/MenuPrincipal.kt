@@ -1,17 +1,18 @@
-package ni.edu.uca.systemfits
+package ni.edu.uca.systemfits.vistas
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import ni.edu.uca.systemfits.R
 
-class Recetas : Fragment() {
+
+class MenuPrincipal : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-
         }
     }
 
@@ -20,7 +21,7 @@ class Recetas : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recetas, container, false)
+        return inflater.inflate(R.layout.fragment_menu_principal, container, false)
     }
 
 

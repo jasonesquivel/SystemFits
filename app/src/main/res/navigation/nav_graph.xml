@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/login"
-        android:name="ni.edu.uca.systemfits.Login"
+        android:name="ni.edu.uca.systemfits.vistas.Login"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -19,12 +19,12 @@
     </fragment>
     <fragment
         android:id="@+id/menuPrincipal"
-        android:name="ni.edu.uca.systemfits.MenuPrincipal"
+        android:name="ni.edu.uca.systemfits.vistas.MenuPrincipal"
         android:label="fragment_menu_principal"
         tools:layout="@layout/fragment_menu_principal" />
     <fragment
         android:id="@+id/registro"
-        android:name="ni.edu.uca.systemfits.Registro"
+        android:name="ni.edu.uca.systemfits.vistas.Registro"
         android:label="fragment_registro"
         tools:layout="@layout/fragment_registro" >
         <action
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/comida"
-        android:name="ni.edu.uca.systemfits.Comida"
+        android:name="ni.edu.uca.systemfits.vistas.Comida"
         android:label="fragment_comida"
         tools:layout="@layout/fragment_comida" >
         <action
@@ -45,12 +45,12 @@
     </fragment>
     <fragment
         android:id="@+id/ejercicios"
-        android:name="ni.edu.uca.systemfits.Ejercicios"
+        android:name="ni.edu.uca.systemfits.vistas.Ejercicios"
         android:label="fragment_ejercicios"
         tools:layout="@layout/fragment_ejercicios" />
     <fragment
         android:id="@+id/medidas"
-        android:name="ni.edu.uca.systemfits.Medidas"
+        android:name="ni.edu.uca.systemfits.vistas.Medidas"
         android:label="fragment_medidas"
         tools:layout="@layout/fragment_medidas" >
         <action
@@ -62,7 +62,7 @@
     </fragment>
     <fragment
         android:id="@+id/recetas"
-        android:name="ni.edu.uca.systemfits.Recetas"
+        android:name="ni.edu.uca.systemfits.vistas.Recetas"
         android:label="fragment_recetas"
         tools:layout="@layout/fragment_recetas" />
     <fragment
@@ -92,7 +92,7 @@
         tools:layout="@layout/fragment_dialog_input_editar_medida" />
     <fragment
         android:id="@+id/semanaEjercicios"
-        android:name="ni.edu.uca.systemfits.SemanaEjercicios"
+        android:name="ni.edu.uca.systemfits.vistas.SemanaEjercicios"
         android:label="fragment_semana_ejercicios"
         tools:layout="@layout/fragment_semana_ejercicios" />
 </navigation>

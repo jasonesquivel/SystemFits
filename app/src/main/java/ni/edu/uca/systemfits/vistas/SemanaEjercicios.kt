@@ -1,4 +1,4 @@
-package ni.edu.uca.systemfits
+package ni.edu.uca.systemfits.vistas
 
 import android.content.Context
 import android.os.Bundle
@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.PopupWindow
+import ni.edu.uca.systemfits.R
 import ni.edu.uca.systemfits.databinding.FragmentSemanaEjerciciosBinding
 
 class SemanaEjercicios : Fragment() {

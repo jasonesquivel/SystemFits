@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import ni.edu.uca.systemfits.databinding.ActivityMainBinding
+import ni.edu.uca.systemfits.vistas.*
 
 class MainActivity : AppCompatActivity() {
     private val Comida = Comida()

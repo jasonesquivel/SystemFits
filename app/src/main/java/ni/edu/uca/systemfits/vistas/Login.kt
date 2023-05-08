@@ -1,14 +1,13 @@
-package ni.edu.uca.systemfits
+    package ni.edu.uca.systemfits.vistas
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import androidx.navigation.findNavController
-import ni.edu.uca.systemfits.databinding.ActivityMainBinding
+import ni.edu.uca.systemfits.MainActivity
+import ni.edu.uca.systemfits.R
 import ni.edu.uca.systemfits.databinding.FragmentLoginBinding
 
 

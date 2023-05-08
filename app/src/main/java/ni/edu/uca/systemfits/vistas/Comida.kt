@@ -1,4 +1,4 @@
-package ni.edu.uca.systemfits
+package ni.edu.uca.systemfits.vistas
 
 import android.app.AlertDialog
 import android.content.Context
@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import ni.edu.uca.systemfits.R
 import ni.edu.uca.systemfits.dao.ComidasAdapter
 import ni.edu.uca.systemfits.databinding.FragmentComidaBinding
 import ni.edu.uca.systemfits.databinding.FragmentDialogInputAgregarComidaBinding
