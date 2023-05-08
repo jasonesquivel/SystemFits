@@ -66,17 +66,19 @@ class Comida : Fragment() {
 
         binding2.btnGuardarComida.setOnClickListener {
             try {
-                val comida = binding2.etComida.text.toString()
-                val caloria = binding2.etCalorias.text.toString().toInt()
+                if (validarCamposGComida()) {
+                    val comida = binding2.etComida.text.toString()
+                    val caloria = binding2.etCalorias.text.toString().toInt()
 
-                val comidas = Comidas(
-                    comida = comida, calorias = caloria
-                )
+                    val comidas = Comidas(
+                        comida = comida, calorias = caloria
+                    )
 
-                CoroutineScope(Dispatchers.IO).launch {
-                    viewModel.insertar(comidas)
+                    CoroutineScope(Dispatchers.IO).launch {
+                        viewModel.insertar(comidas)
+                    }
+                    popupWindow.dismiss()
                 }
-                popupWindow.dismiss()
             } catch (ex: Exception) {
                 Toast.makeText(
                     requireContext(), "Error : ${ex.toString()}",
@@ -95,8 +97,8 @@ class Comida : Fragment() {
 
         binding3 = FragmentDialogInputEditarComidaBinding.bind(popupView1)
 
-        binding3.etComida.setText(comidaSeleccionada.comida)
-        binding3.etCalorias.setText(comidaSeleccionada.calorias.toString())
+        binding3.etComidaEdit.setText(comidaSeleccionada.comida)
+        binding3.etCaloriasEdit.setText(comidaSeleccionada.calorias.toString())
 
         val popupWindow1 = PopupWindow(
             popupView1,
@@ -116,19 +118,21 @@ class Comida : Fragment() {
 
         binding3.btnEditarComida.setOnClickListener {
             try {
-                comidaSeleccionada?.let { Comidas ->
-                    val comida = binding3.etComida.text.toString()
-                    val caloria = binding3.etCalorias.text.toString().toInt()
+                if (validarCamposEComida()) {
+                    comidaSeleccionada?.let { Comidas ->
+                        val comida = binding3.etComidaEdit.text.toString()
+                        val caloria = binding3.etCaloriasEdit.text.toString().toInt()
 
-                    val comidaActualizada = Comidas(
-                        id = Comidas.id,
-                        comida = comida,
-                        calorias = caloria
-                    )
-                    CoroutineScope(Dispatchers.IO).launch {
-                        viewModel.actualizar(comidaActualizada)
+                        val comidaActualizada = Comidas(
+                            id = Comidas.id,
+                            comida = comida,
+                            calorias = caloria
+                        )
+                        CoroutineScope(Dispatchers.IO).launch {
+                            viewModel.actualizar(comidaActualizada)
+                        }
+                        popupWindow1.dismiss()
                     }
-                    popupWindow1.dismiss()
                 }
             } catch (ex: Exception) {
                 Toast.makeText(
@@ -161,6 +165,46 @@ class Comida : Fragment() {
                 ).show()
             }
         }
+    }
+
+    //FUNCIÓN PARA VALIDAR CAMPOS DE TEXTO//
+    private fun validarCamposGComida(): Boolean {
+        var valido = true
+
+        val comida = binding2.etComida.text.toString()
+        val calorias = binding2.etCalorias.text.toString()
+
+        if (comida.isBlank()) {
+            binding2.etComida.setError("Este campo no puede estar vacío")
+            valido = false
+        }
+
+        if (calorias.isBlank()) {
+            binding2.etCalorias.setError("Este campo no puede estar vacío")
+            valido = false
+        }
+
+        return valido
+    }
+
+    //FUNCIÓN PARA VALIDAR CAMPOS DE EDITAR COMIDA//
+    private fun validarCamposEComida(): Boolean {
+        var valido = true
+
+        val comidaEditada = binding3.etComidaEdit.text.toString()
+        val caloriasEditada = binding3.etCaloriasEdit.text.toString()
+
+        if (comidaEditada.isBlank()) {
+            binding3.etComidaEdit.setError("Este campo no puede estar vacío")
+            valido = false
+        }
+
+        if (caloriasEditada.isBlank()) {
+            binding3.etCaloriasEdit.setError("Este campo no puede estar vacío")
+            valido = false
+        }
+
+        return valido
     }
 
     override fun onCreateView(

@@ -65,18 +65,19 @@ class Medidas : Fragment() {
 
         binding2.btnGuardarMedida.setOnClickListener {
             try {
-                val musculo = binding2.etMusculo.text.toString()
-                val medida = binding2.etMedida.text.toString().toInt()
+                if (validarCamposGMedida()) {
+                    val musculo = binding2.etMusculo.text.toString()
+                    val medida = binding2.etMedida.text.toString().toInt()
 
-                val medidas = Medidas(
-                    musculo = musculo, tamaño = medida
-                )
+                    val medidas = Medidas(
+                        musculo = musculo, tamaño = medida
+                    )
 
-                CoroutineScope(Dispatchers.IO).launch {
-                    viewModel.insertar(medidas)
+                    CoroutineScope(Dispatchers.IO).launch {
+                        viewModel.insertar(medidas)
+                    }
+                    popupWindow.dismiss()
                 }
-                popupWindow.dismiss()
-
             } catch (ex: Exception) {
                 Toast.makeText(
                     requireContext(), "Error : ${ex.toString()}",
@@ -95,7 +96,7 @@ class Medidas : Fragment() {
 
         binding3 = FragmentDialogInputEditarMedidaBinding.bind(popupView1)
 
-        binding3.etNombreEdit.setText(medidaSeleccionada.musculo)
+        binding3.etMusculoEdit.setText(medidaSeleccionada.musculo)
         binding3.etMedidaEdit.setText(medidaSeleccionada.tamaño.toString())
 
         val popupWindow1 = PopupWindow(
@@ -116,19 +117,21 @@ class Medidas : Fragment() {
 
         binding3.btnEditarMedida.setOnClickListener {
             try {
-                medidaSeleccionada?.let { Medidas ->
-                    val nombre = binding3.etNombreEdit.text.toString()
-                    val medida = binding3.etMedidaEdit.text.toString().toInt()
+                if (validarCamposEMedida()) {
+                    medidaSeleccionada?.let { Medidas ->
+                        val nombre = binding3.etMusculoEdit.text.toString()
+                        val medida = binding3.etMedidaEdit.text.toString().toInt()
 
-                    val medidaActualizada = Medidas(
-                        id = Medidas.id,
-                        musculo = nombre,
-                        tamaño = medida
-                    )
-                    CoroutineScope(Dispatchers.IO).launch {
-                        viewModel.actualizar(medidaActualizada)
+                        val medidaActualizada = Medidas(
+                            id = Medidas.id,
+                            musculo = nombre,
+                            tamaño = medida
+                        )
+                        CoroutineScope(Dispatchers.IO).launch {
+                            viewModel.actualizar(medidaActualizada)
+                        }
+                        popupWindow1.dismiss()
                     }
-                    popupWindow1.dismiss()
                 }
             } catch (ex: Exception) {
                 Toast.makeText(
@@ -163,6 +166,45 @@ class Medidas : Fragment() {
             }
         }
 
+    }
+
+    //FUNCIÓN PARA VALIDAR LOS CAMPOS DE TEXTO DE GUARDAR MEDIDA//
+    private fun validarCamposGMedida(): Boolean {
+        var valido = true
+
+        val musculo = binding2.etMusculo.text.toString()
+        val tamaño = binding2.etMedida.text.toString()
+
+        if (musculo.isBlank()) {
+            binding2.etMusculo.setError("Este campo no puede estar vacío")
+            valido = false
+        }
+
+        if (musculo.isBlank()) {
+            binding2.etMedida.setError("Este campo no puede estar vacío")
+            valido = false
+        }
+        return valido
+    }
+
+    //FUNCIÓN PARA VALIDAR LOS CAMPOS DE TEXTO DE EDITAR MEDIDA//
+    private fun validarCamposEMedida(): Boolean {
+        var valido = true
+
+        val musculoEditado = binding3.etMusculoEdit.text.toString()
+        val tamañoEditado = binding3.etMedidaEdit.text.toString()
+
+        if (musculoEditado.isBlank()) {
+            binding3.etMusculoEdit.setError("Este campo no puede estar vacío")
+            valido = false
+        }
+
+        if (tamañoEditado.isBlank()) {
+            binding3.etMedidaEdit.setError("Este campo no puede estar vacío")
+            valido = false
+        }
+
+        return valido
     }
 
     override fun onCreateView(

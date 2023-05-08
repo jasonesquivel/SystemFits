@@ -24,7 +24,7 @@
             app:tint="@android:color/black" />
 
         <EditText
-            android:id="@+id/etComida"
+            android:id="@+id/etComidaEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
@@ -34,7 +34,7 @@
             android:textAlignment="center" />
 
         <EditText
-            android:id="@+id/etCalorias"
+            android:id="@+id/etCaloriasEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"

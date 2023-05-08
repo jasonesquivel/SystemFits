@@ -24,7 +24,7 @@
             app:tint="@android:color/black" />
 
         <EditText
-            android:id="@+id/etNombreEdit"
+            android:id="@+id/etMusculoEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
