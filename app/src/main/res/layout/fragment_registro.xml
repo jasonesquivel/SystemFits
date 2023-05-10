@@ -17,7 +17,6 @@
             android:layout_width="386dp"
             android:layout_height="89dp"
             android:layout_marginTop="16dp"
-
             android:shadowColor="#000000"
             android:text="Ingrese sus datos para registrarse"
             android:textAlignment="center"
@@ -30,18 +29,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tv_Anuncio"
-            android:layout_width="310dp"
-            android:layout_height="40dp"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            app:layout_constraintHorizontal_bias="0.544"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_Bienvenida" />
-
         <EditText
             android:id="@+id/etNombre"
             android:layout_width="319dp"
@@ -51,7 +38,7 @@
             android:inputType="textPersonName"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_Anuncio" />
+            app:layout_constraintTop_toBottomOf="@id/tv_Bienvenida" />
 
         <EditText
             android:id="@+id/etApellido"
@@ -65,39 +52,50 @@
             app:layout_constraintTop_toBottomOf="@id/etNombre" />
 
         <EditText
-            android:id="@+id/etCorreo"
+            android:id="@+id/etFechaNac"
             android:layout_width="319dp"
             android:layout_height="61dp"
             android:layout_marginTop="40dp"
-            android:hint="Correo"
-            android:inputType="textEmailAddress"
+            android:hint="Fecha de nacimiento"
+            android:inputType="datetime"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/etApellido" />
 
         <EditText
 
-            android:id="@+id/etSaldoactual"
+            android:id="@+id/etSexo"
             android:layout_width="319dp"
             android:layout_height="61dp"
             android:layout_marginTop="40dp"
-            android:hint="Saldo Actual"
-            android:inputType="number"
+            android:hint="Sexo"
+            android:inputType="text"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etCorreo" />
+            app:layout_constraintTop_toBottomOf="@id/etFechaNac" />
 
         <EditText
-            android:id="@+id/etSalario"
+            android:id="@+id/etPeso"
             android:layout_width="319dp"
             android:layout_height="61dp"
             android:layout_marginTop="40dp"
-            android:hint="Salario"
+            android:hint="Peso"
             android:inputType="number"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etSaldoactual" />
+            app:layout_constraintTop_toBottomOf="@id/etSexo" />
 
+
+        <EditText
+            android:id="@+id/etAltura"
+            android:layout_width="319dp"
+            android:layout_height="61dp"
+            android:layout_marginTop="40dp"
+            android:hint="Altura"
+            android:inputType="number"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etPeso" />
 
         <EditText
             android:id="@+id/etUsuario"
@@ -108,7 +106,7 @@
             android:inputType="text"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etSalario" />
+            app:layout_constraintTop_toBottomOf="@id/etAltura" />
 
         <EditText
             android:id="@+id/etContraseña"
