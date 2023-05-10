@@ -5,10 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ni.edu.uca.systemfits.R
-
+import ni.edu.uca.systemfits.databinding.FragmentMenuPrincipalBinding
 
 class MenuPrincipal : Fragment() {
+    private lateinit var binding: FragmentMenuPrincipalBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,9 +20,7 @@ class MenuPrincipal : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_menu_principal, container, false)
+        binding = FragmentMenuPrincipalBinding.inflate(inflater, container, false)
+        return binding.root
     }
-
-
 }

@@ -8,13 +8,8 @@ import ni.edu.uca.systemfits.databinding.ActivityMainBinding
 import ni.edu.uca.systemfits.vistas.*
 
 class MainActivity : AppCompatActivity() {
-    private val Comida = Comida()
-    private val Ejercicios = Ejercicios()
-    private val Medidas = Medidas()
-    private val Recetas = Recetas()
-    private val MenuPrincipal = MenuPrincipal()
-
     private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -22,38 +17,24 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.bottomNavigation.isVisible = false
-        binding.bottomNavigation.setOnItemSelectedListener {
+        binding.bottomNavigation.setOnItemSelectedListener { menuItem ->
 
-            when (it.itemId) {
-
+            when (menuItem.itemId) {
                 R.id.menumenu -> replaceFragment(MenuPrincipal())
                 R.id.comidamenu -> replaceFragment(Comida())
                 R.id.ejerciciosmenu -> replaceFragment(Ejercicios())
                 R.id.medidasmenu -> replaceFragment(Medidas())
                 R.id.recetasmenu -> replaceFragment(Recetas())
-                else -> {
-
-
-                }
-
             }
-
             true
-
-
         }
-
-
     }
 
     private fun replaceFragment(fragment: Fragment) {
-
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.container, fragment)
         fragmentTransaction.commit()
-
-
     }
 
     fun showBottomNavigationView() {
@@ -63,5 +44,4 @@ class MainActivity : AppCompatActivity() {
     fun hideBottomNavigationView() {
         binding.bottomNavigation.isVisible = false
     }
-
 }

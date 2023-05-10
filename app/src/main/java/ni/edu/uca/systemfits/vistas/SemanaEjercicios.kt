@@ -13,18 +13,20 @@ import ni.edu.uca.systemfits.R
 import ni.edu.uca.systemfits.databinding.FragmentSemanaEjerciciosBinding
 
 class SemanaEjercicios : Fragment() {
+    private lateinit var binding: FragmentSemanaEjerciciosBinding
 
-private lateinit var binding: FragmentSemanaEjerciciosBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
 
         }
     }
+
     private fun showCustomPopupAgregarGrupoMUsuclar() {
         val inflater =
             requireContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val popupView = inflater.inflate(R.layout.fragment_dialog_input_agregar_grupo_muscular, null)
+        val popupView =
+            inflater.inflate(R.layout.fragment_dialog_input_agregar_grupo_muscular, null)
 
         val popupWindow = PopupWindow(
             popupView,
@@ -42,18 +44,19 @@ private lateinit var binding: FragmentSemanaEjerciciosBinding
 
         popupWindow.showAtLocation(binding.root, Gravity.CENTER, 0, 0)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-binding=   FragmentSemanaEjerciciosBinding.inflate(inflater, container, false)
+        binding = FragmentSemanaEjerciciosBinding.inflate(inflater, container, false)
         return binding.root
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btnAgregarGrupoMuscular.setOnClickListener{
+        binding.btnAgregarGrupoMuscular.setOnClickListener {
             showCustomPopupAgregarGrupoMUsuclar()
         }
     }
