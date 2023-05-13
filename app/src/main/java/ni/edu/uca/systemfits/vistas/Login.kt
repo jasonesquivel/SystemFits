@@ -33,7 +33,7 @@ class Login : Fragment() {
             (activity as MainActivity).showBottomNavigationView()
             it.findNavController().navigate(R.id.login_menu)
         }
-        binding.btnRegistro.setOnClickListener {
+        binding.tvRegistro.setOnClickListener {
             it.findNavController().navigate(R.id.login_registro)
 
         }
