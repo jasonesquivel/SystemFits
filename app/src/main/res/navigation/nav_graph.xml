@@ -95,4 +95,9 @@
         android:name="ni.edu.uca.systemfits.vistas.SemanaEjercicios"
         android:label="fragment_semana_ejercicios"
         tools:layout="@layout/fragment_semana_ejercicios" />
+    <fragment
+        android:id="@+id/configuracion"
+        android:name="ni.edu.uca.systemfits.configuracion"
+        android:label="fragment_configuracion"
+        tools:layout="@layout/fragment_configuracion" />
 </navigation>
