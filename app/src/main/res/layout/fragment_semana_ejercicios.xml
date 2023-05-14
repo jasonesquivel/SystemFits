@@ -4,360 +4,378 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vistas.SemanaEjercicios"
-    android:background="@color/white">
+    android:background="@color/white"
+    tools:context=".vistas.SemanaEjercicios">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    <!-- TODO: Update blank fragment layout -->
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardViewAgregarEjercicioLunes"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:cardBackgroundColor="@android:color/white"
-        app:cardCornerRadius="26dp"
-        app:cardElevation="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <!-- TODO: Update blank fragment layout -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardViewAgregarEjercicioLunes"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="26dp"
+            app:cardElevation="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Lunes"
-                android:textAppearance="?attr/textAppearanceHeadline6" />
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text=""
-    android:paddingBottom="12dp"
-    android:textSize="18sp"/>
-            <Button
-                android:id="@+id/btnAgregarGrupoMuscularLunes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginLeft="177dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/button_border"
-                android:text="Editar Grupo muscular"
-                android:textColor="@android:color/white" />
+                android:orientation="vertical"
+                android:padding="16dp">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lunes"
+                    android:textAppearance="?attr/textAppearanceHeadline6" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="12dp"
+                    android:text=""
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/btnAgregarGrupoMuscularLunes"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_gravity="end"
+                    android:layout_marginLeft="100dp"
+                    android:backgroundTint="@color/purple"
+                    android:text="Editar Grupo Muscular"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    app:cornerRadius="20dp" />
+
+            </LinearLayout>
 
 
-    </com.google.android.material.card.MaterialCardView>
+        </com.google.android.material.card.MaterialCardView>
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardViewAgregarEjercicioMartes"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:cardBackgroundColor="@android:color/white"
-        app:cardCornerRadius="26dp"
-        app:cardElevation="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardViewAgregarEjercicioLunes"
-
-        >
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardViewAgregarEjercicioMartes"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="26dp"
+            app:cardElevation="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewAgregarEjercicioLunes"
 
-            <TextView
-                android:layout_width="wrap_content"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Martes"
-                android:textAppearance="?attr/textAppearanceHeadline6" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:paddingBottom="12dp"
-                android:textSize="18sp"/>
-            <Button
-                android:id="@+id/btnAgregarGrupoMuscularMartes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginLeft="177dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/button_border"
-                android:text="Editar Grupo muscular"
-                android:textColor="@android:color/white" />
+                android:orientation="vertical"
+                android:padding="16dp">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Martes"
+                    android:textAppearance="?attr/textAppearanceHeadline6" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="12dp"
+                    android:text=""
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/btnAgregarGrupoMuscularMartes"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_gravity="end"
+                    android:layout_marginLeft="100dp"
+                    android:backgroundTint="@color/purple"
+                    android:text="Editar Grupo Muscular"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    app:cornerRadius="20dp" />
+
+            </LinearLayout>
 
 
-    </com.google.android.material.card.MaterialCardView>
+        </com.google.android.material.card.MaterialCardView>
 
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardViewAgregarEjerciciosMiercoles"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:cardBackgroundColor="@android:color/white"
-        app:cardCornerRadius="26dp"
-        app:cardElevation="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardViewAgregarEjercicioMartes"
-
-        >
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardViewAgregarEjerciciosMiercoles"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="26dp"
+            app:cardElevation="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewAgregarEjercicioMartes"
 
-            <TextView
-                android:layout_width="wrap_content"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Miercoles"
-                android:textAppearance="?attr/textAppearanceHeadline6" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:paddingBottom="12dp"
-                android:textSize="18sp"/>
-            <Button
-                android:id="@+id/btnAgregarGrupoMuscularMiercoles"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginLeft="177dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/button_border"
-                android:text="Editar Grupo muscular"
-                android:textColor="@android:color/white" />
+                android:orientation="vertical"
+                android:padding="16dp">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Miercoles"
+                    android:textAppearance="?attr/textAppearanceHeadline6" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="12dp"
+                    android:text=""
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/btnAgregarGrupoMuscularMiercoles"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_gravity="end"
+                    android:layout_marginLeft="100dp"
+                    android:backgroundTint="@color/purple"
+                    android:text="Editar Grupo Muscular"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    app:cornerRadius="20dp" />
+
+            </LinearLayout>
 
 
-    </com.google.android.material.card.MaterialCardView>
+        </com.google.android.material.card.MaterialCardView>
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardViewAgregarEjercicioJueves"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:cardBackgroundColor="@android:color/white"
-        app:cardCornerRadius="26dp"
-        app:cardElevation="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardViewAgregarEjerciciosMiercoles"
-
-        >
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardViewAgregarEjercicioJueves"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="26dp"
+            app:cardElevation="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewAgregarEjerciciosMiercoles"
 
-            <TextView
-                android:layout_width="wrap_content"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Jueves"
-                android:textAppearance="?attr/textAppearanceHeadline6" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:paddingBottom="12dp"
-                android:textSize="18sp"/>
-            <Button
-                android:id="@+id/btnAgregarGrupoMuscularJueves"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginLeft="177dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/button_border"
-                android:text="Editar Grupo muscular"
-                android:textColor="@android:color/white" />
+                android:orientation="vertical"
+                android:padding="16dp">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jueves"
+                    android:textAppearance="?attr/textAppearanceHeadline6" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="12dp"
+                    android:text=""
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/btnAgregarGrupoMuscularJueves"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_gravity="end"
+                    android:layout_marginLeft="100dp"
+                    android:backgroundTint="@color/purple"
+                    android:text="Editar Grupo Muscular"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    app:cornerRadius="20dp" />
+
+            </LinearLayout>
 
 
-    </com.google.android.material.card.MaterialCardView>
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardViewAgregarEjercicioViernes"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:cardBackgroundColor="@android:color/white"
-        app:cardCornerRadius="26dp"
-        app:cardElevation="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardViewAgregarEjercicioJueves"
+        </com.google.android.material.card.MaterialCardView>
 
-        >
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardViewAgregarEjercicioViernes"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="26dp"
+            app:cardElevation="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewAgregarEjercicioJueves"
 
-            <TextView
-                android:layout_width="wrap_content"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Viernes"
-                android:textAppearance="?attr/textAppearanceHeadline6" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:paddingBottom="12dp"
-                android:textSize="18sp"/>
-            <Button
-                android:id="@+id/btnAgregarGrupoMuscularViernes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginLeft="177dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/button_border"
-                android:text="Editar Grupo muscular"
-                android:textColor="@android:color/white" />
+                android:orientation="vertical"
+                android:padding="16dp">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Viernes"
+                    android:textAppearance="?attr/textAppearanceHeadline6" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="12dp"
+                    android:text=""
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/btnAgregarGrupoMuscularViernes"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_gravity="end"
+                    android:layout_marginLeft="100dp"
+                    android:backgroundTint="@color/purple"
+                    android:text="Editar Grupo Muscular"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    app:cornerRadius="20dp" />
+
+            </LinearLayout>
 
 
-    </com.google.android.material.card.MaterialCardView>
+        </com.google.android.material.card.MaterialCardView>
 
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardViewAgregarEjercicioSabado"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:cardBackgroundColor="@android:color/white"
-        app:cardCornerRadius="26dp"
-        app:cardElevation="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardViewAgregarEjercicioViernes"
-
-        >
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardViewAgregarEjercicioSabado"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="26dp"
+            app:cardElevation="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewAgregarEjercicioViernes"
 
-            <TextView
-                android:layout_width="wrap_content"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Sabado"
-                android:textAppearance="?attr/textAppearanceHeadline6" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:paddingBottom="12dp"
-                android:textSize="18sp"/>
-            <Button
-                android:id="@+id/btnAgregarGrupoMuscularSabado"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginLeft="177dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/button_border"
-                android:text="Editar Grupo muscular"
-                android:textColor="@android:color/white" />
+                android:orientation="vertical"
+                android:padding="16dp">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sabado"
+                    android:textAppearance="?attr/textAppearanceHeadline6" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="12dp"
+                    android:text=""
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/btnAgregarGrupoMuscularSabado"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_gravity="end"
+                    android:layout_marginLeft="100dp"
+                    android:backgroundTint="@color/purple"
+                    android:text="Editar Grupo Muscular"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    app:cornerRadius="20dp" />
+
+            </LinearLayout>
 
 
-    </com.google.android.material.card.MaterialCardView>
+        </com.google.android.material.card.MaterialCardView>
 
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardViewAgregarEjercicioDomingo"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:cardBackgroundColor="@android:color/white"
-        app:cardCornerRadius="26dp"
-        app:cardElevation="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardViewAgregarEjercicioSabado"
-
-        >
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardViewAgregarEjercicioDomingo"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="26dp"
+            app:cardElevation="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewAgregarEjercicioSabado"
 
-            <TextView
-                android:layout_width="wrap_content"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Domingo"
-                android:textAppearance="?attr/textAppearanceHeadline6" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:paddingBottom="12dp"
-                android:textSize="18sp"/>
-            <Button
-                android:id="@+id/btnAgregarGrupoMuscularDomingo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginLeft="177dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/button_border"
-                android:text="Editar Grupo muscular"
-                android:textColor="@android:color/white" />
+                android:orientation="vertical"
+                android:padding="16dp">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Domingo"
+                    android:textAppearance="?attr/textAppearanceHeadline6" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="12dp"
+                    android:text=""
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/btnAgregarGrupoMuscularDomingo"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_gravity="end"
+                    android:layout_marginLeft="100dp"
+                    android:backgroundTint="@color/purple"
+                    android:text="Editar Grupo Muscular"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    app:cornerRadius="20dp" />
+
+            </LinearLayout>
 
 
-    </com.google.android.material.card.MaterialCardView>
-
-
-
-
-
+        </com.google.android.material.card.MaterialCardView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

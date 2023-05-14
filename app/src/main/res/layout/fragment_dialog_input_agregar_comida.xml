@@ -25,35 +25,43 @@
 
         <EditText
             android:id="@+id/etComida"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:background="@drawable/edittext_border"
+            android:layout_width="262dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/custom_edittext"
+            android:drawableLeft="@drawable/food_icon"
+            android:drawablePadding="8dp"
             android:hint="Escribe nombre de comida"
             android:padding="8dp"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/etCalorias"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/edittext_border"
+            android:layout_width="262dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/custom_edittext"
+            android:drawableLeft="@drawable/calories_icon"
+            android:drawablePadding="8dp"
             android:hint="Estimado de calorias"
             android:inputType="number"
             android:padding="8dp"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="@color/black" />
 
         <Button
-            android:background="@drawable/button_border"
             android:id="@+id/btnGuardarComida"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
             android:layout_gravity="end"
             android:layout_marginLeft="100dp"
             android:layout_marginTop="20dp"
+            android:backgroundTint="@color/purple"
             android:text="Guardar"
-            android:textColor="@android:color/white" />
+            android:textSize="18sp"
+            app:cornerRadius="20dp"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 </FrameLayout>

@@ -35,14 +35,16 @@
 
             <Button
                 android:id="@+id/buttonAgregarMedida"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
                 android:layout_gravity="end"
-                android:layout_marginLeft="177dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/button_border"
-                android:text="Agregar medida"
-                android:textColor="@android:color/white" />
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/purple"
+                android:text="Agregar Medida"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:cornerRadius="20dp" />
 
         </LinearLayout>
 
