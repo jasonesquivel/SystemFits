@@ -35,7 +35,7 @@ go
 
 CREATE TABLE Ejercicios(
     IdEjercicios        int             NOT NULL,
-    NombreEjercicios    nvarchar(10)    NULL,
+    NombreEjercicios    nvarchar(100)    NULL,
     SetsEJercicios      int             NOT NULL,
     RepsEjercicio       char(10)        NULL,
     Id                  int             NOT NULL,
