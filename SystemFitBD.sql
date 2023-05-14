@@ -2,7 +2,7 @@
  * ER/Studio Data Architect SQL Code Generation
  * Project :      basededatosmoviles.DM1
  *
- * Date Created : Sunday, May 14, 2023 14:10:12
+ * Date Created : Sunday, May 14, 2023 14:20:45
  * Target DBMS : Microsoft SQL Server 2017
  */
 
@@ -61,7 +61,7 @@ CREATE TABLE Ingredientes(
     Calorias          int             NULL,
     Peso              float           NULL,
     Tipo              int             NULL,
-    IdRecetas         char(10)        NOT NULL,
+    IdRecetas         int             NOT NULL,
     CONSTRAINT PK4 PRIMARY KEY NONCLUSTERED (IdIngredientes)
 )
 go
@@ -100,7 +100,7 @@ go
  */
 
 CREATE TABLE Recetas(
-    IdRecetas      char(10)         NOT NULL,
+    IdRecetas      int              NOT NULL,
     Nombre         nvarchar(70)     NOT NULL,
     Descripcion    nvarchar(150)    NULL,
     Id             int              NOT NULL,
