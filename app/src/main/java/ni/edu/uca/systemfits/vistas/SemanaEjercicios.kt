@@ -59,6 +59,24 @@ class SemanaEjercicios : Fragment() {
         binding.btnAgregarGrupoMuscularLunes.setOnClickListener {
             showCustomPopupAgregarGrupoMUsuclar()
         }
+        binding.btnAgregarGrupoMuscularMartes.setOnClickListener {
+            showCustomPopupAgregarGrupoMUsuclar()
+        }
+        binding.btnAgregarGrupoMuscularMiercoles.setOnClickListener {
+            showCustomPopupAgregarGrupoMUsuclar()
+        }
+        binding.btnAgregarGrupoMuscularJueves.setOnClickListener {
+            showCustomPopupAgregarGrupoMUsuclar()
+        }
+        binding.btnAgregarGrupoMuscularViernes.setOnClickListener {
+            showCustomPopupAgregarGrupoMUsuclar()
+        }
+        binding.btnAgregarGrupoMuscularSabado.setOnClickListener {
+            showCustomPopupAgregarGrupoMUsuclar()
+        }
+        binding.btnAgregarGrupoMuscularDomingo.setOnClickListener {
+            showCustomPopupAgregarGrupoMUsuclar()
+        }
     }
 
 
