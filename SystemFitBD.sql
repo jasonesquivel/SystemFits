@@ -37,7 +37,7 @@ CREATE TABLE Ejercicios(
     IdEjercicios        int             NOT NULL,
     NombreEjercicios    nvarchar(100)    NULL,
     SetsEJercicios      int             NOT NULL,
-    RepsEjercicio       char(10)        NULL,
+    RepsEjercicio       int        NULL,
     Id                  int             NOT NULL,
     CONSTRAINT PK6 PRIMARY KEY NONCLUSTERED (IdEjercicios)
 )
