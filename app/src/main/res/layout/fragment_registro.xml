@@ -1,149 +1,179 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:fillViewport="true"
+    android:layout_height="match_parent"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="8dp"
     tools:context=".vistas.Registro">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardViewComidas"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:context=".MainActivity">
+        android:layout_height="match_parent"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardViewAgregarComida">
 
-        <TextView
-            android:id="@+id/tv_Bienvenida"
-            android:layout_width="386dp"
-            android:layout_height="89dp"
-            android:layout_marginTop="16dp"
-            android:shadowColor="#000000"
-            android:text="Ingrese sus datos para registrarse"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="35sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.64"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/etNombre"
-            android:layout_width="319dp"
-            android:layout_height="61dp"
-            android:layout_marginTop="28dp"
-            android:hint="Nombre"
-            android:inputType="textPersonName"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_Bienvenida" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                app:cardCornerRadius="16dp">
 
-        <EditText
-            android:id="@+id/etApellido"
-            android:layout_width="319dp"
-            android:layout_height="61dp"
-            android:layout_marginTop="40dp"
-            android:hint="Apellido"
-            android:inputType="textPersonName"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etNombre" />
+                <TextView
+                    android:id="@+id/tvLogIn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Registrarse"
+                    android:textAlignment="center"
+                    android:textColor="@color/purple"
+                    android:textSize="36sp"
+                    android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/etFechaNac"
-            android:layout_width="319dp"
-            android:layout_height="61dp"
-            android:layout_marginTop="40dp"
-            android:hint="Fecha de nacimiento"
-            android:inputType="datetime"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etApellido" />
+                <EditText
+                    android:id="@+id/etNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawableLeft="@drawable/name_icon"
+                    android:drawablePadding="8dp"
+                    android:hint="Nombre"
+                    android:padding="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHighlight="@color/cardview_dark_background" />
 
-        <EditText
+                <EditText
+                    android:id="@+id/etApellido"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawableLeft="@drawable/name_icon"
+                    android:drawablePadding="8dp"
+                    android:hint="Apellido"
+                    android:padding="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHighlight="@color/cardview_dark_background" />
 
-            android:id="@+id/etSexo"
-            android:layout_width="319dp"
-            android:layout_height="61dp"
-            android:layout_marginTop="40dp"
-            android:hint="Sexo"
-            android:inputType="text"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etFechaNac" />
+                <EditText
+                    android:id="@+id/etFechaNac"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawableLeft="@drawable/date_icon"
+                    android:drawablePadding="8dp"
+                    android:hint="Fecha de Nacimiento DD-MM-AAAA"
+                    android:inputType="phone"
+                    android:padding="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHighlight="@color/cardview_dark_background" />
 
-        <EditText
-            android:id="@+id/etPeso"
-            android:layout_width="319dp"
-            android:layout_height="61dp"
-            android:layout_marginTop="40dp"
-            android:hint="Peso"
-            android:inputType="number"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etSexo" />
+                <EditText
+                    android:id="@+id/etGenero"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawableLeft="@drawable/genero_icon"
+                    android:drawablePadding="8dp"
+                    android:hint="Genéro"
+                    android:padding="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHighlight="@color/cardview_dark_background" />
+
+                <EditText
+                    android:id="@+id/etPeso"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawableLeft="@drawable/peso_icon"
+                    android:drawablePadding="8dp"
+                    android:hint="Peso en Libras"
+                    android:inputType="number"
+                    android:padding="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHighlight="@color/cardview_dark_background" />
 
 
-        <EditText
-            android:id="@+id/etAltura"
-            android:layout_width="319dp"
-            android:layout_height="61dp"
-            android:layout_marginTop="40dp"
-            android:hint="Altura"
-            android:inputType="number"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etPeso" />
+                <EditText
+                    android:id="@+id/etAltura"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawableLeft="@drawable/height_icon"
+                    android:drawablePadding="8dp"
+                    android:hint="Altura en Centimetros"
+                    android:inputType="number"
+                    android:padding="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHighlight="@color/cardview_dark_background" />
 
-        <EditText
-            android:id="@+id/etUsuario"
-            android:layout_width="319dp"
-            android:layout_height="61dp"
-            android:layout_marginTop="40dp"
-            android:hint="Usuario"
-            android:inputType="text"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etAltura" />
+                <EditText
+                    android:id="@+id/etUsuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawableLeft="@drawable/ic_user"
+                    android:drawablePadding="8dp"
+                    android:hint="Usuario"
+                    android:padding="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHighlight="@color/cardview_dark_background" />
 
-        <EditText
-            android:id="@+id/etContraseña"
-            android:layout_width="319dp"
-            android:layout_height="61dp"
-            android:layout_marginTop="40dp"
-            android:hint="Contraseña"
-            android:inputType="textPassword"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etUsuario" />
+                <EditText
+                    android:id="@+id/etContraseña"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawableLeft="@drawable/ic_lock"
+                    android:drawablePadding="8dp"
+                    android:hint="Contraseña"
+                    android:inputType="textPassword"
+                    android:padding="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHighlight="@color/cardview_dark_background" />
 
-        <EditText
-            android:id="@+id/etCfContraseña"
-            android:layout_width="319dp"
-            android:layout_height="61dp"
-            android:layout_marginTop="40dp"
-            android:hint="Confirmar contraseña"
-            android:inputType="textPassword"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etContraseña" />
+                <Button
+                    android:id="@+id/btnRegistro"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="30dp"
+                    android:backgroundTint="@color/purple"
+                    android:text="Registrarse"
+                    android:textSize="18sp"
+                    app:cornerRadius="20dp" />
 
-        <Button
-            android:id="@+id/btnRegistro"
-            android:layout_width="201dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="40dp"
-            android:background="#143688"
+                <TextView
+                    android:id="@+id/tvInicioSesion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:padding="8dp"
+                    android:layout_gravity="center"
+                    android:text="¿Ya tienes cuenta? Inicia Sesión."
+                    android:textAlignment="center"
+                    android:textColor="@color/purple"
+                    android:textSize="14sp" />
 
-            android:text="Registrar"
-            android:textColor="@android:color/white"
-            app:cornerRadius="20dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etCfContraseña" />
+            </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
 
-</ScrollView>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.cardview.widget.CardView>
