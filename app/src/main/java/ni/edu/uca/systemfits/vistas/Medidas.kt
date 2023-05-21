@@ -3,6 +3,8 @@ package ni.edu.uca.systemfits.vistas
 import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -48,6 +50,22 @@ class Medidas : Fragment() {
 
         binding2 = FragmentDialogInputAgregarMedidaBinding.bind(popupView)
 
+        binding2.etMedida.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {
+            }
+
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                val medida: String = binding2.etMedida.text.toString()
+                if (medida.length == 3 && !medida.contains(".")) {
+                    binding2.etMedida.setText("${medida.substring(0, 2)}.${medida.substring(2)}")
+                    binding2.etMedida.setSelection(binding2.etMedida.text.length)
+                }
+            }
+        })
+
         val popupWindow = PopupWindow(
             popupView,
             ViewGroup.LayoutParams.MATCH_PARENT,
@@ -68,7 +86,7 @@ class Medidas : Fragment() {
             try {
                 if (validarCamposGMedida()) {
                     val musculo = binding2.etMusculo.text.toString()
-                    val medida = binding2.etMedida.text.toString().toInt()
+                    val medida = binding2.etMedida.text.toString().toDouble()
 
                     val medidas = Medidas(
                         musculo = musculo, tamaño = medida
@@ -121,7 +139,7 @@ class Medidas : Fragment() {
                 if (validarCamposEMedida()) {
                     medidaSeleccionada?.let { Medidas ->
                         val nombre = binding3.etMusculoEdit.text.toString()
-                        val medida = binding3.etMedidaEdit.text.toString().toInt()
+                        val medida = binding3.etMedidaEdit.text.toString().toDouble()
 
                         val medidaActualizada = Medidas(
                             id = Medidas.id,
@@ -181,7 +199,7 @@ class Medidas : Fragment() {
             valido = false
         }
 
-        if (musculo.isBlank()) {
+        if (tamaño.isBlank()) {
             binding2.etMedida.setError("Este campo no puede estar vacío")
             valido = false
         }

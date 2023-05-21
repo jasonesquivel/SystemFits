@@ -32,6 +32,7 @@
             android:drawableLeft="@drawable/food_icon"
             android:drawablePadding="8dp"
             android:hint="Escribe nombre de comida"
+            android:inputType="text"
             android:padding="8dp"
             android:textAlignment="center"
             android:textColor="@color/black" />

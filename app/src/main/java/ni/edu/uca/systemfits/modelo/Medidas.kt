@@ -8,5 +8,5 @@ data class Medidas(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     val musculo: String,
-    val tamaño: Int,
+    val tamaño: Double,
 )

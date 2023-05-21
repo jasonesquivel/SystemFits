@@ -47,13 +47,16 @@
                     android:background="@drawable/custom_edittext"
                     android:drawableLeft="@drawable/name_icon"
                     android:drawablePadding="8dp"
+                    android:inputType="text"
                     android:hint="Nombre"
+                    android:maxLength="15"
                     android:padding="8dp"
                     android:textColor="@color/black"
                     android:textColorHighlight="@color/cardview_dark_background" />
 
                 <EditText
                     android:id="@+id/etApellido"
+                    android:inputType="text"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="40dp"
@@ -61,12 +64,13 @@
                     android:drawableLeft="@drawable/name_icon"
                     android:drawablePadding="8dp"
                     android:hint="Apellido"
+                    android:maxLength="15"
                     android:padding="8dp"
                     android:textColor="@color/black"
                     android:textColorHighlight="@color/cardview_dark_background" />
 
-                <EditText
-                    android:id="@+id/etFechaNac"
+                <TextView
+                    android:id="@+id/tvFechaNac"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="40dp"
@@ -75,22 +79,21 @@
                     android:drawablePadding="8dp"
                     android:hint="Fecha de Nacimiento DD-MM-AAAA"
                     android:inputType="phone"
-                    android:padding="8dp"
+                    android:padding="9dp"
                     android:textColor="@color/black"
-                    android:textColorHighlight="@color/cardview_dark_background" />
+                    android:textColorHighlight="@color/cardview_dark_background"
+                    android:textSize="20sp" />
 
-                <EditText
-                    android:id="@+id/etGenero"
+                <Spinner
+                    android:id="@+id/spGenero"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="40dp"
                     android:background="@drawable/custom_edittext"
                     android:drawableLeft="@drawable/genero_icon"
                     android:drawablePadding="8dp"
-                    android:hint="Genéro"
-                    android:padding="8dp"
-                    android:textColor="@color/black"
-                    android:textColorHighlight="@color/cardview_dark_background" />
+                    android:padding="8dp" />
+
 
                 <EditText
                     android:id="@+id/etPeso"
@@ -100,8 +103,9 @@
                     android:background="@drawable/custom_edittext"
                     android:drawableLeft="@drawable/peso_icon"
                     android:drawablePadding="8dp"
-                    android:hint="Peso en Libras"
+                    android:hint="Peso en Kilos"
                     android:inputType="number"
+                    android:maxLength="5"
                     android:padding="8dp"
                     android:textColor="@color/black"
                     android:textColorHighlight="@color/cardview_dark_background" />
@@ -115,8 +119,9 @@
                     android:background="@drawable/custom_edittext"
                     android:drawableLeft="@drawable/height_icon"
                     android:drawablePadding="8dp"
-                    android:hint="Altura en Centimetros"
+                    android:hint="Altura en Metros"
                     android:inputType="number"
+                    android:maxLength="4"
                     android:padding="8dp"
                     android:textColor="@color/black"
                     android:textColorHighlight="@color/cardview_dark_background" />
@@ -129,7 +134,9 @@
                     android:background="@drawable/custom_edittext"
                     android:drawableLeft="@drawable/ic_user"
                     android:drawablePadding="8dp"
+                    android:inputType="text"
                     android:hint="Usuario"
+                    android:maxLength="10"
                     android:padding="8dp"
                     android:textColor="@color/black"
                     android:textColorHighlight="@color/cardview_dark_background" />
@@ -144,6 +151,7 @@
                     android:drawablePadding="8dp"
                     android:hint="Contraseña"
                     android:inputType="textPassword"
+                    android:maxLength="8"
                     android:padding="8dp"
                     android:textColor="@color/black"
                     android:textColorHighlight="@color/cardview_dark_background" />
@@ -162,9 +170,9 @@
                     android:id="@+id/tvInicioSesion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginBottom="20dp"
                     android:padding="8dp"
-                    android:layout_gravity="center"
                     android:text="¿Ya tienes cuenta? Inicia Sesión."
                     android:textAlignment="center"
                     android:textColor="@color/purple"

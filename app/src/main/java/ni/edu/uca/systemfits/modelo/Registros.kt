@@ -12,8 +12,8 @@ data class Registros(
     val apellido: String,
     val fechaNac: String,
     val genéro: String,
-    val peso: Int,
-    val altura: Int,
+    val peso: Double,
+    val altura: Double,
     val usuario: String,
     val contraseña: String
 )

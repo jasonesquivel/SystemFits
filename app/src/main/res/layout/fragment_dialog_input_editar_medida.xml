@@ -31,6 +31,7 @@
             android:background="@drawable/custom_edittext"
             android:drawableLeft="@drawable/muscle_icon"
             android:drawablePadding="8dp"
+            android:inputType="text"
             android:hint="Escribe nombre de músculo"
             android:padding="8dp"
             android:textAlignment="center"

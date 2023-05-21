@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="genero_array">
+        <item>Seleccione un género</item>
+        <item>Masculino</item>
+        <item>Femenino</item>
+        <item>No Binario</item>
+        <item>Prefiero no decirlo</item>
+        <item>Anuel</item>
+    </string-array>
+</resources>

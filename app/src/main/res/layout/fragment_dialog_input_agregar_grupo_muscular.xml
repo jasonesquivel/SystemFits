@@ -32,6 +32,8 @@
             android:drawableLeft="@drawable/day_icon"
             android:drawablePadding="8dp"
             android:hint="Día de la semana"
+            android:inputType="text"
+            android:maxLength="10"
             android:padding="8dp"
             android:textAlignment="center"
             android:textColor="@color/black" />
@@ -45,6 +47,8 @@
             android:drawableLeft="@drawable/group_muscle_icon"
             android:drawablePadding="8dp"
             android:hint="Grupo muscular"
+            android:inputType="text"
+            android:maxLength="10"
             android:padding="8dp"
             android:textAlignment="center"
             android:textColor="@color/black" />

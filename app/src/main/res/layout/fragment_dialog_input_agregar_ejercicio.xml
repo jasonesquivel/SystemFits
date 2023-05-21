@@ -32,6 +32,8 @@
             android:drawableLeft="@drawable/ejercicio_icon"
             android:drawablePadding="8dp"
             android:hint="Escribe el nombre del ejercicio"
+            android:inputType="text"
+            android:maxLength="12"
             android:padding="8dp"
             android:textAlignment="center"
             android:textColor="@color/black" />
@@ -46,6 +48,7 @@
             android:drawablePadding="8dp"
             android:hint="Escribe la cantidad de reps"
             android:inputType="number"
+            android:maxLength="3"
             android:padding="8dp"
             android:textAlignment="center"
             android:textColor="@color/black" />
@@ -60,6 +63,7 @@
             android:drawablePadding="8dp"
             android:hint="Escribe la cantidad de sets"
             android:inputType="number"
+            android:maxLength="3"
             android:padding="8dp"
             android:textAlignment="center"
             android:textColor="@color/black" />
