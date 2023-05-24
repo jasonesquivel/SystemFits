@@ -100,8 +100,21 @@ class Registro : Fragment() {
         if (contraseña.isBlank()) {
             binding.etContraseA.setError("Este campo no puede estar vacío")
             valido = false
+        } else if (!esContraseñaSegura(contraseña)) {
+            binding.etContraseA.setError("La contraseña no es segura. Debe tener al menos 8 caracteres, una letra mayúscula, una letra minúscula, un número y un carácter especial.")
+            valido = false
         }
         return valido
+    }
+
+    private fun esContraseñaSegura(contraseña: String): Boolean {
+        val longitudMinima = 8
+        val tieneMayusculas = contraseña.any { it.isUpperCase() }
+        val tieneMinusculas = contraseña.any { it.isLowerCase() }
+        val tieneDigitos = contraseña.any { it.isDigit() }
+        val tieneCaracteresEspeciales = contraseña.any { !it.isLetterOrDigit() }
+
+        return contraseña.length >= longitudMinima && tieneMayusculas && tieneMinusculas && tieneDigitos && tieneCaracteresEspeciales
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

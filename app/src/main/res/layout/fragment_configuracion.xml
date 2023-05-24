@@ -1,15 +1,199 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vistas.configuracion"
-    android:background="@color/white">
+    app:cardCornerRadius="8dp"
+    app:cardElevation="8dp"
+    tools:context=".vistas.configuracion">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardViewComidas"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Configuracion" />
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardViewAgregarComida">
 
-</FrameLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                app:cardCornerRadius="16dp">
+
+                <TextView
+                    android:id="@+id/tvPerfil"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Editar Perfil"
+                    android:textAlignment="center"
+                    android:textColor="@color/purple"
+                    android:textSize="36sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etId"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawableLeft="@drawable/name_icon"
+                    android:drawablePadding="8dp"
+                    android:hint="Id"
+                    android:inputType="text"
+                    android:maxLength="15"
+                    android:padding="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHighlight="@color/cardview_dark_background" />
+
+                <EditText
+                    android:id="@+id/etNombreEditable"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawableLeft="@drawable/name_icon"
+                    android:drawablePadding="8dp"
+                    android:hint="Nombre"
+                    android:inputType="text"
+                    android:maxLength="15"
+                    android:padding="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHighlight="@color/cardview_dark_background" />
+
+                <EditText
+                    android:id="@+id/etApellidoEditable"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawableLeft="@drawable/name_icon"
+                    android:drawablePadding="8dp"
+                    android:hint="Apellido"
+                    android:inputType="text"
+                    android:maxLength="15"
+                    android:padding="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHighlight="@color/cardview_dark_background" />
+
+                <TextView
+                    android:id="@+id/tvFechaNacEditable"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawableLeft="@drawable/date_icon"
+                    android:drawablePadding="8dp"
+                    android:hint="Fecha de Nacimiento DD-MM-AAAA"
+                    android:inputType="phone"
+                    android:padding="9dp"
+                    android:textColor="@color/black"
+                    android:textColorHighlight="@color/cardview_dark_background"
+                    android:textSize="20sp" />
+
+                <Spinner
+                    android:id="@+id/spGenero"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawableLeft="@drawable/genero_icon"
+                    android:drawablePadding="8dp"
+                    android:padding="8dp" />
+
+                <EditText
+                    android:id="@+id/etPesoEditable"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawableLeft="@drawable/peso_icon"
+                    android:drawablePadding="8dp"
+                    android:hint="Peso en Kilos"
+                    android:inputType="number"
+                    android:maxLength="5"
+                    android:padding="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHighlight="@color/cardview_dark_background" />
+
+
+                <EditText
+                    android:id="@+id/etAlturaEditable"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawableLeft="@drawable/height_icon"
+                    android:drawablePadding="8dp"
+                    android:hint="Altura en Metros"
+                    android:inputType="number"
+                    android:maxLength="4"
+                    android:padding="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHighlight="@color/cardview_dark_background" />
+
+                <EditText
+                    android:id="@+id/etUsuarioEditable"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawableLeft="@drawable/ic_user"
+                    android:drawablePadding="8dp"
+                    android:hint="Usuario"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:padding="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHighlight="@color/cardview_dark_background" />
+
+                <EditText
+                    android:id="@+id/etContraseñaEditable"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawableLeft="@drawable/ic_lock"
+                    android:drawablePadding="8dp"
+                    android:hint="Contraseña"
+                    android:inputType="textPassword"
+                    android:maxLength="15"
+                    android:padding="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHighlight="@color/cardview_dark_background" />
+
+                <Button
+                    android:id="@+id/btnEditarPerfil"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="30dp"
+                    android:backgroundTint="@color/purple"
+                    android:text="Editar"
+                    android:textSize="18sp"
+                    app:cornerRadius="20dp" />
+
+                <Button
+                    android:id="@+id/btnCancelar"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/purple"
+                    android:text="Cancelar"
+                    android:textSize="18sp"
+                    app:cornerRadius="20dp" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.cardview.widget.CardView>

@@ -3,7 +3,9 @@ package ni.edu.uca.systemfits.modelo
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import ni.edu.uca.systemfits.dao.AppDatabase
 import ni.edu.uca.systemfits.dao.RegistrosDao
@@ -33,5 +35,8 @@ class RegistrosViewModel(application: Application) : AndroidViewModel(applicatio
         return RegistrosDao.validarRegistro(usuario, contraseña)
     }
 
-    val todos: LiveData<List<Registros>> = RegistrosDao.obtenerTodos()
+    fun obtenerUsuario(usuario: String): LiveData<Registros> {
+        return RegistrosDao.obtenerUsuarioPorNombre(usuario)
+    }
+
 }

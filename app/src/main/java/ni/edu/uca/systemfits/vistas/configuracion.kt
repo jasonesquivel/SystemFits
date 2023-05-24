@@ -1,60 +1,160 @@
 package ni.edu.uca.systemfits.vistas
 
+import android.app.DatePickerDialog
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import android.widget.TextView
+import android.widget.Toast
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import ni.edu.uca.systemfits.R
+import ni.edu.uca.systemfits.SharedPrefManager
+import ni.edu.uca.systemfits.databinding.FragmentConfiguracionBinding
+import ni.edu.uca.systemfits.modelo.Registros
+import ni.edu.uca.systemfits.modelo.RegistrosViewModel
+import java.util.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [configuracion.newInstance] factory method to
- * create an instance of this fragment.
- */
 class configuracion : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var binding: FragmentConfiguracionBinding
+    private val viewModel: RegistrosViewModel by viewModels()
+    private lateinit var sharedPrefManager: SharedPrefManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_configuracion, container, false)
+        binding = FragmentConfiguracionBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment configuracion.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            configuracion().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.etAlturaEditable.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {
+            }
+
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+
+                val altura: String = binding.etAlturaEditable.text.toString()
+                if (altura.length == 3 && !altura.contains(".")) {
+                    binding.etAlturaEditable.setText("${altura[0]}.${altura.substring(1)}")
+                    binding.etAlturaEditable.setSelection(binding.etAlturaEditable.text.length)
                 }
             }
+        })
+        binding.etPesoEditable.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {
+            }
+
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                val peso: String = binding.etPesoEditable.text.toString()
+                if (peso.length == 3 && !peso.contains(".")) {
+                    binding.etPesoEditable.setText("${peso.substring(0, 2)}.${peso.substring(2)}")
+                    binding.etPesoEditable.setSelection(binding.etPesoEditable.text.length) // mover el cursor al final
+                }
+            }
+        })
+
+        val fechaNac: TextView = binding.tvFechaNacEditable
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
+        fechaNac.setOnClickListener {
+            val dpd = DatePickerDialog(requireContext(), { _, year, monthOfYear, dayOfMonth ->
+                fechaNac.text = "$dayOfMonth/${monthOfYear + 1}/$year"
+            }, year, month, day)
+            dpd.show()
+        }
+
+        sharedPrefManager = SharedPrefManager(requireContext())
+
+        val spinner: Spinner = binding.spGenero
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.genero_array,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinner.adapter = adapter
+        }
+
+        val nombreUser = sharedPrefManager.username
+        viewModel.obtenerUsuario(nombreUser!!).observe(viewLifecycleOwner, Observer { usuario ->
+            if (usuario != null) {
+                binding.etId.setText(usuario.id.toString())
+                binding.etNombreEditable.setText(usuario.nombre)
+                binding.etApellidoEditable.setText(usuario.apellido)
+                binding.tvFechaNacEditable.text = usuario.fechaNac
+                val generoArray = resources.getStringArray(R.array.genero_array)
+                val generoIndex = generoArray.indexOf(usuario.genéro)
+                if (generoIndex >= 0) {
+                    binding.spGenero.setSelection(generoIndex)
+                }
+                binding.etPesoEditable.setText(usuario.peso.toString())
+                binding.etAlturaEditable.setText(usuario.altura.toString())
+                binding.etUsuarioEditable.setText(usuario.usuario)
+                binding.etContraseAEditable.setText(usuario.contraseña)
+            } else {
+                Toast.makeText(requireContext(), "Usuario null", Toast.LENGTH_SHORT).show()
+            }
+        })
+
+        binding.btnEditarPerfil.setOnClickListener {
+            try {
+                val id = binding.etId.text.toString().toInt()
+                val usuario = binding.etUsuarioEditable.text.toString()
+                val nombre = binding.etNombreEditable.text.toString()
+                val apellido = binding.etApellidoEditable.text.toString()
+                val contraseña = binding.etContraseAEditable.text.toString()
+                val fechaNac = binding.tvFechaNacEditable.text.toString()
+                val genero = binding.spGenero.selectedItem.toString()
+                val peso = binding.etPesoEditable.text.toString().toDoubleOrNull() ?: 0.0
+                val altura = binding.etAlturaEditable.text.toString().toDoubleOrNull() ?: 0.0
+
+                val usuarioActualizado = Registros(
+                    id = id,
+                    nombre = nombre,
+                    apellido = apellido,
+                    fechaNac = fechaNac,
+                    genéro = genero,
+                    peso = peso,
+                    altura = altura,
+                    usuario = usuario,
+                    contraseña = contraseña
+                )
+
+                CoroutineScope(Dispatchers.IO).launch {
+                    viewModel.actualizar(usuarioActualizado)
+                }
+            } catch (ex: Exception) {
+                Toast.makeText(
+                    requireContext(), "Error : ${ex.toString()}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
     }
 }

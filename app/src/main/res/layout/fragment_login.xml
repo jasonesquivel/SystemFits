@@ -67,7 +67,7 @@
                     android:drawablePadding="8dp"
                     android:hint="Contraseña"
                     android:inputType="textPassword"
-                    android:maxLength="8"
+                    android:maxLength="15"
                     android:padding="8dp"
                     android:textColor="@color/black"
                     android:textColorHighlight="@color/cardview_dark_background" />

@@ -10,17 +10,18 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import ni.edu.uca.systemfits.MainActivity
 import ni.edu.uca.systemfits.R
+import ni.edu.uca.systemfits.SharedPrefManager
 import ni.edu.uca.systemfits.databinding.FragmentLoginBinding
 import ni.edu.uca.systemfits.modelo.RegistrosViewModel
 
 class Login : Fragment() {
     private lateinit var binding: FragmentLoginBinding
     private val viewModel: RegistrosViewModel by viewModels()
+    private lateinit var sharedPrefManager: SharedPrefManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-        }
+        sharedPrefManager = SharedPrefManager(requireContext())
     }
 
     override fun onCreateView(
@@ -38,6 +39,10 @@ class Login : Fragment() {
         val usuario = binding.etUsername.text.toString()
         val contraseña = binding.etPassword.text.toString()
 
+        if (usuario.isNotBlank()) {
+            sharedPrefManager.username = usuario
+        }
+
         if (usuario.isBlank()) {
             binding.etUsername.setError("Este campo no puede estar vacío")
             valido = false
@@ -52,11 +57,15 @@ class Login : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        sharedPrefManager = SharedPrefManager(requireContext())
+
         binding.btnLogIn.setOnClickListener {
             try {
                 if (validarCamposLogin()) {
                     val usuario = binding.etUsername.text.toString()
                     val contraseña = binding.etPassword.text.toString()
+
+                    sharedPrefManager.username = usuario
 
                     viewModel.validarRegistro(usuario, contraseña)
                         .observe(viewLifecycleOwner) { registro ->

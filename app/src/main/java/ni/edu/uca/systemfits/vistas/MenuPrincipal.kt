@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import ni.edu.uca.systemfits.databinding.FragmentMenuPrincipalBinding
 
-
 class MenuPrincipal : Fragment() {
     private lateinit var binding: FragmentMenuPrincipalBinding
 
