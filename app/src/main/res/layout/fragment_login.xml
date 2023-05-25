@@ -7,7 +7,7 @@
     android:background="@drawable/system_fits"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".vistas.Login">
+    tools:context=".ui.view.Login">
 
     <LinearLayout
         android:layout_width="match_parent"

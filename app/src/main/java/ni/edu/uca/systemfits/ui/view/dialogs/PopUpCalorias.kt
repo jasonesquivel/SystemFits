@@ -1,0 +1,30 @@
+package ni.edu.uca.systemfits.ui.view.dialogs
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.DialogFragment
+import ni.edu.uca.systemfits.databinding.FragmentPopUpCaloriasBinding
+
+
+class PopUpCalorias : DialogFragment() {
+    private lateinit var binding: FragmentPopUpCaloriasBinding
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding= FragmentPopUpCaloriasBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.btnGuardar.setOnClickListener{
+dismiss()
+
+        }
+    }
+}

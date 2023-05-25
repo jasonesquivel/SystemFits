@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/login"
-        android:name="ni.edu.uca.systemfits.vistas.Login"
+        android:name="ni.edu.uca.systemfits.ui.view.Login"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -19,12 +19,12 @@
     </fragment>
     <fragment
         android:id="@+id/menuPrincipal"
-        android:name="ni.edu.uca.systemfits.vistas.MenuPrincipal"
+        android:name="ni.edu.uca.systemfits.ui.view.MenuPrincipal"
         android:label="fragment_menu_principal"
         tools:layout="@layout/fragment_menu_principal" />
     <fragment
         android:id="@+id/registro"
-        android:name="ni.edu.uca.systemfits.vistas.Registro"
+        android:name="ni.edu.uca.systemfits.ui.view.Registro"
         android:label="fragment_registro"
         tools:layout="@layout/fragment_registro" >
         <action
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/comida"
-        android:name="ni.edu.uca.systemfits.vistas.Comida"
+        android:name="ni.edu.uca.systemfits.ui.view.Comida"
         android:label="fragment_comida"
         tools:layout="@layout/fragment_comida" >
         <action
@@ -45,12 +45,12 @@
     </fragment>
     <fragment
         android:id="@+id/ejercicios"
-        android:name="ni.edu.uca.systemfits.vistas.Ejercicios"
+        android:name="ni.edu.uca.systemfits.ui.view.Ejercicios"
         android:label="fragment_ejercicios"
         tools:layout="@layout/fragment_ejercicios" />
     <fragment
         android:id="@+id/medidas"
-        android:name="ni.edu.uca.systemfits.vistas.Medidas"
+        android:name="ni.edu.uca.systemfits.ui.view.Medidas"
         android:label="fragment_medidas"
         tools:layout="@layout/fragment_medidas" >
         <action
@@ -62,42 +62,42 @@
     </fragment>
     <fragment
         android:id="@+id/recetas"
-        android:name="ni.edu.uca.systemfits.vistas.Recetas"
+        android:name="ni.edu.uca.systemfits.ui.view.Recetas"
         android:label="fragment_recetas"
         tools:layout="@layout/fragment_recetas" />
     <fragment
         android:id="@+id/popUp"
-        android:name="ni.edu.uca.systemfits.PopUpCalorias"
+        android:name="ni.edu.uca.systemfits.ui.view.dialogs.PopUpCalorias"
         android:label="fragment_pop_up"
         tools:layout="@layout/fragment_pop_up_calorias" />
     <fragment
         android:id="@+id/dialog_input_agregar_comida"
-        android:name="ni.edu.uca.systemfits.dialog_input_agregar_comida"
+        android:name="ni.edu.uca.systemfits.ui.view.dialogs.dialog_input_agregar_comida"
         android:label="fragment_dialog_input_agregar_comida"
         tools:layout="@layout/fragment_dialog_input_agregar_comida" />
     <fragment
         android:id="@+id/dialog_input_editar_comida"
-        android:name="ni.edu.uca.systemfits.dialog_input_editar_comida"
+        android:name="ni.edu.uca.systemfits.ui.view.dialogs.dialog_input_editar_comida"
         android:label="fragment_dialog_input_editar_comida"
         tools:layout="@layout/fragment_dialog_input_editar_comida" />
     <fragment
         android:id="@+id/dialog_input_agregar_medida"
-        android:name="ni.edu.uca.systemfits.dialog_input_agregar_medida"
+        android:name="ni.edu.uca.systemfits.ui.view.dialogs.dialog_input_agregar_medida"
         android:label="fragment_dialog_input_agregar_medida"
         tools:layout="@layout/fragment_dialog_input_agregar_medida" />
     <fragment
         android:id="@+id/dialog_input_editar_medida"
-        android:name="ni.edu.uca.systemfits.dialog_input_editar_medida"
+        android:name="ni.edu.uca.systemfits.ui.view.dialogs.dialog_input_editar_medida"
         android:label="fragment_dialog_input_editar_medida"
         tools:layout="@layout/fragment_dialog_input_editar_medida" />
     <fragment
         android:id="@+id/semanaEjercicios"
-        android:name="ni.edu.uca.systemfits.vistas.SemanaEjercicios"
+        android:name="ni.edu.uca.systemfits.ui.view.SemanaEjercicios"
         android:label="fragment_semana_ejercicios"
         tools:layout="@layout/fragment_semana_ejercicios" />
     <fragment
         android:id="@+id/configuracion"
-        android:name="ni.edu.uca.systemfits.configuracion"
+        android:name="ni.edu.uca.systemfits.ui.view.configuracion"
         android:label="fragment_configuracion"
         tools:layout="@layout/fragment_configuracion" />
 </navigation>
