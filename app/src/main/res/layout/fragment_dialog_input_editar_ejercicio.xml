@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#99000000"
+    tools:context="ni.edu.uca.systemfits.ui.view.dialogs.dialog_input_editar_ejercicio">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/popup_background"
+        android:orientation="vertical"
+        android:padding="50dp">
+
+        <ImageView
+            android:id="@+id/close_popup_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|top"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            app:tint="@android:color/black" />
+
+        <EditText
+            android:id="@+id/etNombreEjercicioEditable"
+            android:layout_width="295dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/custom_edittext"
+            android:drawableLeft="@drawable/ejercicio_icon"
+            android:drawablePadding="8dp"
+            android:hint="Escribe el nombre del ejercicio"
+            android:inputType="text"
+            android:maxLength="20"
+            android:padding="8dp"
+            android:textAlignment="center"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/etRepeticionesEditable"
+            android:layout_width="295dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/custom_edittext"
+            android:drawableLeft="@drawable/reps_icon"
+            android:drawablePadding="8dp"
+            android:hint="Escribe la cantidad de reps"
+            android:inputType="number"
+            android:maxLength="3"
+            android:padding="8dp"
+            android:textAlignment="center"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/etSeriesEditable"
+            android:layout_width="295dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/custom_edittext"
+            android:drawableLeft="@drawable/sets_icon"
+            android:drawablePadding="8dp"
+            android:hint="Escribe la cantidad de sets"
+            android:inputType="number"
+            android:maxLength="3"
+            android:padding="8dp"
+            android:textAlignment="center"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/btnEliminarEjercicio"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="end"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/purple"
+            android:text="Eliminar"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:cornerRadius="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/btnEditarEjercicio"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_gravity="end"
+                android:layout_marginLeft="100dp"
+                android:backgroundTint="@color/purple"
+                android:text="Editar"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:cornerRadius="20dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

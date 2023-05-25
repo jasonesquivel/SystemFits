@@ -41,6 +41,28 @@ class Ejercicios : Fragment() {
         }
     }
 
+    private fun showCustomPopupEditarEjercicios() {
+        val inflater =
+            requireContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val popupView = inflater.inflate(R.layout.fragment_dialog_input_editar_ejercicio, null)
+
+        val popupWindow = PopupWindow(
+            popupView,
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT
+        )
+
+        val closeButton = popupView.findViewById<ImageView>(R.id.close_popup_button)
+        closeButton.setOnClickListener {
+            popupWindow.dismiss()
+        }
+
+        popupWindow.isOutsideTouchable = true
+        popupWindow.isFocusable = true
+
+        popupWindow.showAtLocation(binding.root, Gravity.CENTER, 0, 0)
+    }
+
     private fun showCustomPopupAgregarEjercicios() {
         val inflater =
             requireContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -127,6 +149,7 @@ class Ejercicios : Fragment() {
 
         EjerciciosAdapter = EjerciciosAdapter { Ejercicios ->
             ejercicioSeleccionado = Ejercicios
+            showCustomPopupEditarEjercicios()
         }
 
         binding.recyclerViewEjercicios.apply {

@@ -47,7 +47,14 @@
         android:id="@+id/ejercicios"
         android:name="ni.edu.uca.systemfits.ui.view.Ejercicios"
         android:label="fragment_ejercicios"
-        tools:layout="@layout/fragment_ejercicios" />
+        tools:layout="@layout/fragment_ejercicios" >
+        <action
+            android:id="@+id/action_ejercicios_to_dialog_input_agregar_Ejercicio"
+            app:destination="@id/dialog_input_agregar_Ejercicio" />
+        <action
+            android:id="@+id/action_ejercicios_to_dialog_input_editar_ejercicio"
+            app:destination="@id/dialog_input_editar_ejercicio" />
+    </fragment>
     <fragment
         android:id="@+id/medidas"
         android:name="ni.edu.uca.systemfits.ui.view.Medidas"
@@ -94,10 +101,29 @@
         android:id="@+id/semanaEjercicios"
         android:name="ni.edu.uca.systemfits.ui.view.SemanaEjercicios"
         android:label="fragment_semana_ejercicios"
-        tools:layout="@layout/fragment_semana_ejercicios" />
+        tools:layout="@layout/fragment_semana_ejercicios" >
+        <action
+            android:id="@+id/action_semanaEjercicios_to_dialog_input_agregar_grupo_muscular"
+            app:destination="@id/dialog_input_agregar_grupo_muscular" />
+    </fragment>
     <fragment
         android:id="@+id/configuracion"
         android:name="ni.edu.uca.systemfits.ui.view.configuracion"
         android:label="fragment_configuracion"
         tools:layout="@layout/fragment_configuracion" />
+    <fragment
+        android:id="@+id/dialog_input_agregar_Ejercicio"
+        android:name="ni.edu.uca.systemfits.ui.view.dialogs.dialog_input_agregar_Ejercicio"
+        android:label="fragment_dialog_input_agregar_ejercicio"
+        tools:layout="@layout/fragment_dialog_input_agregar_ejercicio" />
+    <fragment
+        android:id="@+id/dialog_input_agregar_grupo_muscular"
+        android:name="ni.edu.uca.systemfits.ui.view.dialogs.dialog_input_agregar_grupo_muscular"
+        android:label="fragment_dialog_input_agregar_grupo_muscular"
+        tools:layout="@layout/fragment_dialog_input_agregar_grupo_muscular" />
+    <fragment
+        android:id="@+id/dialog_input_editar_ejercicio"
+        android:name="ni.edu.uca.systemfits.ui.view.dialogs.dialog_input_editar_ejercicio"
+        android:label="fragment_dialog_input_editar_ejercicio"
+        tools:layout="@layout/fragment_dialog_input_editar_ejercicio" />
 </navigation>
