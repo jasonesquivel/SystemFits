@@ -66,20 +66,20 @@ class Ejercicios : Fragment() {
 
         binding2.btnGuardarEjercicio.setOnClickListener {
             try {
+                if (validarCamposGEjercicio()) {
+                    val nombre = binding2.etNombreEjercicio.text.toString()
+                    val repeticiones = binding2.etRepeticiones.text.toString().toInt()
+                    val series = binding2.etSeries.text.toString().toInt()
 
-                val nombre = binding2.etNombreEjercicio.text.toString()
-                val repeticiones = binding2.etRepeticiones.text.toString().toInt()
-                val series = binding2.etSeries.text.toString().toInt()
+                    val ejercicio = Ejercicios(
+                        nombre = nombre, repeticiones = repeticiones, series = series
+                    )
 
-                val ejercicio = Ejercicios(
-                    nombre = nombre, repeticiones = repeticiones, series = series
-                )
-
-                CoroutineScope(Dispatchers.IO).launch {
-                    viewModel.insertar(ejercicio)
+                    CoroutineScope(Dispatchers.IO).launch {
+                        viewModel.insertar(ejercicio)
+                    }
+                    popupWindow.dismiss()
                 }
-                popupWindow.dismiss()
-
             } catch (ex: Exception) {
                 Toast.makeText(
                     requireContext(), "Error : ${ex.toString()}",
@@ -88,6 +88,30 @@ class Ejercicios : Fragment() {
             }
         }
 
+    }
+
+    private fun validarCamposGEjercicio(): Boolean {
+        var valido = true
+
+        val nombre = binding2.etNombreEjercicio.text.toString()
+        val repeticiones = binding2.etRepeticiones.text.toString()
+        val series = binding2.etSeries.text.toString()
+
+        if (nombre.isBlank()) {
+            binding2.etNombreEjercicio.setError("Este campo no puede estar vacío")
+            valido = false
+        }
+
+        if (repeticiones.isBlank()) {
+            binding2.etRepeticiones.setError("Este campo no puede estar vacío")
+            valido = false
+        }
+
+        if (series.isBlank()) {
+            binding2.etSeries.setError("Este campo no puede estar vacío")
+            valido = false
+        }
+        return valido
     }
 
     override fun onCreateView(
