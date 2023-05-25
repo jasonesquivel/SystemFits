@@ -1,5 +1,6 @@
 package ni.edu.uca.systemfits.ui.view
 
+import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.view.Gravity
@@ -21,6 +22,7 @@ import ni.edu.uca.systemfits.ui.adapter.EjerciciosAdapter
 import ni.edu.uca.systemfits.databinding.FragmentDialogInputAgregarEjercicioBinding
 import ni.edu.uca.systemfits.databinding.FragmentEjerciciosBinding
 import ni.edu.uca.systemfits.data.database.entities.Ejercicios
+import ni.edu.uca.systemfits.databinding.FragmentDialogInputEditarEjercicioBinding
 import ni.edu.uca.systemfits.ui.viewmodel.EjerciciosViewModel
 import ni.edu.uca.systemfits.ui.viewmodel.SemanaViewModel
 import java.util.*
@@ -31,6 +33,7 @@ class Ejercicios : Fragment() {
     private val viewModel: EjerciciosViewModel by viewModels()
     private val viewModel2: SemanaViewModel by viewModels()
     private lateinit var binding2: FragmentDialogInputAgregarEjercicioBinding
+    private lateinit var binding3: FragmentDialogInputEditarEjercicioBinding
     private lateinit var EjerciciosAdapter: EjerciciosAdapter
     private var ejercicioSeleccionado: Ejercicios? = null
 
@@ -41,18 +44,24 @@ class Ejercicios : Fragment() {
         }
     }
 
-    private fun showCustomPopupEditarEjercicios() {
+    private fun showCustomPopupEditarEjercicios(ejercicioSeleccionado: Ejercicios) {
         val inflater =
             requireContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val popupView = inflater.inflate(R.layout.fragment_dialog_input_editar_ejercicio, null)
+        val popupView1 = inflater.inflate(R.layout.fragment_dialog_input_editar_ejercicio, null)
+
+        binding3 = FragmentDialogInputEditarEjercicioBinding.bind(popupView1)
+
+        binding3.etNombreEjercicioEditable.setText(ejercicioSeleccionado.nombre)
+        binding3.etRepeticionesEditable.setText(ejercicioSeleccionado.repeticiones.toString())
+        binding3.etSeriesEditable.setText(ejercicioSeleccionado.series.toString())
 
         val popupWindow = PopupWindow(
-            popupView,
+            popupView1,
             ViewGroup.LayoutParams.MATCH_PARENT,
             ViewGroup.LayoutParams.MATCH_PARENT
         )
 
-        val closeButton = popupView.findViewById<ImageView>(R.id.close_popup_button)
+        val closeButton = popupView1.findViewById<ImageView>(R.id.close_popup_button)
         closeButton.setOnClickListener {
             popupWindow.dismiss()
         }
@@ -61,6 +70,59 @@ class Ejercicios : Fragment() {
         popupWindow.isFocusable = true
 
         popupWindow.showAtLocation(binding.root, Gravity.CENTER, 0, 0)
+
+        binding3.btnEditarEjercicio.setOnClickListener {
+            try {
+                if (validarCamposEEjercicio()) {
+                    this.ejercicioSeleccionado?.let { Ejercicios ->
+                        val nombre = binding3.etNombreEjercicioEditable.text.toString()
+                        val repeticiones = binding3.etRepeticionesEditable.text.toString().toInt()
+                        val series = binding3.etSeriesEditable.text.toString().toInt()
+
+                        val ejercicioActualizado = Ejercicios(
+                            id = Ejercicios.id,
+                            nombre = nombre,
+                            repeticiones = repeticiones,
+                            series = series
+                        )
+
+                        CoroutineScope(Dispatchers.IO).launch {
+                            viewModel.actualizar(ejercicioActualizado)
+                        }
+                        popupWindow.dismiss()
+                    }
+                }
+            } catch (ex: Exception) {
+                Toast.makeText(
+                    requireContext(), "Error : ${ex.toString()}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+
+        binding3.btnEliminarEjercicio.setOnClickListener {
+            try {
+                AlertDialog.Builder(requireContext()).setTitle("Confirmación")
+                    .setMessage("¿Estás seguro de eliminar está comida?")
+                    .setPositiveButton("Si") { _, _ ->
+                        ejercicioSeleccionado?.let { Ejercicios ->
+                            CoroutineScope(Dispatchers.IO).launch {
+                                viewModel.eliminar(Ejercicios)
+                            }
+                            popupWindow.dismiss()
+                        }
+                    }.setNegativeButton("Cancelar") { dialog, _ ->
+                        dialog.dismiss()
+                        popupWindow.dismiss()
+                    }.create()
+                    .show()
+            } catch (ex: Exception) {
+                Toast.makeText(
+                    requireContext(), "Error : ${ex.toString()}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
     }
 
     private fun showCustomPopupAgregarEjercicios() {
@@ -112,6 +174,29 @@ class Ejercicios : Fragment() {
 
     }
 
+    private fun validarCamposEEjercicio(): Boolean {
+        var valido = true
+
+        val nombreEditable = binding3.etNombreEjercicioEditable.text.toString()
+        val repeticionesEditable = binding3.etRepeticionesEditable.text.toString()
+        val seriesEditable = binding3.etSeriesEditable.text.toString()
+
+        if (nombreEditable.isBlank()) {
+            binding3.etNombreEjercicioEditable.setError("Este campo no puede estar vacío")
+            valido = false
+        }
+
+        if (repeticionesEditable.isBlank()) {
+            binding3.etRepeticionesEditable.setError("Este campo no puede estar vacío")
+            valido = false
+        }
+        if (seriesEditable.isBlank()) {
+            binding3.etSeriesEditable.setError("Este campo no puede estar vacío")
+            valido = false
+        }
+        return valido
+    }
+
     private fun validarCamposGEjercicio(): Boolean {
         var valido = true
 
@@ -149,7 +234,7 @@ class Ejercicios : Fragment() {
 
         EjerciciosAdapter = EjerciciosAdapter { Ejercicios ->
             ejercicioSeleccionado = Ejercicios
-            showCustomPopupEditarEjercicios()
+            showCustomPopupEditarEjercicios(ejercicioSeleccionado!!)
         }
 
         binding.recyclerViewEjercicios.apply {
