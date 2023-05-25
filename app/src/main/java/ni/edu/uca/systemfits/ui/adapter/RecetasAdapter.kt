@@ -1,4 +1,4 @@
-package ni.edu.uca.systemfits.data.database.dao.adapter
+package ni.edu.uca.systemfits.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View

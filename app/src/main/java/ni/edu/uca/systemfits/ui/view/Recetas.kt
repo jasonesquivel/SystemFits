@@ -12,7 +12,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import ni.edu.uca.systemfits.data.database.dao.adapter.RecetasAdapter
+import ni.edu.uca.systemfits.ui.adapter.RecetasAdapter
 import ni.edu.uca.systemfits.databinding.FragmentRecetasBinding
 import okhttp3.OkHttpClient
 import okhttp3.ResponseBody

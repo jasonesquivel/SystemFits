@@ -18,7 +18,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import ni.edu.uca.systemfits.R
-import ni.edu.uca.systemfits.data.database.dao.adapter.ComidasAdapter
+import ni.edu.uca.systemfits.ui.adapter.ComidasAdapter
 import ni.edu.uca.systemfits.databinding.FragmentComidaBinding
 import ni.edu.uca.systemfits.databinding.FragmentDialogInputAgregarComidaBinding
 import ni.edu.uca.systemfits.databinding.FragmentDialogInputEditarComidaBinding

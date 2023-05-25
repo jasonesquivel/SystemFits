@@ -20,7 +20,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import ni.edu.uca.systemfits.R
-import ni.edu.uca.systemfits.data.database.dao.adapter.MedidasAdapter
+import ni.edu.uca.systemfits.ui.adapter.MedidasAdapter
 import ni.edu.uca.systemfits.data.database.entities.Medidas
 import ni.edu.uca.systemfits.databinding.FragmentDialogInputAgregarMedidaBinding
 import ni.edu.uca.systemfits.databinding.FragmentDialogInputEditarMedidaBinding

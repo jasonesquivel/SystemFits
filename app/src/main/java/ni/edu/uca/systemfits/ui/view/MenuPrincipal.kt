@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import ni.edu.uca.systemfits.data.database.dao.adapter.MenuPrincipalAdapter
+import ni.edu.uca.systemfits.ui.adapter.MenuPrincipalAdapter
 import ni.edu.uca.systemfits.data.database.entities.Comidas
 import ni.edu.uca.systemfits.data.database.entities.Medidas
 import ni.edu.uca.systemfits.data.database.entities.Ejercicios
