@@ -32,6 +32,23 @@ class SemanaEjercicios : Fragment() {
         }
     }
 
+    private fun validarCampos(): Boolean {
+        var valido = true
+
+        val grupomuscular = binding2.etGrupoMuscular.text.toString()
+
+        if (grupomuscular.isBlank()) {
+            Toast.makeText(
+                requireContext(), "Debes ingresar el grupo muscular",
+                Toast.LENGTH_LONG
+            ).show()
+            valido = false
+        }
+
+        return valido
+    }
+
+
     private fun showCustomPopupAgregarGrupoMuscularLunes() {
         val inflater =
             requireContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -55,19 +72,20 @@ class SemanaEjercicios : Fragment() {
 
         binding2.btnGuardarSemana.setOnClickListener {
             try {
-                val dia = binding.tvLunes.text.toString()
-                val grupomuscular = binding2.etGrupoMuscular.text.toString()
+                if (validarCampos()) {
+                    val dia = binding.tvLunes.text.toString()
+                    val grupomuscular = binding2.etGrupoMuscular.text.toString()
 
-                val grupoMuscular = SemanaEjercicios(
-                    dia = dia, grupomuscular = grupomuscular
-                )
+                    val grupoMuscular = SemanaEjercicios(
+                        dia = dia, grupomuscular = grupomuscular
+                    )
 
-                CoroutineScope(Dispatchers.IO).launch {
-                    viewModel.insertar(grupoMuscular)
+                    CoroutineScope(Dispatchers.IO).launch {
+                        viewModel.insertar(grupoMuscular)
+                    }
+
+                    popupWindow.dismiss()
                 }
-
-                popupWindow.dismiss()
-
             } catch (ex: Exception) {
                 Toast.makeText(
                     requireContext(), "Error : ${ex.toString()}",
@@ -100,19 +118,20 @@ class SemanaEjercicios : Fragment() {
 
         binding2.btnGuardarSemana.setOnClickListener {
             try {
-                val dia = binding.tvMartes.text.toString()
-                val grupomuscular = binding2.etGrupoMuscular.text.toString()
+                if (validarCampos()) {
+                    val dia = binding.tvMartes.text.toString()
+                    val grupomuscular = binding2.etGrupoMuscular.text.toString()
 
-                val grupoMuscular = SemanaEjercicios(
-                    dia = dia, grupomuscular = grupomuscular
-                )
+                    val grupoMuscular = SemanaEjercicios(
+                        dia = dia, grupomuscular = grupomuscular
+                    )
 
-                CoroutineScope(Dispatchers.IO).launch {
-                    viewModel.insertar(grupoMuscular)
+                    CoroutineScope(Dispatchers.IO).launch {
+                        viewModel.insertar(grupoMuscular)
+                    }
+
+                    popupWindow.dismiss()
                 }
-
-                popupWindow.dismiss()
-
             } catch (ex: Exception) {
                 Toast.makeText(
                     requireContext(), "Error : ${ex.toString()}",
@@ -145,19 +164,20 @@ class SemanaEjercicios : Fragment() {
 
         binding2.btnGuardarSemana.setOnClickListener {
             try {
-                val dia = binding.tvMiercoles.text.toString()
-                val grupomuscular = binding2.etGrupoMuscular.text.toString()
+                if (validarCampos()) {
+                    val dia = binding.tvMiercoles.text.toString()
+                    val grupomuscular = binding2.etGrupoMuscular.text.toString()
 
-                val grupoMuscular = SemanaEjercicios(
-                    dia = dia, grupomuscular = grupomuscular
-                )
+                    val grupoMuscular = SemanaEjercicios(
+                        dia = dia, grupomuscular = grupomuscular
+                    )
 
-                CoroutineScope(Dispatchers.IO).launch {
-                    viewModel.insertar(grupoMuscular)
+                    CoroutineScope(Dispatchers.IO).launch {
+                        viewModel.insertar(grupoMuscular)
+                    }
+
+                    popupWindow.dismiss()
                 }
-
-                popupWindow.dismiss()
-
             } catch (ex: Exception) {
                 Toast.makeText(
                     requireContext(), "Error : ${ex.toString()}",
@@ -190,19 +210,20 @@ class SemanaEjercicios : Fragment() {
 
         binding2.btnGuardarSemana.setOnClickListener {
             try {
-                val dia = binding.tvJueves.text.toString()
-                val grupomuscular = binding2.etGrupoMuscular.text.toString()
+                if (validarCampos()) {
+                    val dia = binding.tvJueves.text.toString()
+                    val grupomuscular = binding2.etGrupoMuscular.text.toString()
 
-                val grupoMuscular = SemanaEjercicios(
-                    dia = dia, grupomuscular = grupomuscular
-                )
+                    val grupoMuscular = SemanaEjercicios(
+                        dia = dia, grupomuscular = grupomuscular
+                    )
 
-                CoroutineScope(Dispatchers.IO).launch {
-                    viewModel.insertar(grupoMuscular)
+                    CoroutineScope(Dispatchers.IO).launch {
+                        viewModel.insertar(grupoMuscular)
+                    }
+
+                    popupWindow.dismiss()
                 }
-
-                popupWindow.dismiss()
-
             } catch (ex: Exception) {
                 Toast.makeText(
                     requireContext(), "Error : ${ex.toString()}",
@@ -235,19 +256,20 @@ class SemanaEjercicios : Fragment() {
 
         binding2.btnGuardarSemana.setOnClickListener {
             try {
-                val dia = binding.tvViernes.text.toString()
-                val grupomuscular = binding2.etGrupoMuscular.text.toString()
+                if (validarCampos()) {
+                    val dia = binding.tvViernes.text.toString()
+                    val grupomuscular = binding2.etGrupoMuscular.text.toString()
 
-                val grupoMuscular = SemanaEjercicios(
-                    dia = dia, grupomuscular = grupomuscular
-                )
+                    val grupoMuscular = SemanaEjercicios(
+                        dia = dia, grupomuscular = grupomuscular
+                    )
 
-                CoroutineScope(Dispatchers.IO).launch {
-                    viewModel.insertar(grupoMuscular)
+                    CoroutineScope(Dispatchers.IO).launch {
+                        viewModel.insertar(grupoMuscular)
+                    }
+
+                    popupWindow.dismiss()
                 }
-
-                popupWindow.dismiss()
-
             } catch (ex: Exception) {
                 Toast.makeText(
                     requireContext(), "Error : ${ex.toString()}",
@@ -280,19 +302,20 @@ class SemanaEjercicios : Fragment() {
 
         binding2.btnGuardarSemana.setOnClickListener {
             try {
-                val dia = binding.tvSabado.text.toString()
-                val grupomuscular = binding2.etGrupoMuscular.text.toString()
+                if (validarCampos()) {
+                    val dia = binding.tvSabado.text.toString()
+                    val grupomuscular = binding2.etGrupoMuscular.text.toString()
 
-                val grupoMuscular = SemanaEjercicios(
-                    dia = dia, grupomuscular = grupomuscular
-                )
+                    val grupoMuscular = SemanaEjercicios(
+                        dia = dia, grupomuscular = grupomuscular
+                    )
 
-                CoroutineScope(Dispatchers.IO).launch {
-                    viewModel.insertar(grupoMuscular)
+                    CoroutineScope(Dispatchers.IO).launch {
+                        viewModel.insertar(grupoMuscular)
+                    }
+
+                    popupWindow.dismiss()
                 }
-
-                popupWindow.dismiss()
-
             } catch (ex: Exception) {
                 Toast.makeText(
                     requireContext(), "Error : ${ex.toString()}",
@@ -325,19 +348,20 @@ class SemanaEjercicios : Fragment() {
 
         binding2.btnGuardarSemana.setOnClickListener {
             try {
-                val dia = binding.tvDomingo.text.toString()
-                val grupomuscular = binding2.etGrupoMuscular.text.toString()
+                if (validarCampos()) {
+                    val dia = binding.tvDomingo.text.toString()
+                    val grupomuscular = binding2.etGrupoMuscular.text.toString()
 
-                val grupoMuscular = SemanaEjercicios(
-                    dia = dia, grupomuscular = grupomuscular
-                )
+                    val grupoMuscular = SemanaEjercicios(
+                        dia = dia, grupomuscular = grupomuscular
+                    )
 
-                CoroutineScope(Dispatchers.IO).launch {
-                    viewModel.insertar(grupoMuscular)
+                    CoroutineScope(Dispatchers.IO).launch {
+                        viewModel.insertar(grupoMuscular)
+                    }
+
+                    popupWindow.dismiss()
                 }
-
-                popupWindow.dismiss()
-
             } catch (ex: Exception) {
                 Toast.makeText(
                     requireContext(), "Error : ${ex.toString()}",
@@ -358,25 +382,74 @@ class SemanaEjercicios : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnAgregarGrupoMuscularLunes.setOnClickListener {
-            showCustomPopupAgregarGrupoMuscularLunes()
+            try {
+                showCustomPopupAgregarGrupoMuscularLunes()
+            } catch (ex: Exception) {
+                Toast.makeText(
+                    requireContext(), "Error : ${ex.toString()}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         }
         binding.btnAgregarGrupoMuscularMartes.setOnClickListener {
-            showCustomPopupAgregarGrupoMuscularMartes()
+            try {
+                showCustomPopupAgregarGrupoMuscularMartes()
+            } catch (ex: Exception) {
+                Toast.makeText(
+                    requireContext(), "Error : ${ex.toString()}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         }
         binding.btnAgregarGrupoMuscularMiercoles.setOnClickListener {
-            showCustomPopupAgregarGrupoMuscularMiercoles()
+            try {
+                showCustomPopupAgregarGrupoMuscularMiercoles()
+            } catch (ex: Exception) {
+                Toast.makeText(
+                    requireContext(), "Error : ${ex.toString()}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         }
         binding.btnAgregarGrupoMuscularJueves.setOnClickListener {
-            showCustomPopupAgregarGrupoMuscularJueves()
+            try {
+                showCustomPopupAgregarGrupoMuscularJueves()
+            } catch (ex: Exception) {
+                Toast.makeText(
+                    requireContext(), "Error : ${ex.toString()}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         }
         binding.btnAgregarGrupoMuscularViernes.setOnClickListener {
-            showCustomPopupAgregarGrupoMuscularViernes()
+            try {
+                showCustomPopupAgregarGrupoMuscularViernes()
+            } catch (ex: Exception) {
+                Toast.makeText(
+                    requireContext(), "Error : ${ex.toString()}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         }
         binding.btnAgregarGrupoMuscularSabado.setOnClickListener {
-            showCustomPopupAgregarGrupoMuscularSabado()
+            try {
+                showCustomPopupAgregarGrupoMuscularSabado()
+            } catch (ex: Exception) {
+                Toast.makeText(
+                    requireContext(), "Error : ${ex.toString()}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         }
         binding.btnAgregarGrupoMuscularDomingo.setOnClickListener {
-            showCustomPopupAgregarGrupoMuscularDomingo()
+            try {
+                showCustomPopupAgregarGrupoMuscularDomingo()
+            } catch (ex: Exception) {
+                Toast.makeText(
+                    requireContext(), "Error : ${ex.toString()}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         }
     }
 }
