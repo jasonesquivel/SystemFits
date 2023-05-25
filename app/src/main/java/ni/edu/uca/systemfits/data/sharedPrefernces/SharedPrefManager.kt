@@ -1,4 +1,4 @@
-package ni.edu.uca.systemfits.data.database.sharedPrefernces
+package ni.edu.uca.systemfits.data.sharedPrefernces
 
 import android.content.Context
 import android.content.SharedPreferences

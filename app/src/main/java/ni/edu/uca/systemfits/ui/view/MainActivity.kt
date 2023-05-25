@@ -7,7 +7,7 @@ import android.view.MenuItem
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import ni.edu.uca.systemfits.R
-import ni.edu.uca.systemfits.data.database.sharedPrefernces.SharedPrefManager
+import ni.edu.uca.systemfits.data.sharedPrefernces.SharedPrefManager
 import ni.edu.uca.systemfits.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

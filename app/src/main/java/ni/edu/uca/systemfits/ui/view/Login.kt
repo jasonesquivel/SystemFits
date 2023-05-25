@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import ni.edu.uca.systemfits.R
-import ni.edu.uca.systemfits.data.database.sharedPrefernces.SharedPrefManager
+import ni.edu.uca.systemfits.data.sharedPrefernces.SharedPrefManager
 import ni.edu.uca.systemfits.databinding.FragmentLoginBinding
 import ni.edu.uca.systemfits.ui.viewmodel.RegistrosViewModel
 

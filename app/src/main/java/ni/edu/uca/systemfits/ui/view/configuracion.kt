@@ -18,7 +18,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import ni.edu.uca.systemfits.R
-import ni.edu.uca.systemfits.data.database.sharedPrefernces.SharedPrefManager
+import ni.edu.uca.systemfits.data.sharedPrefernces.SharedPrefManager
 import ni.edu.uca.systemfits.databinding.FragmentConfiguracionBinding
 import ni.edu.uca.systemfits.data.database.entities.Registros
 import ni.edu.uca.systemfits.ui.viewmodel.RegistrosViewModel
