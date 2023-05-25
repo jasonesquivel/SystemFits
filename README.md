@@ -1,11 +1,17 @@
-# SystemFits
+# SystemFits :muscle:
 - App de nuestro proyecto final para la asignatura de Desarrollo de aplicaciones móviles II "DamoII".
 
 - La aplicación móvil propone una solución integral para aquellos usuarios interesados en 
 mejorar su salud y forma física a través de un enfoque en la alimentación, medidas corporales, 
 rutina de entrenamiento y recetas de comida.
 
-# Descripción de SystemFits
+## :speech_balloon:Contendio de la App:
+1. Un apartado de alimentación:poultry_leg:.
+2. Un apartado de medidas corporales:straight_ruler:.
+3. Apartado de ejercicios:runner:.
+4. Recetas:sushi:.
+
+## :page_facing_up: Descripción de SystemFits
 
 1) En el apartado de alimentación, la aplicación ofrece una guía detallada de calorías y el
 nombre de las distintas comidas del día, tanto como desayuno almuerzo y cena.
@@ -24,15 +30,10 @@ recetas según sus preferencias alimentarias y necesidades nutricionales.
 forma física, ofreciendo información y herramientas para abordar la alimentación, medidas 
 corporales, rutina de entrenamiento y recetas de comida.
 
-- La aplicación contendrá:
-1) Un apartado de alimentación.
-2) Un apartado de medidas corporales.
-3) Apartado de ejercicios
-4) Recetas 
 
-# Implementaciones Necesarias
+## Implementaciones Necesarias:bangbang:
 - Para mostrar las recetas es necesario tener instalado XAMPP: https://www.apachefriends.org/es/index.html
-- Corre xammp y tendrás que habilitar el Apache y el Mysql, le darás click en el botón admin junto a MySql.
-- Ubicas la carpeta de xampp y dentro de esta la carpeta de "htdcos",
-dentro de esta, es necesario copiar nuestra carpeta de "SystemFitsApi" que contiene la BD de recetas, conexion a esta misma y el método php.
-- Es necesario ejecutar el script de la base de datos dentro de php my admin.
+- Corre xammp y tendrás que habilitar el `Apache y el Mysql`, le darás click en el botón admin junto a MySql.
+- Ubicas la carpeta de `xampp` y dentro de esta la carpeta de `htdcos`,
+dentro de esta, es necesario copiar nuestra carpeta de `SystemFitsApi` que contiene la BD de recetas, conexion a esta misma y el método php.
+- Es necesario ejecutar el `script `de la base de datos dentro de `php my admin.`
