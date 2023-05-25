@@ -7,17 +7,22 @@ import androidx.room.Room
 import ni.edu.uca.systemfits.data.database.dao.ComidasDao
 import ni.edu.uca.systemfits.data.database.dao.MedidasDao
 import ni.edu.uca.systemfits.data.database.dao.RegistrosDao
-import ni.edu.uca.systemfits.data.database.entities.Comidas
-import ni.edu.uca.systemfits.data.database.entities.Medidas
-import ni.edu.uca.systemfits.data.database.entities.Registros
+import ni.edu.uca.systemfits.data.database.dao.SemanaDao
+import ni.edu.uca.systemfits.data.database.dao.EjerciciosDao
+import ni.edu.uca.systemfits.data.database.entities.*
 
 
-@Database(entities = [Medidas::class, Comidas::class, Registros::class], version = 3)
+@Database(
+    entities = [Medidas::class, Comidas::class, Registros::class, SemanaEjercicios::class, Ejercicios::class],
+    version = 5
+)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun medidasDao(): MedidasDao
     abstract fun ComidasDao(): ComidasDao
     abstract fun RegistrosDao(): RegistrosDao
+    abstract fun SemanaDao(): SemanaDao
+    abstract fun EjerciciosDao(): EjerciciosDao
 
     companion object {
         @Volatile

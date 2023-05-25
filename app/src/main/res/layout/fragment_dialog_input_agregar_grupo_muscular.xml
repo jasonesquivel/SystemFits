@@ -24,21 +24,6 @@
             app:tint="@android:color/black" />
 
         <EditText
-            android:id="@+id/etDiaDeSemana"
-            android:layout_width="262dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/custom_edittext"
-            android:drawableLeft="@drawable/day_icon"
-            android:drawablePadding="8dp"
-            android:hint="Día de la semana"
-            android:inputType="text"
-            android:maxLength="10"
-            android:padding="8dp"
-            android:textAlignment="center"
-            android:textColor="@color/black" />
-
-        <EditText
             android:id="@+id/etGrupoMuscular"
             android:layout_width="262dp"
             android:layout_height="50dp"
@@ -48,13 +33,13 @@
             android:drawablePadding="8dp"
             android:hint="Grupo muscular"
             android:inputType="text"
-            android:maxLength="10"
+            android:maxLength="15"
             android:padding="8dp"
             android:textAlignment="center"
             android:textColor="@color/black" />
 
         <Button
-            android:id="@+id/btnGuardarComida"
+            android:id="@+id/btnGuardarSemana"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_gravity="end"

@@ -40,14 +40,6 @@
                 android:text="Semana de Ejericicos"
                 android:textAppearance="?attr/textAppearanceHeadline6" />
 
-            <TextView
-                android:id="@+id/tvDiaSemana"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="11dp"
-                android:text=""
-                android:textAppearance="?attr/textAppearanceHeadline6" />
-
             <LinearLayout
 
                 android:layout_width="match_parent"
@@ -158,6 +150,22 @@
 
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/tvDiayGrupoMuscular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="11dp"
+                android:text=""
+                android:textAppearance="?attr/textAppearanceHeadline6" />
+
+            <TextView
+                android:id="@+id/tvGrupoMuscular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="11dp"
+                android:text=""
+                android:textAppearance="?attr/textAppearanceHeadline6" />
+
             <Button
                 android:id="@+id/btnEditarSemana"
                 android:layout_width="match_parent"
@@ -203,6 +211,16 @@
                 android:text="Ejercicios"
                 android:textAppearance="?attr/textAppearanceHeadline6" />
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewEjercicios"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:clipToPadding="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                tools:listitem="@layout/item_ejercicios" />
 
             <Button
                 android:id="@+id/btnAgregarEjercicio"
@@ -210,9 +228,9 @@
                 android:layout_height="60dp"
                 android:layout_gravity="end"
                 android:layout_marginLeft="100dp"
-                android:layout_marginTop="200dp"
+                android:layout_marginTop="20dp"
                 android:backgroundTint="@color/purple"
-                android:text="Editar Ejercicio"
+                android:text="Agregar Ejercicio"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 app:cornerRadius="20dp" />

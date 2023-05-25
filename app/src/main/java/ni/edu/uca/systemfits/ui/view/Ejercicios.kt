@@ -1,6 +1,5 @@
 package ni.edu.uca.systemfits.ui.view
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.Gravity
@@ -10,25 +9,44 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.PopupWindow
+import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import ni.edu.uca.systemfits.R
+import ni.edu.uca.systemfits.data.database.dao.adapter.EjerciciosAdapter
+import ni.edu.uca.systemfits.databinding.FragmentDialogInputAgregarEjercicioBinding
 import ni.edu.uca.systemfits.databinding.FragmentEjerciciosBinding
+import ni.edu.uca.systemfits.data.database.entities.Ejercicios
+import ni.edu.uca.systemfits.ui.viewmodel.EjerciciosViewModel
+import ni.edu.uca.systemfits.ui.viewmodel.SemanaViewModel
 import java.util.*
-
 
 class Ejercicios : Fragment() {
 
-private lateinit var binding: FragmentEjerciciosBinding
+    private lateinit var binding: FragmentEjerciciosBinding
+    private val viewModel: EjerciciosViewModel by viewModels()
+    private val viewModel2: SemanaViewModel by viewModels()
+    private lateinit var binding2: FragmentDialogInputAgregarEjercicioBinding
+    private lateinit var EjerciciosAdapter: EjerciciosAdapter
+    private var ejercicioSeleccionado: Ejercicios? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
 
         }
     }
-    //ESTE ES PARA EL AGREGAR MEDIDA POPUP//
-    private fun showCustomPopupAgregarMedida() {
+
+    private fun showCustomPopupAgregarEjercicios() {
         val inflater =
             requireContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val popupView = inflater.inflate(R.layout.fragment_dialog_input_agregar_ejercicio, null)
+
+        binding2 = FragmentDialogInputAgregarEjercicioBinding.bind(popupView)
 
         val popupWindow = PopupWindow(
             popupView,
@@ -45,69 +63,110 @@ private lateinit var binding: FragmentEjerciciosBinding
         popupWindow.isFocusable = true
 
         popupWindow.showAtLocation(binding.root, Gravity.CENTER, 0, 0)
+
+        binding2.btnGuardarEjercicio.setOnClickListener {
+            try {
+
+                val nombre = binding2.etNombreEjercicio.text.toString()
+                val repeticiones = binding2.etRepeticiones.text.toString().toInt()
+                val series = binding2.etSeries.text.toString().toInt()
+
+                val ejercicio = Ejercicios(
+                    nombre = nombre, repeticiones = repeticiones, series = series
+                )
+
+                CoroutineScope(Dispatchers.IO).launch {
+                    viewModel.insertar(ejercicio)
+                }
+                popupWindow.dismiss()
+
+            } catch (ex: Exception) {
+                Toast.makeText(
+                    requireContext(), "Error : ${ex.toString()}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+
     }
-    @SuppressLint("SuspiciousIndentation")
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-    binding=FragmentEjerciciosBinding.inflate(inflater, container, false)
+        binding = FragmentEjerciciosBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        EjerciciosAdapter = EjerciciosAdapter { Ejercicios ->
+            ejercicioSeleccionado = Ejercicios
+        }
+
+        binding.recyclerViewEjercicios.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = EjerciciosAdapter
+        }
+
+        val diaTextView = binding.tvDiayGrupoMuscular
+        val grupoMuscularTextView = binding.tvGrupoMuscular
+
         val calendar = Calendar.getInstance()
         val diaActual = calendar.get(Calendar.DAY_OF_WEEK)
 
         when (diaActual) {
             Calendar.MONDAY -> {
-
                 binding.lunesRadioButton.isChecked = true
-                binding.tvDiaSemana.setText("Lunes")
+                diaTextView.text = "Lunes"
             }
             Calendar.TUESDAY -> {
                 binding.martesRadioButton.isChecked = true
-                binding.tvDiaSemana.setText("Martes")
+                diaTextView.text = "Martes"
             }
             Calendar.WEDNESDAY -> {
                 binding.miercolesRadioButton.isChecked = true
-                binding.tvDiaSemana.setText("Miercoles")
+                diaTextView.text = "Miércoles"
             }
             Calendar.THURSDAY -> {
                 binding.juevesRadioButton.isChecked = true
-                binding.tvDiaSemana.setText("Jueves")
+                diaTextView.text = "Jueves"
             }
-
             Calendar.FRIDAY -> {
-                binding.tvDiaSemana.setText("Viernes")
                 binding.viernesRadioButton.isChecked = true
-            } Calendar.SATURDAY -> {
-            binding.sabadoRadioButton.isChecked = true
-            binding.tvDiaSemana.setText("Sabado")
-        }
+                diaTextView.text = "Viernes"
+            }
+            Calendar.SATURDAY -> {
+                binding.sabadoRadioButton.isChecked = true
+                diaTextView.text = "Sábado"
+            }
             Calendar.SUNDAY -> {
                 binding.domingoRadioButton.isChecked = true
-                binding.tvDiaSemana.setText("Domingo")
+                diaTextView.text = "Domingo"
             }
-
-
         }
+
+        viewModel2.obtenerGrupoMuscular(diaTextView.text.toString())
+            .observe(viewLifecycleOwner, Observer { grupoMuscular ->
+                grupoMuscularTextView.text = grupoMuscular
+            })
+
+        viewModel.todos.observe(viewLifecycleOwner, Observer { Ejercicios ->
+            EjerciciosAdapter.setEjercicios(Ejercicios)
+        })
         val showPopupButton = binding.btnAgregarEjercicio
         showPopupButton.setOnClickListener {
-            showCustomPopupAgregarMedida()
+            showCustomPopupAgregarEjercicios()
         }
-        binding.btnEditarSemana.setOnClickListener{
+
+        binding.btnEditarSemana.setOnClickListener {
             val semanaEjercicios = SemanaEjercicios()
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.container, semanaEjercicios)
                 .addToBackStack(null)
                 .commit()
         }
-
     }
-
-
 }
 

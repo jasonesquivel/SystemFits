@@ -33,6 +33,7 @@
                 android:padding="16dp">
 
                 <TextView
+                    android:id="@+id/tvLunes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Lunes"
@@ -52,7 +53,7 @@
                     android:layout_gravity="end"
                     android:layout_marginLeft="100dp"
                     android:backgroundTint="@color/purple"
-                    android:text="Editar Grupo Muscular"
+                    android:text="Agregar grupo muscular"
                     android:textColor="@color/white"
                     android:textSize="15sp"
                     app:cornerRadius="20dp" />
@@ -85,6 +86,7 @@
                 android:padding="16dp">
 
                 <TextView
+                    android:id="@+id/tvMartes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Martes"
@@ -104,7 +106,7 @@
                     android:layout_gravity="end"
                     android:layout_marginLeft="100dp"
                     android:backgroundTint="@color/purple"
-                    android:text="Editar Grupo Muscular"
+                    android:text="Agregar grupo muscular"
                     android:textColor="@color/white"
                     android:textSize="15sp"
                     app:cornerRadius="20dp" />
@@ -138,6 +140,7 @@
                 android:padding="16dp">
 
                 <TextView
+                    android:id="@+id/tvMiercoles"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Miercoles"
@@ -157,7 +160,7 @@
                     android:layout_gravity="end"
                     android:layout_marginLeft="100dp"
                     android:backgroundTint="@color/purple"
-                    android:text="Editar Grupo Muscular"
+                    android:text="Agregar grupo muscular"
                     android:textColor="@color/white"
                     android:textSize="15sp"
                     app:cornerRadius="20dp" />
@@ -190,6 +193,7 @@
                 android:padding="16dp">
 
                 <TextView
+                    android:id="@+id/tvJueves"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Jueves"
@@ -209,7 +213,7 @@
                     android:layout_gravity="end"
                     android:layout_marginLeft="100dp"
                     android:backgroundTint="@color/purple"
-                    android:text="Editar Grupo Muscular"
+                    android:text="Agregar grupo muscular"
                     android:textColor="@color/white"
                     android:textSize="15sp"
                     app:cornerRadius="20dp" />
@@ -242,6 +246,7 @@
                 android:padding="16dp">
 
                 <TextView
+                    android:id="@+id/tvViernes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Viernes"
@@ -261,7 +266,7 @@
                     android:layout_gravity="end"
                     android:layout_marginLeft="100dp"
                     android:backgroundTint="@color/purple"
-                    android:text="Editar Grupo Muscular"
+                    android:text="Agregar grupo muscular"
                     android:textColor="@color/white"
                     android:textSize="15sp"
                     app:cornerRadius="20dp" />
@@ -295,6 +300,7 @@
                 android:padding="16dp">
 
                 <TextView
+                    android:id="@+id/tvSabado"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Sabado"
@@ -314,7 +320,7 @@
                     android:layout_gravity="end"
                     android:layout_marginLeft="100dp"
                     android:backgroundTint="@color/purple"
-                    android:text="Editar Grupo Muscular"
+                    android:text="Agregar grupo muscular"
                     android:textColor="@color/white"
                     android:textSize="15sp"
                     app:cornerRadius="20dp" />
@@ -348,6 +354,7 @@
                 android:padding="16dp">
 
                 <TextView
+                    android:id="@+id/tvDomingo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Domingo"
@@ -367,7 +374,7 @@
                     android:layout_gravity="end"
                     android:layout_marginLeft="100dp"
                     android:backgroundTint="@color/purple"
-                    android:text="Editar Grupo Muscular"
+                    android:text="Agregar grupo muscular"
                     android:textColor="@color/white"
                     android:textSize="15sp"
                     app:cornerRadius="20dp" />
