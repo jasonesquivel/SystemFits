@@ -24,7 +24,7 @@ class RecetasAdapter(private var recetas: List<Recetas>) :
         fun bind(receta: Recetas) {
             nombreTextView.text = receta.nombre
             descripcionTextView.text = receta.descripcion
-            caloriasTextView.text = receta.calorias
+            caloriasTextView.text = "Calorías: ${receta.calorias}"
         }
     }
 
