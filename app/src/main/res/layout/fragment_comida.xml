@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.Comida"
-    android:background="@color/white">
+    android:background="@color/white"
+    tools:context=".ui.view.Comida">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardViewAgregarComida"
@@ -66,7 +66,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="480dp"
+            android:layout_height="500dp"
             android:orientation="vertical"
             android:padding="16dp"
             app:cardCornerRadius="16dp">
@@ -81,16 +81,36 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewComidas"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="400dp"
                 android:clipToPadding="false"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/tvCaloriasConsumidas"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                app:layout_constraintTop_toBottomOf="@+id/textViewComidas"
                 tools:listitem="@layout/item_comidas" />
 
+            <TextView
+                android:id="@+id/tvCaloriasConsumidas"
+                android:layout_width="205dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Calorias consumidas:"
+                android:textAppearance="?attr/textAppearanceHeadline6" />
+
+            <TextView
+                android:id="@+id/tvCaloriasT"
+                android:layout_width="120dp"
+                android:layout_height="25dp"
+                android:layout_gravity="end"
+                android:layout_marginTop="-21dp"
+                android:text=""
+                android:textAlignment="textEnd"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
