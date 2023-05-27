@@ -23,4 +23,7 @@ interface ComidasDao {
 
     @Query("Select * From tblcomidas")
     fun obtenerTodos(): LiveData<List<Comidas>>
+
+    @Query("Select SUM(calorias) From tblcomidas")
+    fun obtenerTotalCalorias(): Int
 }

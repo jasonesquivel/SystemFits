@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.fragment_menu_principal.*
 import ni.edu.uca.systemfits.ui.adapter.MenuPrincipalAdapter
 import ni.edu.uca.systemfits.data.database.entities.Comidas
 import ni.edu.uca.systemfits.data.database.entities.Medidas
@@ -19,6 +20,7 @@ import ni.edu.uca.systemfits.ui.viewmodel.MedidasViewModel
 class MenuPrincipal : Fragment() {
 
     private lateinit var binding: FragmentMenuPrincipalBinding
+    private val viewModelComidas: ComidasViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +36,7 @@ class MenuPrincipal : Fragment() {
         val viewModelComidas: ComidasViewModel by viewModels()
         val viewModelMedidas: MedidasViewModel by viewModels()
         val viewModelEjercicios: EjerciciosViewModel by viewModels()
+
 
         val menuPrincipalAdapter =
             MenuPrincipalAdapter(emptyList(), emptyList(), emptyList()) { item ->
@@ -60,15 +63,21 @@ class MenuPrincipal : Fragment() {
             val ejercicios: List<Ejercicios> = viewModelEjercicios.todos.value ?: emptyList()
             menuPrincipalAdapter.updateData(comidas, medidas, ejercicios)
         }
+
         viewModelMedidas.todos.observe(viewLifecycleOwner) { medidas ->
             val comidas: List<Comidas> = viewModelComidas.todos.value ?: emptyList()
             val ejercicios: List<Ejercicios> = viewModelEjercicios.todos.value ?: emptyList()
             menuPrincipalAdapter.updateData(comidas, medidas, ejercicios)
         }
+
         viewModelEjercicios.todos.observe(viewLifecycleOwner) { ejercicios ->
             val comidas: List<Comidas> = viewModelComidas.todos.value ?: emptyList()
             val medidas: List<Medidas> = viewModelMedidas.todos.value ?: emptyList()
             menuPrincipalAdapter.updateData(comidas, medidas, ejercicios)
+        }
+
+        viewModelComidas.getTotalCaloriasConsumidas().observe(viewLifecycleOwner) { totalCalorias ->
+            tvCalorias.text = totalCalorias.toString()
         }
     }
 }
