@@ -7,19 +7,15 @@ import android.view.MenuItem
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import ni.edu.uca.systemfits.R
-import ni.edu.uca.systemfits.data.sharedPrefernces.SharedPrefManager
 import ni.edu.uca.systemfits.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var sharedPrefManager: SharedPrefManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        sharedPrefManager = SharedPrefManager(this)
 
         supportActionBar?.hide()
         binding.toolbar.isVisible = false

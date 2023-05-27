@@ -14,11 +14,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
 import ni.edu.uca.systemfits.R
-import ni.edu.uca.systemfits.data.sharedPrefernces.SharedPrefManager
 import ni.edu.uca.systemfits.databinding.FragmentConfiguracionBinding
 import ni.edu.uca.systemfits.data.database.entities.Registros
 import ni.edu.uca.systemfits.ui.viewmodel.RegistrosViewModel
@@ -27,7 +25,6 @@ import java.util.*
 class configuracion : Fragment() {
     private lateinit var binding: FragmentConfiguracionBinding
     private val viewModel: RegistrosViewModel by viewModels()
-    private lateinit var sharedPrefManager: SharedPrefManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,8 +85,6 @@ class configuracion : Fragment() {
             dpd.show()
         }
 
-        sharedPrefManager = SharedPrefManager(requireContext())
-
         val spinner: Spinner = binding.spGenero
         ArrayAdapter.createFromResource(
             requireContext(),
@@ -100,31 +95,32 @@ class configuracion : Fragment() {
             spinner.adapter = adapter
         }
 
-        val nombreUser = sharedPrefManager.username
-        viewModel.obtenerUsuario(nombreUser!!).observe(viewLifecycleOwner, Observer { usuario ->
-            if (usuario != null) {
-                binding.etId.setText(usuario.id.toString())
-                binding.etNombreEditable.setText(usuario.nombre)
-                binding.etApellidoEditable.setText(usuario.apellido)
-                binding.tvFechaNacEditable.text = usuario.fechaNac
-                val generoArray = resources.getStringArray(R.array.genero_array)
-                val generoIndex = generoArray.indexOf(usuario.genéro)
-                if (generoIndex >= 0) {
-                    binding.spGenero.setSelection(generoIndex)
+        val nombreUser = "Jan"
+        viewModel.obtenerUsuario(nombreUser!!.toString())
+            .observe(viewLifecycleOwner, Observer { usuario ->
+                if (usuario != null) {
+                    binding.etId.setText(usuario.id.toString())
+                    binding.etNombreEditable.setText(usuario.nombre)
+                    binding.etApellidoEditable.setText(usuario.apellido)
+                    binding.tvFechaNacEditable.text = usuario.fechaNac
+                    val generoArray = resources.getStringArray(R.array.genero_array)
+                    val generoIndex = generoArray.indexOf(usuario.genéro)
+                    if (generoIndex >= 0) {
+                        binding.spGenero.setSelection(generoIndex)
+                    }
+                    binding.etPesoEditable.setText(usuario.peso.toString())
+                    binding.etAlturaEditable.setText(usuario.altura.toString())
+                    binding.etUsuarioEditable.setText(usuario.usuario)
+                    binding.etContraseAEditable.setText(usuario.contraseña)
+                } else {
+                    Toast.makeText(requireContext(), "Usuario null", Toast.LENGTH_SHORT).show()
                 }
-                binding.etPesoEditable.setText(usuario.peso.toString())
-                binding.etAlturaEditable.setText(usuario.altura.toString())
-                binding.etUsuarioEditable.setText(usuario.usuario)
-                binding.etContraseAEditable.setText(usuario.contraseña)
-            } else {
-                Toast.makeText(requireContext(), "Usuario null", Toast.LENGTH_SHORT).show()
-            }
-        })
+            })
 
         binding.btnEditarPerfil.setOnClickListener {
             try {
                 val id = binding.etId.text.toString().toInt()
-                val usuario = binding.etUsuarioEditable.text.toString()
+                val usuarioE = binding.etUsuarioEditable.text.toString()
                 val nombre = binding.etNombreEditable.text.toString()
                 val apellido = binding.etApellidoEditable.text.toString()
                 val contraseña = binding.etContraseAEditable.text.toString()
@@ -141,12 +137,47 @@ class configuracion : Fragment() {
                     genéro = genero,
                     peso = peso,
                     altura = altura,
-                    usuario = usuario,
+                    usuario = usuarioE,
                     contraseña = contraseña
                 )
 
-                CoroutineScope(Dispatchers.IO).launch {
+                viewLifecycleOwner.lifecycleScope.launch {
                     viewModel.actualizar(usuarioActualizado)
+                    val updatedUsuario = viewModel.obtenerUsuario(nombreUser!!.toString())
+                    updatedUsuario.observe(viewLifecycleOwner) { usuarioE ->
+                        if (usuarioE != null) {
+                            binding.etId.setText(usuarioE.id.toString())
+                            viewModel.obtenerUsuario(nombreUser!!.toString())
+                                .observe(viewLifecycleOwner, Observer { usuarioE ->
+                                    if (usuarioE != null) {
+                                        binding.etId.setText(usuarioE.id.toString())
+                                        binding.etNombreEditable.setText(usuarioE.nombre)
+                                        binding.etApellidoEditable.setText(usuarioE.apellido)
+                                        binding.tvFechaNacEditable.text = usuarioE.fechaNac
+                                        val generoArray =
+                                            resources.getStringArray(R.array.genero_array)
+                                        val generoIndex = generoArray.indexOf(usuarioE.genéro)
+                                        if (generoIndex >= 0) {
+                                            binding.spGenero.setSelection(generoIndex)
+                                        }
+                                        binding.etPesoEditable.setText(usuarioE.peso.toString())
+                                        binding.etAlturaEditable.setText(usuarioE.altura.toString())
+                                        binding.etUsuarioEditable.setText(usuarioE.usuario)
+                                        binding.etContraseAEditable.setText(usuarioE.contraseña)
+                                    } else {
+                                        Toast.makeText(
+                                            requireContext(),
+                                            "Usuario null",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
+                                })
+                        } else {
+                            Toast.makeText(requireContext(), "Usuario null", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                        updatedUsuario.removeObservers(viewLifecycleOwner)
+                    }
                 }
             } catch (ex: Exception) {
                 Toast.makeText(

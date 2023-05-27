@@ -1,26 +1,23 @@
 package ni.edu.uca.systemfits.ui.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import ni.edu.uca.systemfits.R
-import ni.edu.uca.systemfits.data.sharedPrefernces.SharedPrefManager
 import ni.edu.uca.systemfits.databinding.FragmentLoginBinding
 import ni.edu.uca.systemfits.ui.viewmodel.RegistrosViewModel
 
 class Login : Fragment() {
     private lateinit var binding: FragmentLoginBinding
     private val viewModel: RegistrosViewModel by viewModels()
-    private lateinit var sharedPrefManager: SharedPrefManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sharedPrefManager = SharedPrefManager(requireContext())
     }
 
     override fun onCreateView(
@@ -31,40 +28,31 @@ class Login : Fragment() {
         return binding.root
     }
 
-    //FUNCIÓN PARA VALIDAR CAMPOS DE TEXTO DEL LOGIN//
     private fun validarCamposLogin(): Boolean {
-        var valido = true
-
-        val usuario = binding.etUsername.text.toString()
-        val contraseña = binding.etPassword.text.toString()
-
-        if (usuario.isNotBlank()) {
-            sharedPrefManager.username = usuario
-        }
+        val usuario = binding.etUsername.text.toString().trim()
+        val contraseña = binding.etPassword.text.toString().trim()
 
         if (usuario.isBlank()) {
-            binding.etUsername.setError("Este campo no puede estar vacío")
-            valido = false
+            binding.etUsername.error = "Este campo no puede estar vacío"
+            return false
         }
 
         if (contraseña.isBlank()) {
-            binding.etPassword.setError("Este campo no puede estar vacío")
-            valido = false
+            binding.etPassword.error = "Este campo no puede estar vacío"
+            return false
         }
-        return valido
+        return true
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        sharedPrefManager = SharedPrefManager(requireContext())
 
         binding.btnLogIn.setOnClickListener {
             try {
                 if (validarCamposLogin()) {
                     val usuario = binding.etUsername.text.toString()
                     val contraseña = binding.etPassword.text.toString()
-
-                    sharedPrefManager.username = usuario
 
                     viewModel.validarRegistro(usuario, contraseña)
                         .observe(viewLifecycleOwner) { registro ->

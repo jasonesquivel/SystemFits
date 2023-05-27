@@ -179,17 +179,6 @@
                     android:text="Editar"
                     android:textSize="18sp"
                     app:cornerRadius="20dp" />
-
-                <Button
-                    android:id="@+id/btnCancelar"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="10dp"
-                    android:backgroundTint="@color/purple"
-                    android:text="Cancelar"
-                    android:textSize="18sp"
-                    app:cornerRadius="20dp" />
-
             </LinearLayout>
 
         </ScrollView>
