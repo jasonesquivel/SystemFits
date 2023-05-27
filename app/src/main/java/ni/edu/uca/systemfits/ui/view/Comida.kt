@@ -14,6 +14,8 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.fragment_comida.*
+import kotlinx.android.synthetic.main.fragment_menu_principal.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -79,6 +81,10 @@ class Comida : Fragment() {
                         viewModel.insertar(comidas)
                     }
                     popupWindow.dismiss()
+                    viewModel.getTotalCaloriasConsumidas()
+                        .observe(viewLifecycleOwner) { totalCalorias ->
+                            tvCaloriasT.text = totalCalorias.toString()
+                        }
                 }
             } catch (ex: Exception) {
                 Toast.makeText(
@@ -133,6 +139,10 @@ class Comida : Fragment() {
                             viewModel.actualizar(comidaActualizada)
                         }
                         popupWindow1.dismiss()
+                        viewModel.getTotalCaloriasConsumidas()
+                            .observe(viewLifecycleOwner) { totalCalorias ->
+                                tvCaloriasT.text = totalCalorias.toString()
+                            }
                     }
                 }
             } catch (ex: Exception) {
@@ -153,6 +163,10 @@ class Comida : Fragment() {
                                 viewModel.eliminar(Comida)
                             }
                             popupWindow1.dismiss()
+                            viewModel.getTotalCaloriasConsumidas()
+                                .observe(viewLifecycleOwner) { totalCalorias ->
+                                    tvCaloriasT.text = totalCalorias.toString()
+                                }
                         }
                     }.setNegativeButton("Cancelar") { dialog, _ ->
                         dialog.dismiss()
@@ -232,6 +246,10 @@ class Comida : Fragment() {
         viewModel.todos.observe(viewLifecycleOwner, Observer { Comidas ->
             comidasAdapter.setComidas(Comidas)
         })
+
+        viewModel.getTotalCaloriasConsumidas().observe(viewLifecycleOwner) { totalCalorias ->
+            tvCaloriasT.text = totalCalorias.toString()
+        }
 
         val showPopupButton = binding.buttonAgregarComida
         showPopupButton.setOnClickListener {

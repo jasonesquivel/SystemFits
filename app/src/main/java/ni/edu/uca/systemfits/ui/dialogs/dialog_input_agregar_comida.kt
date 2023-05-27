@@ -1,15 +1,16 @@
-package ni.edu.uca.systemfits.ui.view.dialogs
+package ni.edu.uca.systemfits.ui.dialogs
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ni.edu.uca.systemfits.databinding.FragmentDialogInputEditarEjercicioBinding
+import ni.edu.uca.systemfits.R
+import ni.edu.uca.systemfits.databinding.FragmentDialogInputAgregarComidaBinding
 
+class dialog_input_agregar_comida : Fragment(){
 
-class dialog_input_editar_ejercicio : Fragment() {
-    private lateinit var binding: FragmentDialogInputEditarEjercicioBinding
+    private lateinit var binding: FragmentDialogInputAgregarComidaBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +23,7 @@ class dialog_input_editar_ejercicio : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentDialogInputEditarEjercicioBinding.inflate(inflater, container, false)
-        return binding.root
+
+        return inflater.inflate(R.layout.fragment_dialog_input_agregar_comida, container, false)
     }
 }

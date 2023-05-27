@@ -1,4 +1,4 @@
-package ni.edu.uca.systemfits.ui.view.dialogs
+package ni.edu.uca.systemfits.ui.dialogs
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

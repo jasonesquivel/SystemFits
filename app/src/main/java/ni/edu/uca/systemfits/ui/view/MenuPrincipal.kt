@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.fragment_comida.*
 import kotlinx.android.synthetic.main.fragment_menu_principal.*
 import ni.edu.uca.systemfits.ui.adapter.MenuPrincipalAdapter
 import ni.edu.uca.systemfits.data.database.entities.Comidas
@@ -20,7 +21,6 @@ import ni.edu.uca.systemfits.ui.viewmodel.MedidasViewModel
 class MenuPrincipal : Fragment() {
 
     private lateinit var binding: FragmentMenuPrincipalBinding
-    private val viewModelComidas: ComidasViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
