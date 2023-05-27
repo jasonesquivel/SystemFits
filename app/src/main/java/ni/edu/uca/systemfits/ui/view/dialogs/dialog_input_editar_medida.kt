@@ -1,4 +1,4 @@
-package ni.edu.uca.systemfits.ui.dialogs
+package ni.edu.uca.systemfits.ui.view.dialogs
 
 import android.os.Bundle
 import android.text.Editable
@@ -24,7 +24,8 @@ class dialog_input_editar_medida : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_dialog_input_editar_medida, container, false)
+        binding = FragmentDialogInputEditarMedidaBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -45,6 +46,5 @@ class dialog_input_editar_medida : Fragment() {
                 }
             }
         })
-
     }
 }

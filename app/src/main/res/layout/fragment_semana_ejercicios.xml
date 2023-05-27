@@ -11,13 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!-- TODO: Update blank fragment layout -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardViewAgregarEjercicioLunes"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             app:cardBackgroundColor="@android:color/white"
             app:cardCornerRadius="26dp"
@@ -40,11 +39,20 @@
                     android:textAppearance="?attr/textAppearanceHeadline6" />
 
                 <TextView
+                    android:id="@+id/tvGrupoMuscularLunes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="12dp"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="-25dp"
+                    android:layout_marginEnd="16dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:onClick="showPopup"
                     android:text=""
-                    android:textSize="18sp" />
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintBaseline_toBaselineOf="@id/btnAgregarGrupoMuscularLunes"
+                    app:layout_constraintEnd_toStartOf="@+id/btnAgregarGrupoMuscularLunes" />
 
                 <Button
                     android:id="@+id/btnAgregarGrupoMuscularLunes"
@@ -52,6 +60,7 @@
                     android:layout_height="60dp"
                     android:layout_gravity="end"
                     android:layout_marginLeft="100dp"
+                    android:layout_marginTop="20dp"
                     android:backgroundTint="@color/purple"
                     android:text="Agregar grupo muscular"
                     android:textColor="@color/white"
@@ -59,9 +68,8 @@
                     app:cornerRadius="20dp" />
 
             </LinearLayout>
-
-
         </com.google.android.material.card.MaterialCardView>
+
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardViewAgregarEjercicioMartes"
@@ -93,11 +101,20 @@
                     android:textAppearance="?attr/textAppearanceHeadline6" />
 
                 <TextView
+                    android:id="@+id/tvGrupoMuscularMartes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="12dp"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="-25dp"
+                    android:layout_marginEnd="16dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:onClick="showPopup"
                     android:text=""
-                    android:textSize="18sp" />
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintBaseline_toBaselineOf="@id/btnAgregarGrupoMuscularMartes"
+                    app:layout_constraintEnd_toStartOf="@+id/btnAgregarGrupoMuscularMartes" />
 
                 <Button
                     android:id="@+id/btnAgregarGrupoMuscularMartes"
@@ -105,6 +122,7 @@
                     android:layout_height="60dp"
                     android:layout_gravity="end"
                     android:layout_marginLeft="100dp"
+                    android:layout_marginTop="20dp"
                     android:backgroundTint="@color/purple"
                     android:text="Agregar grupo muscular"
                     android:textColor="@color/white"
@@ -147,11 +165,20 @@
                     android:textAppearance="?attr/textAppearanceHeadline6" />
 
                 <TextView
+                    android:id="@+id/tvGrupoMuscularMiercoles"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="12dp"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="-25dp"
+                    android:layout_marginEnd="16dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:onClick="showPopup"
                     android:text=""
-                    android:textSize="18sp" />
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintBaseline_toBaselineOf="@id/btnAgregarGrupoMuscularMiercoles"
+                    app:layout_constraintEnd_toStartOf="@+id/btnAgregarGrupoMuscularMiercoles" />
 
                 <Button
                     android:id="@+id/btnAgregarGrupoMuscularMiercoles"
@@ -159,6 +186,7 @@
                     android:layout_height="60dp"
                     android:layout_gravity="end"
                     android:layout_marginLeft="100dp"
+                    android:layout_marginTop="20dp"
                     android:backgroundTint="@color/purple"
                     android:text="Agregar grupo muscular"
                     android:textColor="@color/white"
@@ -200,11 +228,20 @@
                     android:textAppearance="?attr/textAppearanceHeadline6" />
 
                 <TextView
+                    android:id="@+id/tvGrupoMuscularJueves"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="12dp"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="-25dp"
+                    android:layout_marginEnd="16dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:onClick="showPopup"
                     android:text=""
-                    android:textSize="18sp" />
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintBaseline_toBaselineOf="@id/btnAgregarGrupoMuscularJueves"
+                    app:layout_constraintEnd_toStartOf="@+id/btnAgregarGrupoMuscularJueves" />
 
                 <Button
                     android:id="@+id/btnAgregarGrupoMuscularJueves"
@@ -212,6 +249,7 @@
                     android:layout_height="60dp"
                     android:layout_gravity="end"
                     android:layout_marginLeft="100dp"
+                    android:layout_marginTop="20dp"
                     android:backgroundTint="@color/purple"
                     android:text="Agregar grupo muscular"
                     android:textColor="@color/white"
@@ -253,11 +291,20 @@
                     android:textAppearance="?attr/textAppearanceHeadline6" />
 
                 <TextView
+                    android:id="@+id/tvGrupoMuscularViernes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="12dp"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="-25dp"
+                    android:layout_marginEnd="16dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:onClick="showPopup"
                     android:text=""
-                    android:textSize="18sp" />
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintBaseline_toBaselineOf="@id/btnAgregarGrupoMuscularViernes"
+                    app:layout_constraintEnd_toStartOf="@+id/btnAgregarGrupoMuscularViernes" />
 
                 <Button
                     android:id="@+id/btnAgregarGrupoMuscularViernes"
@@ -265,6 +312,7 @@
                     android:layout_height="60dp"
                     android:layout_gravity="end"
                     android:layout_marginLeft="100dp"
+                    android:layout_marginTop="20dp"
                     android:backgroundTint="@color/purple"
                     android:text="Agregar grupo muscular"
                     android:textColor="@color/white"
@@ -307,11 +355,20 @@
                     android:textAppearance="?attr/textAppearanceHeadline6" />
 
                 <TextView
+                    android:id="@+id/tvGrupoMuscularSabado"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="12dp"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="-25dp"
+                    android:layout_marginEnd="16dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:onClick="showPopup"
                     android:text=""
-                    android:textSize="18sp" />
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintBaseline_toBaselineOf="@id/btnAgregarGrupoMuscularSabado"
+                    app:layout_constraintEnd_toStartOf="@+id/btnAgregarGrupoMuscularSabado" />
 
                 <Button
                     android:id="@+id/btnAgregarGrupoMuscularSabado"
@@ -319,6 +376,7 @@
                     android:layout_height="60dp"
                     android:layout_gravity="end"
                     android:layout_marginLeft="100dp"
+                    android:layout_marginTop="20dp"
                     android:backgroundTint="@color/purple"
                     android:text="Agregar grupo muscular"
                     android:textColor="@color/white"
@@ -361,11 +419,20 @@
                     android:textAppearance="?attr/textAppearanceHeadline6" />
 
                 <TextView
+                    android:id="@+id/tvGrupoMuscularDomingo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="12dp"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="-25dp"
+                    android:layout_marginEnd="16dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:onClick="showPopup"
                     android:text=""
-                    android:textSize="18sp" />
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintBaseline_toBaselineOf="@id/btnAgregarGrupoMuscularDomingo"
+                    app:layout_constraintEnd_toStartOf="@+id/btnAgregarGrupoMuscularDomingo" />
 
                 <Button
                     android:id="@+id/btnAgregarGrupoMuscularDomingo"
@@ -373,6 +440,7 @@
                     android:layout_height="60dp"
                     android:layout_gravity="end"
                     android:layout_marginLeft="100dp"
+                    android:layout_marginTop="20dp"
                     android:backgroundTint="@color/purple"
                     android:text="Agregar grupo muscular"
                     android:textColor="@color/white"
