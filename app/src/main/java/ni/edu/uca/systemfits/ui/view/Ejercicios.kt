@@ -19,10 +19,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import ni.edu.uca.systemfits.R
 import ni.edu.uca.systemfits.ui.adapter.EjerciciosAdapter
-import ni.edu.uca.systemfits.databinding.FragmentDialogInputAgregarEjercicioBinding
-import ni.edu.uca.systemfits.databinding.FragmentEjerciciosBinding
 import ni.edu.uca.systemfits.data.database.entities.Ejercicios
+import ni.edu.uca.systemfits.databinding.FragmentDialogInputAgregarEjercicioBinding
 import ni.edu.uca.systemfits.databinding.FragmentDialogInputEditarEjercicioBinding
+import ni.edu.uca.systemfits.databinding.FragmentEjerciciosBinding
 import ni.edu.uca.systemfits.ui.viewmodel.EjerciciosViewModel
 import ni.edu.uca.systemfits.ui.viewmodel.SemanaViewModel
 import java.util.*

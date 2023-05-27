@@ -68,7 +68,7 @@ class configuracion : Fragment() {
                 val peso: String = binding.etPesoEditable.text.toString()
                 if (peso.length == 3 && !peso.contains(".")) {
                     binding.etPesoEditable.setText("${peso.substring(0, 2)}.${peso.substring(2)}")
-                    binding.etPesoEditable.setSelection(binding.etPesoEditable.text.length) // mover el cursor al final
+                    binding.etPesoEditable.setSelection(binding.etPesoEditable.text.length)
                 }
             }
         })

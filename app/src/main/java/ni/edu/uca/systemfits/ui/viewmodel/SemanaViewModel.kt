@@ -23,8 +23,8 @@ class SemanaViewModel(application: Application) : AndroidViewModel(application) 
         SemanaDao.insertar(SemanaEjercicios)
     }
 
-    suspend fun actualizar(SemanaEjercicios: SemanaEjercicios) = withContext(Dispatchers.IO) {
-        SemanaDao.actualizar(SemanaEjercicios)
+    suspend fun actualizarGrupoMuscular(dia: String, grupoMuscular: String) = withContext(Dispatchers.IO) {
+        SemanaDao.actualizarGrupoMuscular(dia, grupoMuscular)
     }
 
     suspend fun eliminar(SemanaEjercicios: SemanaEjercicios) = withContext(Dispatchers.IO) {

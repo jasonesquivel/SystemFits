@@ -1,6 +1,5 @@
 package ni.edu.uca.systemfits.ui.view
 
-//Importaciones necesarias
 import android.os.Bundle
 import android.util.Log
 import android.view.*

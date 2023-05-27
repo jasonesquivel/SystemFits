@@ -23,4 +23,8 @@ interface SemanaDao {
 
     @Query("SELECT grupomuscular FROM tblsemanaejercicios WHERE dia = :dia")
     fun obtenerGrupoMuscular(dia: String): LiveData<String>
+
+    @Query("UPDATE tblsemanaejercicios SET grupomuscular = :nuevoGrupoMuscular WHERE dia = :dia")
+    fun actualizarGrupoMuscular(dia: String, nuevoGrupoMuscular: String)
+
 }

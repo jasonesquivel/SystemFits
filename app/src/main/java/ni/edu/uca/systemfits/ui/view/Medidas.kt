@@ -106,7 +106,6 @@ class Medidas : Fragment() {
         }
     }
 
-
     //ESTE ES PARA EL EDITAR COMIDA POPUP//
     private fun showCustomPopupEditarMedida(medidaSeleccionada: Medidas) {
         val inflater =
