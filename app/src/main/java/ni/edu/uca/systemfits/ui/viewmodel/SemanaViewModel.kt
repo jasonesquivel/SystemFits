@@ -3,7 +3,6 @@ package ni.edu.uca.systemfits.ui.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import ni.edu.uca.systemfits.data.database.AppDatabase
@@ -23,9 +22,10 @@ class SemanaViewModel(application: Application) : AndroidViewModel(application) 
         SemanaDao.insertar(SemanaEjercicios)
     }
 
-    suspend fun actualizarGrupoMuscular(dia: String, grupoMuscular: String) = withContext(Dispatchers.IO) {
-        SemanaDao.actualizarGrupoMuscular(dia, grupoMuscular)
-    }
+    suspend fun actualizarGrupoMuscular(dia: String, grupoMuscular: String) =
+        withContext(Dispatchers.IO) {
+            SemanaDao.actualizarGrupoMuscular(dia, grupoMuscular)
+        }
 
     suspend fun eliminar(SemanaEjercicios: SemanaEjercicios) = withContext(Dispatchers.IO) {
         SemanaDao.eliminar(SemanaEjercicios)

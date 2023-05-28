@@ -16,9 +16,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         supportActionBar?.hide()
         binding.toolbar.isVisible = false
+
         binding.toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.menu_configuracion -> replaceFragment(configuracion())
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.menu_configuracion -> {
-                replaceFragment(configuracion())
+                showBottomNavigationView()
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -61,13 +61,8 @@ class MainActivity : AppCompatActivity() {
         fragmentTransaction.commit()
     }
 
-
     fun showBottomNavigationView() {
         binding.bottomNavigation.isVisible = true
         binding.toolbar.isVisible = true
-    }
-
-    fun hideBottomNavigationView() {
-        binding.bottomNavigation.isVisible = false
     }
 }

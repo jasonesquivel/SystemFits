@@ -92,7 +92,7 @@ class Recetas : Fragment() {
 
     //Configuracion del cliente Retrofit
     object RetrofitClient {
-        private const val BASE_URL = "http://10.0.2.2:80/"
+        private const val BASE_URL = "http://192.168.1.17:80/"
 
         private val loggingInterceptor = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY

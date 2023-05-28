@@ -1,6 +1,8 @@
 package ni.edu.uca.systemfits.ui.view
 
-import android.annotation.SuppressLint
+
+import kotlinx.coroutines.launch
+import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.view.Gravity
@@ -16,7 +18,6 @@ import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.fragment_semana_ejercicios.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import ni.edu.uca.systemfits.R
 import ni.edu.uca.systemfits.databinding.FragmentDialogInputAgregarGrupoMuscularBinding
 import ni.edu.uca.systemfits.databinding.FragmentSemanaEjerciciosBinding
@@ -204,6 +205,60 @@ class SemanaEjercicios : Fragment() {
         }
     }
 
+    private fun showCustomPopupEditarGrupoMuscularMartes() {
+        val inflater =
+            requireContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val popupView =
+            inflater.inflate(R.layout.fragment_input_dialog_editar_semana_ejercicios, null)
+
+        binding3 = FragmentInputDialogEditarSemanaEjerciciosBinding.bind(popupView)
+
+
+        binding3.etGrupoMuscularEditable.setText(tvGrupoMuscularMartes.text.toString())
+
+
+        val popupWindow = PopupWindow(
+            popupView,
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT
+        )
+
+        val closeButton = popupView.findViewById<ImageView>(R.id.close_popup_button)
+        closeButton.setOnClickListener {
+            popupWindow.dismiss()
+        }
+
+        popupWindow.isOutsideTouchable = true
+        popupWindow.isFocusable = true
+
+        popupWindow.showAtLocation(binding.root, Gravity.CENTER, 0, 0)
+
+        binding3.btnEditarGrupoMuscular.setOnClickListener {
+            try {
+                if (validarCampos()) {
+                    val diaMartes = binding.tvMartes.text.toString()
+                    val grupomuscularMartes = binding3.etGrupoMuscularEditable.text.toString()
+
+                    CoroutineScope(Dispatchers.IO).launch {
+                        viewModel.actualizarGrupoMuscular(diaMartes, grupomuscularMartes)
+                    }
+
+                    popupWindow.dismiss()
+                    val grupoMuscularMartes = binding.tvGrupoMuscularMartes
+                    viewModel.obtenerGrupoMuscular(tvMartes.text.toString())
+                        .observe(viewLifecycleOwner, Observer { grupoMuscular ->
+                            grupoMuscularMartes.text = grupoMuscular
+                        })
+                }
+            } catch (ex: Exception) {
+                Toast.makeText(
+                    requireContext(), "Error: ${ex.toString()}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+    }
+
     private fun showCustomPopupAgregarGrupoMuscularMiercoles() {
         val inflater =
             requireContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -244,6 +299,60 @@ class SemanaEjercicios : Fragment() {
             } catch (ex: Exception) {
                 Toast.makeText(
                     requireContext(), "Error : ${ex.toString()}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+    }
+
+    private fun showCustomPopupEditarGrupoMuscularMiercoles() {
+        val inflater =
+            requireContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val popupView =
+            inflater.inflate(R.layout.fragment_input_dialog_editar_semana_ejercicios, null)
+
+        binding3 = FragmentInputDialogEditarSemanaEjerciciosBinding.bind(popupView)
+
+
+        binding3.etGrupoMuscularEditable.setText(tvGrupoMuscularMiercoles.text.toString())
+
+
+        val popupWindow = PopupWindow(
+            popupView,
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT
+        )
+
+        val closeButton = popupView.findViewById<ImageView>(R.id.close_popup_button)
+        closeButton.setOnClickListener {
+            popupWindow.dismiss()
+        }
+
+        popupWindow.isOutsideTouchable = true
+        popupWindow.isFocusable = true
+
+        popupWindow.showAtLocation(binding.root, Gravity.CENTER, 0, 0)
+
+        binding3.btnEditarGrupoMuscular.setOnClickListener {
+            try {
+                if (validarCampos()) {
+                    val diaMiercoles = binding.tvMiercoles.text.toString()
+                    val grupomuscularMiercoles = binding3.etGrupoMuscularEditable.text.toString()
+
+                    CoroutineScope(Dispatchers.IO).launch {
+                        viewModel.actualizarGrupoMuscular(diaMiercoles, grupomuscularMiercoles)
+                    }
+
+                    popupWindow.dismiss()
+                    val grupoMuscularMiercoles = binding.tvGrupoMuscularMiercoles
+                    viewModel.obtenerGrupoMuscular(tvMiercoles.text.toString())
+                        .observe(viewLifecycleOwner, Observer { grupoMuscular ->
+                            grupoMuscularMiercoles.text = grupoMuscular
+                        })
+                }
+            } catch (ex: Exception) {
+                Toast.makeText(
+                    requireContext(), "Error: ${ex.toString()}",
                     Toast.LENGTH_LONG
                 ).show()
             }
@@ -296,6 +405,60 @@ class SemanaEjercicios : Fragment() {
         }
     }
 
+    private fun showCustomPopupEditarGrupoMuscularJueves() {
+        val inflater =
+            requireContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val popupView =
+            inflater.inflate(R.layout.fragment_input_dialog_editar_semana_ejercicios, null)
+
+        binding3 = FragmentInputDialogEditarSemanaEjerciciosBinding.bind(popupView)
+
+
+        binding3.etGrupoMuscularEditable.setText(tvGrupoMuscularJueves.text.toString())
+
+
+        val popupWindow = PopupWindow(
+            popupView,
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT
+        )
+
+        val closeButton = popupView.findViewById<ImageView>(R.id.close_popup_button)
+        closeButton.setOnClickListener {
+            popupWindow.dismiss()
+        }
+
+        popupWindow.isOutsideTouchable = true
+        popupWindow.isFocusable = true
+
+        popupWindow.showAtLocation(binding.root, Gravity.CENTER, 0, 0)
+
+        binding3.btnEditarGrupoMuscular.setOnClickListener {
+            try {
+                if (validarCampos()) {
+                    val diaJueves = binding.tvJueves.text.toString()
+                    val grupomuscularJueves = binding3.etGrupoMuscularEditable.text.toString()
+
+                    CoroutineScope(Dispatchers.IO).launch {
+                        viewModel.actualizarGrupoMuscular(diaJueves, grupomuscularJueves)
+                    }
+
+                    popupWindow.dismiss()
+                    val grupoMuscularJueves = binding.tvGrupoMuscularJueves
+                    viewModel.obtenerGrupoMuscular(tvJueves.text.toString())
+                        .observe(viewLifecycleOwner, Observer { grupoMuscular ->
+                            grupoMuscularJueves.text = grupoMuscular
+                        })
+                }
+            } catch (ex: Exception) {
+                Toast.makeText(
+                    requireContext(), "Error: ${ex.toString()}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+    }
+
     private fun showCustomPopupAgregarGrupoMuscularViernes() {
         val inflater =
             requireContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -336,6 +499,60 @@ class SemanaEjercicios : Fragment() {
             } catch (ex: Exception) {
                 Toast.makeText(
                     requireContext(), "Error : ${ex.toString()}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+    }
+
+    private fun showCustomPopupEditarGrupoMuscularViernes() {
+        val inflater =
+            requireContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val popupView =
+            inflater.inflate(R.layout.fragment_input_dialog_editar_semana_ejercicios, null)
+
+        binding3 = FragmentInputDialogEditarSemanaEjerciciosBinding.bind(popupView)
+
+
+        binding3.etGrupoMuscularEditable.setText(tvGrupoMuscularViernes.text.toString())
+
+
+        val popupWindow = PopupWindow(
+            popupView,
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT
+        )
+
+        val closeButton = popupView.findViewById<ImageView>(R.id.close_popup_button)
+        closeButton.setOnClickListener {
+            popupWindow.dismiss()
+        }
+
+        popupWindow.isOutsideTouchable = true
+        popupWindow.isFocusable = true
+
+        popupWindow.showAtLocation(binding.root, Gravity.CENTER, 0, 0)
+
+        binding3.btnEditarGrupoMuscular.setOnClickListener {
+            try {
+                if (validarCampos()) {
+                    val diaViernes = binding.tvViernes.text.toString()
+                    val grupomuscularViernes = binding3.etGrupoMuscularEditable.text.toString()
+
+                    CoroutineScope(Dispatchers.IO).launch {
+                        viewModel.actualizarGrupoMuscular(diaViernes, grupomuscularViernes)
+                    }
+
+                    popupWindow.dismiss()
+                    val grupoMuscularViernes = binding.tvGrupoMuscularViernes
+                    viewModel.obtenerGrupoMuscular(tvViernes.text.toString())
+                        .observe(viewLifecycleOwner, Observer { grupoMuscular ->
+                            grupoMuscularViernes.text = grupoMuscular
+                        })
+                }
+            } catch (ex: Exception) {
+                Toast.makeText(
+                    requireContext(), "Error: ${ex.toString()}",
                     Toast.LENGTH_LONG
                 ).show()
             }
@@ -388,6 +605,60 @@ class SemanaEjercicios : Fragment() {
         }
     }
 
+    private fun showCustomPopupEditarGrupoMuscularSabado() {
+        val inflater =
+            requireContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val popupView =
+            inflater.inflate(R.layout.fragment_input_dialog_editar_semana_ejercicios, null)
+
+        binding3 = FragmentInputDialogEditarSemanaEjerciciosBinding.bind(popupView)
+
+
+        binding3.etGrupoMuscularEditable.setText(tvGrupoMuscularSabado.text.toString())
+
+
+        val popupWindow = PopupWindow(
+            popupView,
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT
+        )
+
+        val closeButton = popupView.findViewById<ImageView>(R.id.close_popup_button)
+        closeButton.setOnClickListener {
+            popupWindow.dismiss()
+        }
+
+        popupWindow.isOutsideTouchable = true
+        popupWindow.isFocusable = true
+
+        popupWindow.showAtLocation(binding.root, Gravity.CENTER, 0, 0)
+
+        binding3.btnEditarGrupoMuscular.setOnClickListener {
+            try {
+                if (validarCampos()) {
+                    val diaSabado = binding.tvSabado.text.toString()
+                    val grupomuscularSabado = binding3.etGrupoMuscularEditable.text.toString()
+
+                    CoroutineScope(Dispatchers.IO).launch {
+                        viewModel.actualizarGrupoMuscular(diaSabado, grupomuscularSabado)
+                    }
+
+                    popupWindow.dismiss()
+                    val grupoMuscularSabado = binding.tvGrupoMuscularSabado
+                    viewModel.obtenerGrupoMuscular(tvSabado.text.toString())
+                        .observe(viewLifecycleOwner, Observer { grupoMuscular ->
+                            grupoMuscularSabado.text = grupoMuscular
+                        })
+                }
+            } catch (ex: Exception) {
+                Toast.makeText(
+                    requireContext(), "Error: ${ex.toString()}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+    }
+
     private fun showCustomPopupAgregarGrupoMuscularDomingo() {
         val inflater =
             requireContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -428,6 +699,60 @@ class SemanaEjercicios : Fragment() {
             } catch (ex: Exception) {
                 Toast.makeText(
                     requireContext(), "Error : ${ex.toString()}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+    }
+
+    private fun showCustomPopupEditarGrupoMuscularDomingo() {
+        val inflater =
+            requireContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val popupView =
+            inflater.inflate(R.layout.fragment_input_dialog_editar_semana_ejercicios, null)
+
+        binding3 = FragmentInputDialogEditarSemanaEjerciciosBinding.bind(popupView)
+
+
+        binding3.etGrupoMuscularEditable.setText(tvGrupoMuscularDomingo.text.toString())
+
+
+        val popupWindow = PopupWindow(
+            popupView,
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT
+        )
+
+        val closeButton = popupView.findViewById<ImageView>(R.id.close_popup_button)
+        closeButton.setOnClickListener {
+            popupWindow.dismiss()
+        }
+
+        popupWindow.isOutsideTouchable = true
+        popupWindow.isFocusable = true
+
+        popupWindow.showAtLocation(binding.root, Gravity.CENTER, 0, 0)
+
+        binding3.btnEditarGrupoMuscular.setOnClickListener {
+            try {
+                if (validarCampos()) {
+                    val diaDomingo = binding.tvDomingo.text.toString()
+                    val grupomuscularDomingo = binding3.etGrupoMuscularEditable.text.toString()
+
+                    CoroutineScope(Dispatchers.IO).launch {
+                        viewModel.actualizarGrupoMuscular(diaDomingo, grupomuscularDomingo)
+                    }
+
+                    popupWindow.dismiss()
+                    val grupoMuscularDomingo = binding.tvGrupoMuscularDomingo
+                    viewModel.obtenerGrupoMuscular(tvDomingo.text.toString())
+                        .observe(viewLifecycleOwner, Observer { grupoMuscular ->
+                            grupoMuscularDomingo.text = grupoMuscular
+                        })
+                }
+            } catch (ex: Exception) {
+                Toast.makeText(
+                    requireContext(), "Error: ${ex.toString()}",
                     Toast.LENGTH_LONG
                 ).show()
             }
@@ -491,6 +816,72 @@ class SemanaEjercicios : Fragment() {
         binding.tvGrupoMuscularLunes.setOnClickListener {
             try {
                 showCustomPopupEditarGrupoMuscularLunes()
+            } catch (ex: Exception) {
+                Toast.makeText(
+                    requireContext(), "Error : ${ex.toString()}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+
+        binding.tvGrupoMuscularMartes.setOnClickListener {
+            try {
+                showCustomPopupEditarGrupoMuscularMartes()
+            } catch (ex: Exception) {
+                Toast.makeText(
+                    requireContext(), "Error : ${ex.toString()}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+
+        binding.tvGrupoMuscularMiercoles.setOnClickListener {
+            try {
+                showCustomPopupEditarGrupoMuscularMiercoles()
+            } catch (ex: Exception) {
+                Toast.makeText(
+                    requireContext(), "Error : ${ex.toString()}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+
+        binding.tvGrupoMuscularJueves.setOnClickListener {
+            try {
+                showCustomPopupEditarGrupoMuscularJueves()
+            } catch (ex: Exception) {
+                Toast.makeText(
+                    requireContext(), "Error : ${ex.toString()}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+
+        binding.tvGrupoMuscularViernes.setOnClickListener {
+            try {
+                showCustomPopupEditarGrupoMuscularViernes()
+            } catch (ex: Exception) {
+                Toast.makeText(
+                    requireContext(), "Error : ${ex.toString()}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+
+        binding.tvGrupoMuscularSabado.setOnClickListener {
+            try {
+                showCustomPopupEditarGrupoMuscularSabado()
+            } catch (ex: Exception) {
+                Toast.makeText(
+                    requireContext(), "Error : ${ex.toString()}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+
+        binding.tvGrupoMuscularDomingo.setOnClickListener {
+            try {
+                showCustomPopupEditarGrupoMuscularDomingo()
             } catch (ex: Exception) {
                 Toast.makeText(
                     requireContext(), "Error : ${ex.toString()}",
