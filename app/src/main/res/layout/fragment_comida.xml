@@ -43,7 +43,7 @@
                 android:backgroundTint="@color/purple"
                 android:text="Agregar Comida"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:cornerRadius="20dp" />
 
         </LinearLayout>
@@ -93,7 +93,7 @@
                 android:id="@+id/tvCaloriasConsumidas"
                 android:layout_width="205dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="10dp"
                 android:text="Calorias consumidas:"
                 android:textAppearance="?attr/textAppearanceHeadline6" />
 
@@ -102,7 +102,7 @@
                 android:layout_width="120dp"
                 android:layout_height="25dp"
                 android:layout_gravity="end"
-                android:layout_marginTop="-21dp"
+                android:layout_marginTop="-24dp"
                 android:text=""
                 android:textAlignment="textEnd"
                 android:textColor="@color/black"

@@ -61,7 +61,7 @@
             android:backgroundTint="@color/purple"
             android:text="Eliminar"
             android:textColor="@color/white"
-            android:textSize="18sp"
+            android:textSize="16sp"
             app:cornerRadius="20dp" />
 
         <LinearLayout
@@ -79,7 +79,7 @@
                 android:backgroundTint="@color/purple"
                 android:text="Editar"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:cornerRadius="20dp" />
         </LinearLayout>
 

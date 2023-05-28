@@ -176,7 +176,7 @@
                 android:backgroundTint="@color/purple"
                 android:text="Editar Semana"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:cornerRadius="20dp" />
 
         </LinearLayout>
@@ -232,7 +232,7 @@
                 android:backgroundTint="@color/purple"
                 android:text="Agregar Ejercicio"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:cornerRadius="20dp" />
 
         </LinearLayout>
