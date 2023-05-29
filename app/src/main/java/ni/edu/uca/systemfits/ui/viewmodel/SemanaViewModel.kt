@@ -27,9 +27,10 @@ class SemanaViewModel(application: Application) : AndroidViewModel(application) 
             SemanaDao.actualizarGrupoMuscular(dia, grupoMuscular)
         }
 
-    suspend fun eliminar(SemanaEjercicios: SemanaEjercicios) = withContext(Dispatchers.IO) {
-        SemanaDao.eliminar(SemanaEjercicios)
-    }
+    suspend fun eliminarGrupoMuscular(dia: String) =
+        withContext(Dispatchers.IO) {
+            SemanaDao.eliminarGrupoMuscular(dia)
+        }
 
     fun obtenerGrupoMuscular(dia: String): LiveData<String> {
         return SemanaDao.obtenerGrupoMuscular(dia)

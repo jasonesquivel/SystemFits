@@ -10,11 +10,8 @@ interface SemanaDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertar(SemanaEjercicios: SemanaEjercicios): Long
 
-    @Update
-    fun actualizar(SemanaEjercicios: SemanaEjercicios): Int
-
-    @Delete
-    fun eliminar(SemanaEjercicios: SemanaEjercicios): Int
+    @Query("DELETE FROM tblsemanaejercicios WHERE dia = :dia")
+    fun eliminarGrupoMuscular(dia: String)
 
     @Query("SELECT grupomuscular FROM tblsemanaejercicios WHERE dia = :dia")
     fun obtenerGrupoMuscular(dia: String): LiveData<String>

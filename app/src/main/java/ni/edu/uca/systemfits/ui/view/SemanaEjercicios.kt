@@ -157,6 +157,35 @@ class SemanaEjercicios : Fragment() {
                 ).show()
             }
         }
+
+        binding3.btnEliminarGrupoMuscular.setOnClickListener {
+            try {
+                val diaLunes = binding.tvLunes.text.toString()
+                AlertDialog.Builder(requireContext()).setTitle("Confirmación")
+                    .setMessage("¿Estás seguro de eliminar esté grupo muscular?")
+                    .setPositiveButton("Si") { _, _ ->
+                        CoroutineScope(Dispatchers.IO).launch {
+                            viewModel.eliminarGrupoMuscular(diaLunes)
+                        }
+
+                        popupWindow.dismiss()
+                        val grupoMuscularLunes = binding.tvGrupoMuscularLunes
+                        viewModel.obtenerGrupoMuscular(tvLunes.text.toString())
+                            .observe(viewLifecycleOwner, Observer { grupoMuscular ->
+                                grupoMuscularLunes.text = grupoMuscular
+                            })
+                    }.setNegativeButton("Cancelar") { dialog, _ ->
+                        dialog.dismiss()
+                        popupWindow.dismiss()
+                    }.create()
+                    .show()
+            } catch (ex: Exception) {
+                Toast.makeText(
+                    requireContext(), "Error: ${ex.toString()}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
     }
 
     private fun showCustomPopupAgregarGrupoMuscularMartes() {
@@ -250,6 +279,35 @@ class SemanaEjercicios : Fragment() {
                             grupoMuscularMartes.text = grupoMuscular
                         })
                 }
+            } catch (ex: Exception) {
+                Toast.makeText(
+                    requireContext(), "Error: ${ex.toString()}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+
+        binding3.btnEliminarGrupoMuscular.setOnClickListener {
+            try {
+                val diaMartes = binding.tvMartes.text.toString()
+                AlertDialog.Builder(requireContext()).setTitle("Confirmación")
+                    .setMessage("¿Estás seguro de eliminar esté grupo muscular?")
+                    .setPositiveButton("Si") { _, _ ->
+                        CoroutineScope(Dispatchers.IO).launch {
+                            viewModel.eliminarGrupoMuscular(diaMartes)
+                        }
+
+                        popupWindow.dismiss()
+                        val grupoMuscularMartes = binding.tvGrupoMuscularMartes
+                        viewModel.obtenerGrupoMuscular(tvMartes.text.toString())
+                            .observe(viewLifecycleOwner, Observer { grupoMuscular ->
+                                grupoMuscularMartes.text = grupoMuscular
+                            })
+                    }.setNegativeButton("Cancelar") { dialog, _ ->
+                        dialog.dismiss()
+                        popupWindow.dismiss()
+                    }.create()
+                    .show()
             } catch (ex: Exception) {
                 Toast.makeText(
                     requireContext(), "Error: ${ex.toString()}",
@@ -357,6 +415,35 @@ class SemanaEjercicios : Fragment() {
                 ).show()
             }
         }
+
+        binding3.btnEliminarGrupoMuscular.setOnClickListener {
+            try {
+                val diaMiercoles = binding.tvMiercoles.text.toString()
+                AlertDialog.Builder(requireContext()).setTitle("Confirmación")
+                    .setMessage("¿Estás seguro de eliminar esté grupo muscular?")
+                    .setPositiveButton("Si") { _, _ ->
+                        CoroutineScope(Dispatchers.IO).launch {
+                            viewModel.eliminarGrupoMuscular(diaMiercoles)
+                        }
+
+                        popupWindow.dismiss()
+                        val grupoMuscularMiercoles = binding.tvGrupoMuscularMiercoles
+                        viewModel.obtenerGrupoMuscular(tvMiercoles.text.toString())
+                            .observe(viewLifecycleOwner, Observer { grupoMuscular ->
+                                grupoMuscularMiercoles.text = grupoMuscular
+                            })
+                    }.setNegativeButton("Cancelar") { dialog, _ ->
+                        dialog.dismiss()
+                        popupWindow.dismiss()
+                    }.create()
+                    .show()
+            } catch (ex: Exception) {
+                Toast.makeText(
+                    requireContext(), "Error: ${ex.toString()}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
     }
 
     private fun showCustomPopupAgregarGrupoMuscularJueves() {
@@ -450,6 +537,35 @@ class SemanaEjercicios : Fragment() {
                             grupoMuscularJueves.text = grupoMuscular
                         })
                 }
+            } catch (ex: Exception) {
+                Toast.makeText(
+                    requireContext(), "Error: ${ex.toString()}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+
+        binding3.btnEliminarGrupoMuscular.setOnClickListener {
+            try {
+                val diaJueves = binding.tvJueves.text.toString()
+                AlertDialog.Builder(requireContext()).setTitle("Confirmación")
+                    .setMessage("¿Estás seguro de eliminar esté grupo muscular?")
+                    .setPositiveButton("Si") { _, _ ->
+                        CoroutineScope(Dispatchers.IO).launch {
+                            viewModel.eliminarGrupoMuscular(diaJueves)
+                        }
+
+                        popupWindow.dismiss()
+                        val grupoMuscularJueves = binding.tvGrupoMuscularJueves
+                        viewModel.obtenerGrupoMuscular(tvJueves.text.toString())
+                            .observe(viewLifecycleOwner, Observer { grupoMuscular ->
+                                grupoMuscularJueves.text = grupoMuscular
+                            })
+                    }.setNegativeButton("Cancelar") { dialog, _ ->
+                        dialog.dismiss()
+                        popupWindow.dismiss()
+                    }.create()
+                    .show()
             } catch (ex: Exception) {
                 Toast.makeText(
                     requireContext(), "Error: ${ex.toString()}",
@@ -557,6 +673,35 @@ class SemanaEjercicios : Fragment() {
                 ).show()
             }
         }
+
+        binding3.btnEliminarGrupoMuscular.setOnClickListener {
+            try {
+                val diaViernes = binding.tvViernes.text.toString()
+                AlertDialog.Builder(requireContext()).setTitle("Confirmación")
+                    .setMessage("¿Estás seguro de eliminar esté grupo muscular?")
+                    .setPositiveButton("Si") { _, _ ->
+                        CoroutineScope(Dispatchers.IO).launch {
+                            viewModel.eliminarGrupoMuscular(diaViernes)
+                        }
+
+                        popupWindow.dismiss()
+                        val grupoMuscularViernes = binding.tvGrupoMuscularViernes
+                        viewModel.obtenerGrupoMuscular(tvViernes.text.toString())
+                            .observe(viewLifecycleOwner, Observer { grupoMuscular ->
+                                grupoMuscularViernes.text = grupoMuscular
+                            })
+                    }.setNegativeButton("Cancelar") { dialog, _ ->
+                        dialog.dismiss()
+                        popupWindow.dismiss()
+                    }.create()
+                    .show()
+            } catch (ex: Exception) {
+                Toast.makeText(
+                    requireContext(), "Error: ${ex.toString()}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
     }
 
     private fun showCustomPopupAgregarGrupoMuscularSabado() {
@@ -650,6 +795,35 @@ class SemanaEjercicios : Fragment() {
                             grupoMuscularSabado.text = grupoMuscular
                         })
                 }
+            } catch (ex: Exception) {
+                Toast.makeText(
+                    requireContext(), "Error: ${ex.toString()}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+
+        binding3.btnEliminarGrupoMuscular.setOnClickListener {
+            try {
+                val diaSabado = binding.tvSabado.text.toString()
+                AlertDialog.Builder(requireContext()).setTitle("Confirmación")
+                    .setMessage("¿Estás seguro de eliminar esté grupo muscular?")
+                    .setPositiveButton("Si") { _, _ ->
+                        CoroutineScope(Dispatchers.IO).launch {
+                            viewModel.eliminarGrupoMuscular(diaSabado)
+                        }
+
+                        popupWindow.dismiss()
+                        val grupoMuscularSabado = binding.tvGrupoMuscularSabado
+                        viewModel.obtenerGrupoMuscular(tvSabado.text.toString())
+                            .observe(viewLifecycleOwner, Observer { grupoMuscular ->
+                                grupoMuscularSabado.text = grupoMuscular
+                            })
+                    }.setNegativeButton("Cancelar") { dialog, _ ->
+                        dialog.dismiss()
+                        popupWindow.dismiss()
+                    }.create()
+                    .show()
             } catch (ex: Exception) {
                 Toast.makeText(
                     requireContext(), "Error: ${ex.toString()}",
@@ -757,6 +931,35 @@ class SemanaEjercicios : Fragment() {
                 ).show()
             }
         }
+
+        binding3.btnEliminarGrupoMuscular.setOnClickListener {
+            try {
+                val diaDomingo = binding.tvDomingo.text.toString()
+                AlertDialog.Builder(requireContext()).setTitle("Confirmación")
+                    .setMessage("¿Estás seguro de eliminar esté grupo muscular?")
+                    .setPositiveButton("Si") { _, _ ->
+                        CoroutineScope(Dispatchers.IO).launch {
+                            viewModel.eliminarGrupoMuscular(diaDomingo)
+                        }
+
+                        popupWindow.dismiss()
+                        val grupoMuscularDomingo = binding.tvGrupoMuscularDomingo
+                        viewModel.obtenerGrupoMuscular(tvDomingo.text.toString())
+                            .observe(viewLifecycleOwner, Observer { grupoMuscular ->
+                                grupoMuscularDomingo.text = grupoMuscular
+                            })
+                    }.setNegativeButton("Cancelar") { dialog, _ ->
+                        dialog.dismiss()
+                        popupWindow.dismiss()
+                    }.create()
+                    .show()
+            } catch (ex: Exception) {
+                Toast.makeText(
+                    requireContext(), "Error: ${ex.toString()}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
     }
 
     override fun onCreateView(
@@ -769,44 +972,43 @@ class SemanaEjercicios : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //cargar ViewModels para los grupos musculares//
-        //LUNES//
+
         val grupoMuscularLunes = binding.tvGrupoMuscularLunes
         viewModel.obtenerGrupoMuscular(tvLunes.text.toString())
             .observe(viewLifecycleOwner, Observer { grupoMuscular ->
                 grupoMuscularLunes.text = grupoMuscular
             })
-        //MARTES//
+
         val grupoMuscularMartes = binding.tvGrupoMuscularMartes
         viewModel.obtenerGrupoMuscular(tvMartes.text.toString())
             .observe(viewLifecycleOwner, Observer { grupoMuscular ->
                 grupoMuscularMartes.text = grupoMuscular
             })
-        //MIERCOLES//
+
         val grupoMuscularMiercoles = binding.tvGrupoMuscularMiercoles
         viewModel.obtenerGrupoMuscular(tvMiercoles.text.toString())
             .observe(viewLifecycleOwner, Observer { grupoMuscular ->
                 grupoMuscularMiercoles.text = grupoMuscular
             })
-        //JUEVES//
+
         val grupoMuscularJueves = binding.tvGrupoMuscularJueves
         viewModel.obtenerGrupoMuscular(tvJueves.text.toString())
             .observe(viewLifecycleOwner, Observer { grupoMuscular ->
                 grupoMuscularJueves.text = grupoMuscular
             })
-        //VIERNES//
+
         val grupoMuscularViernes = binding.tvGrupoMuscularViernes
         viewModel.obtenerGrupoMuscular(tvViernes.text.toString())
             .observe(viewLifecycleOwner, Observer { grupoMuscular ->
                 grupoMuscularViernes.text = grupoMuscular
             })
-        //SABADO//
+
         val grupoMuscularSabado = binding.tvGrupoMuscularSabado
         viewModel.obtenerGrupoMuscular(tvSabado.text.toString())
             .observe(viewLifecycleOwner, Observer { grupoMuscular ->
                 grupoMuscularSabado.text = grupoMuscular
             })
-        //DOMINGO//
+
         val grupoMuscularDomingo = binding.tvGrupoMuscularDomingo
         viewModel.obtenerGrupoMuscular(tvDomingo.text.toString())
             .observe(viewLifecycleOwner, Observer { grupoMuscular ->
