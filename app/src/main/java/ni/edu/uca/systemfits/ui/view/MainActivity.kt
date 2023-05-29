@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
         binding.toolbar.isVisible = false
-
+        binding.toolbar.title = "SystemFits"
         binding.toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.menu_configuracion -> replaceFragment(configuracion())

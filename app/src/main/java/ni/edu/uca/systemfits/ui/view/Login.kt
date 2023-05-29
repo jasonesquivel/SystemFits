@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import ni.edu.uca.systemfits.R
 import ni.edu.uca.systemfits.databinding.FragmentLoginBinding
 import ni.edu.uca.systemfits.ui.viewmodel.RegistrosViewModel
@@ -58,6 +60,8 @@ class Login : Fragment() {
                             if (registro != null) {
                                 (activity as MainActivity).showBottomNavigationView()
                                 it.findNavController().navigate(R.id.login_menu)
+                                val bundle = bundleOf("disableBackToLogin" to true)
+                                findNavController().navigate(R.id.menuPrincipal, bundle)
                             } else {
                                 Toast.makeText(
                                     requireContext(),

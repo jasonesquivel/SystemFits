@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -78,5 +79,16 @@ class MenuPrincipal : Fragment() {
         viewModelComidas.getTotalCaloriasConsumidas().observe(viewLifecycleOwner) { totalCalorias ->
             tvCalorias.text = totalCalorias.toString()
         }
+
+        val disableBackToLogin = arguments?.getBoolean("disableBackToLogin", false) ?: false
+        if (disableBackToLogin) {
+            requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    // No hacer nada para bloquear el botón de retroceso
+                }
+            })
+        }
+
     }
+
 }
