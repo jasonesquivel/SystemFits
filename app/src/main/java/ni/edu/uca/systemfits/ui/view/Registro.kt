@@ -4,6 +4,8 @@ import android.app.DatePickerDialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +14,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import kotlinx.coroutines.CoroutineScope
@@ -150,6 +153,17 @@ class Registro : Fragment() {
                 }
             }
         })
+
+        binding.btnMostrarContraseA.setOnClickListener {
+            val isPasswordVisible = binding.etContraseA.transformationMethod == HideReturnsTransformationMethod.getInstance()
+            if (isPasswordVisible) {
+                binding.etContraseA.transformationMethod = PasswordTransformationMethod.getInstance()
+                binding.btnMostrarContraseA.text = "Mostrar"
+            } else {
+                binding.etContraseA.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                binding.btnMostrarContraseA.text = "Ocultar"
+            }
+        }
 
         val fechaNac: TextView = binding.tvFechaNac
         val c = Calendar.getInstance()

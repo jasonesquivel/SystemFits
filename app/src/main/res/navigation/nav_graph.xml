@@ -114,11 +114,6 @@
             app:destination="@id/input_dialog_editar_semana_ejercicios" />
     </fragment>
     <fragment
-        android:id="@+id/configuracion"
-        android:name="ni.edu.uca.systemfits.ui.view.configuracion"
-        android:label="fragment_configuracion"
-        tools:layout="@layout/fragment_configuracion" />
-    <fragment
         android:id="@+id/dialog_input_agregar_Ejercicio"
         android:name="ni.edu.uca.systemfits.ui.view.dialogs.dialog_input_agregar_Ejercicio"
         android:label="fragment_dialog_input_agregar_ejercicio"
@@ -138,4 +133,9 @@
         android:name="ni.edu.uca.systemfits.ui.view.dialogs.input_dialog_editar_semana_ejercicios"
         android:label="fragment_input_dialog_editar_semana_ejercicios"
         tools:layout="@layout/fragment_input_dialog_editar_semana_ejercicios" />
+    <fragment
+        android:id="@+id/configuracion"
+        android:name="ni.edu.uca.systemfits.ui.view.configuracion"
+        android:label="fragment_configuracion"
+        tools:layout="@layout/fragment_configuracion" />
 </navigation>

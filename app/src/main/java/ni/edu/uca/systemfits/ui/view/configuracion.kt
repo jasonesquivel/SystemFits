@@ -4,31 +4,28 @@ import android.app.DatePickerDialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.fragment.app.Fragment
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import ni.edu.uca.systemfits.R
-import ni.edu.uca.systemfits.databinding.FragmentConfiguracionBinding
 import ni.edu.uca.systemfits.data.database.entities.Registros
+import ni.edu.uca.systemfits.databinding.FragmentConfiguracionBinding
+import ni.edu.uca.systemfits.ui.sharedpreferences.SharedPrefUtil
 import ni.edu.uca.systemfits.ui.viewmodel.RegistrosViewModel
 import java.util.*
 
 class configuracion : Fragment() {
     private lateinit var binding: FragmentConfiguracionBinding
     private val viewModel: RegistrosViewModel by viewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,42 +35,127 @@ class configuracion : Fragment() {
         return binding.root
     }
 
+    private fun actualizarDatosUsuario() {
+        val nombreUser = SharedPrefUtil.obtenerUsuario(requireContext())
+        viewModel.obtenerUsuario(nombreUser!!.toString())
+            .observe(viewLifecycleOwner, Observer { usuario ->
+                if (usuario != null) {
+                    binding.etNombre.setText(usuario.nombre)
+                    binding.etApellido.setText(usuario.apellido)
+                    binding.tvFechaNac.text = usuario.fechaNac
+                    val generoArray = resources.getStringArray(R.array.genero_array)
+                    val generoIndex = generoArray.indexOf(usuario.genéro)
+                    if (generoIndex >= 0) {
+                        binding.spGenero.setSelection(generoIndex)
+                    }
+                    binding.etPeso.setText(usuario.peso.toString())
+                    binding.etAltura.setText(usuario.altura.toString())
+                    binding.etUsuario.setText(usuario.usuario)
+                    binding.etContraseA.setText(usuario.contraseña)
+                } else {
+                    Toast.makeText(requireContext(), "Usuario null", Toast.LENGTH_SHORT).show()
+                }
+            })
+    }
+
+    private fun validarCamposPerfil(): Boolean {
+        var valido = true
+
+        val nombre = binding.etNombre.text.toString()
+        val apellido = binding.etApellido.text.toString()
+        val fechaNac = binding.tvFechaNac.text.toString()
+        val genero = binding.spGenero.selectedItem.toString()
+        val peso = binding.etPeso.text.toString()
+        val altura = binding.etAltura.text.toString()
+        val usuario = binding.etUsuario.text.toString()
+        val contraseña = binding.etContraseA.text.toString()
+
+        if (nombre.isBlank()) {
+            binding.etNombre.setError("Este campo no puede estar vacío")
+            valido = false
+        }
+
+        if (apellido.isBlank()) {
+            binding.etApellido.setError("Este campo no puede estar vacío")
+            valido = false
+        }
+
+        if (fechaNac.isBlank()) {
+            Toast.makeText(
+                requireContext(),
+                "Debe seleccionar una fecha de nacimiento",
+                Toast.LENGTH_SHORT
+            ).show()
+            valido = false
+        }
+
+        if (genero.isBlank() || genero == "Seleccione un género") {
+            Toast.makeText(requireContext(), "Debe seleccionar un género", Toast.LENGTH_SHORT)
+                .show()
+            valido = false
+        }
+
+        if (peso.isBlank()) {
+            binding.etPeso.setError("Este campo no puede estar vacío")
+            valido = false
+        }
+
+        if (altura.isBlank()) {
+            binding.etAltura.setError("Este campo no puede estar vacío")
+            valido = false
+        }
+
+        if (usuario.isBlank()) {
+            binding.etUsuario.setError("Este campo no puede estar vacío")
+            valido = false
+        }
+
+        if (contraseña.isBlank()) {
+            binding.etContraseA.setError("Este campo no puede estar vacío")
+            valido = false
+        }
+        return valido
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.etAlturaEditable.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable) {
+        binding.btnMostrarContraseA.setOnClickListener {
+            val isPasswordVisible = binding.etContraseA.transformationMethod == HideReturnsTransformationMethod.getInstance()
+            if (isPasswordVisible) {
+                binding.etContraseA.transformationMethod = PasswordTransformationMethod.getInstance()
+                binding.btnMostrarContraseA.text = "Mostrar"
+            } else {
+                binding.etContraseA.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                binding.btnMostrarContraseA.text = "Ocultar"
             }
+        }
 
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-            }
-
+        binding.etAltura.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-
-                val altura: String = binding.etAlturaEditable.text.toString()
+                val altura: String = binding.etAltura.text.toString()
                 if (altura.length == 3 && !altura.contains(".")) {
-                    binding.etAlturaEditable.setText("${altura[0]}.${altura.substring(1)}")
-                    binding.etAlturaEditable.setSelection(binding.etAlturaEditable.text.length)
+                    binding.etAltura.setText("${altura[0]}.${altura.substring(1)}")
+                    binding.etAltura.setSelection(binding.etAltura.text.length)
                 }
             }
         })
-        binding.etPesoEditable.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable) {
-            }
 
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-            }
-
+        binding.etPeso.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                val peso: String = binding.etPesoEditable.text.toString()
+                val peso: String = binding.etPeso.text.toString()
                 if (peso.length == 3 && !peso.contains(".")) {
-                    binding.etPesoEditable.setText("${peso.substring(0, 2)}.${peso.substring(2)}")
-                    binding.etPesoEditable.setSelection(binding.etPesoEditable.text.length)
+                    binding.etPeso.setText("${peso.substring(0, 2)}.${peso.substring(2)}")
+                    binding.etPeso.setSelection(binding.etPeso.text.length)
                 }
             }
         })
 
-        val fechaNac: TextView = binding.tvFechaNacEditable
+        val fechaNac: TextView = binding.tvFechaNac
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
         val month = c.get(Calendar.MONTH)
@@ -95,96 +177,42 @@ class configuracion : Fragment() {
             spinner.adapter = adapter
         }
 
-        val nombreUser = "Jan"
-        viewModel.obtenerUsuario(nombreUser!!.toString())
-            .observe(viewLifecycleOwner, Observer { usuario ->
-                if (usuario != null) {
-                    binding.etId.setText(usuario.id.toString())
-                    binding.etNombreEditable.setText(usuario.nombre)
-                    binding.etApellidoEditable.setText(usuario.apellido)
-                    binding.tvFechaNacEditable.text = usuario.fechaNac
-                    val generoArray = resources.getStringArray(R.array.genero_array)
-                    val generoIndex = generoArray.indexOf(usuario.genéro)
-                    if (generoIndex >= 0) {
-                        binding.spGenero.setSelection(generoIndex)
-                    }
-                    binding.etPesoEditable.setText(usuario.peso.toString())
-                    binding.etAlturaEditable.setText(usuario.altura.toString())
-                    binding.etUsuarioEditable.setText(usuario.usuario)
-                    binding.etContraseAEditable.setText(usuario.contraseña)
-                } else {
-                    Toast.makeText(requireContext(), "Usuario null", Toast.LENGTH_SHORT).show()
-                }
-            })
+        actualizarDatosUsuario()
 
         binding.btnEditarPerfil.setOnClickListener {
             try {
-                val id = binding.etId.text.toString().toInt()
-                val usuarioE = binding.etUsuarioEditable.text.toString()
-                val nombre = binding.etNombreEditable.text.toString()
-                val apellido = binding.etApellidoEditable.text.toString()
-                val contraseña = binding.etContraseAEditable.text.toString()
-                val fechaNac = binding.tvFechaNacEditable.text.toString()
-                val genero = binding.spGenero.selectedItem.toString()
-                val peso = binding.etPesoEditable.text.toString().toDoubleOrNull() ?: 0.0
-                val altura = binding.etAlturaEditable.text.toString().toDoubleOrNull() ?: 0.0
+                if (validarCamposPerfil()) {
+                    val usuarioE = binding.etUsuario.text.toString()
+                    val nombre = binding.etNombre.text.toString()
+                    val apellido = binding.etApellido.text.toString()
+                    val contraseña = binding.etContraseA.text.toString()
+                    val fechaNac = binding.tvFechaNac.text.toString()
+                    val genero = binding.spGenero.selectedItem.toString()
+                    val peso = binding.etPeso.text.toString().toDoubleOrNull() ?: 0.0
+                    val altura = binding.etAltura.text.toString().toDoubleOrNull() ?: 0.0
 
-                val usuarioActualizado = Registros(
-                    id = id,
-                    nombre = nombre,
-                    apellido = apellido,
-                    fechaNac = fechaNac,
-                    genéro = genero,
-                    peso = peso,
-                    altura = altura,
-                    usuario = usuarioE,
-                    contraseña = contraseña
-                )
+                    val usuarioActualizado = Registros(
+                        usuario = usuarioE,
+                        nombre = nombre,
+                        apellido = apellido,
+                        fechaNac = fechaNac,
+                        genéro = genero,
+                        peso = peso,
+                        altura = altura,
+                        contraseña = contraseña
+                    )
 
-                viewLifecycleOwner.lifecycleScope.launch {
-                    viewModel.actualizar(usuarioActualizado)
-                    val updatedUsuario = viewModel.obtenerUsuario(nombreUser!!.toString())
-                    updatedUsuario.observe(viewLifecycleOwner) { usuarioE ->
-                        if (usuarioE != null) {
-                            binding.etId.setText(usuarioE.id.toString())
-                            viewModel.obtenerUsuario(nombreUser!!.toString())
-                                .observe(viewLifecycleOwner, Observer { usuarioE ->
-                                    if (usuarioE != null) {
-                                        binding.etId.setText(usuarioE.id.toString())
-                                        binding.etNombreEditable.setText(usuarioE.nombre)
-                                        binding.etApellidoEditable.setText(usuarioE.apellido)
-                                        binding.tvFechaNacEditable.text = usuarioE.fechaNac
-                                        val generoArray =
-                                            resources.getStringArray(R.array.genero_array)
-                                        val generoIndex = generoArray.indexOf(usuarioE.genéro)
-                                        if (generoIndex >= 0) {
-                                            binding.spGenero.setSelection(generoIndex)
-                                        }
-                                        binding.etPesoEditable.setText(usuarioE.peso.toString())
-                                        binding.etAlturaEditable.setText(usuarioE.altura.toString())
-                                        binding.etUsuarioEditable.setText(usuarioE.usuario)
-                                        binding.etContraseAEditable.setText(usuarioE.contraseña)
-                                    } else {
-                                        Toast.makeText(
-                                            requireContext(),
-                                            "Usuario null",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                    }
-                                })
-                        } else {
-                            Toast.makeText(requireContext(), "Usuario null", Toast.LENGTH_SHORT)
-                                .show()
-                        }
-                        updatedUsuario.removeObservers(viewLifecycleOwner)
+                    CoroutineScope(Dispatchers.IO).launch {
+                        viewModel.actualizarRegistro(usuarioActualizado)
                     }
                 }
             } catch (ex: Exception) {
                 Toast.makeText(
-                    requireContext(), "Error : ${ex.toString()}",
+                    requireContext(), "Error: ${ex.toString()}",
                     Toast.LENGTH_LONG
                 ).show()
             }
         }
+
     }
 }

@@ -18,5 +18,4 @@ interface SemanaDao {
 
     @Query("UPDATE tblsemanaejercicios SET grupomuscular = :nuevoGrupoMuscular WHERE dia = :dia")
     fun actualizarGrupoMuscular(dia: String, nuevoGrupoMuscular: String)
-
 }

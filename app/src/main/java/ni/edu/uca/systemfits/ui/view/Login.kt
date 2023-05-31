@@ -1,6 +1,8 @@
 package ni.edu.uca.systemfits.ui.view
 
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,15 +14,12 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import ni.edu.uca.systemfits.R
 import ni.edu.uca.systemfits.databinding.FragmentLoginBinding
+import ni.edu.uca.systemfits.ui.sharedpreferences.SharedPrefUtil
 import ni.edu.uca.systemfits.ui.viewmodel.RegistrosViewModel
 
 class Login : Fragment() {
     private lateinit var binding: FragmentLoginBinding
     private val viewModel: RegistrosViewModel by viewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,6 +48,17 @@ class Login : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.btnMostrarContraseA.setOnClickListener {
+            val isPasswordVisible = binding.etPassword.transformationMethod == HideReturnsTransformationMethod.getInstance()
+            if (isPasswordVisible) {
+                binding.etPassword.transformationMethod = PasswordTransformationMethod.getInstance()
+                binding.btnMostrarContraseA.text = "Mostrar"
+            } else {
+                binding.etPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                binding.btnMostrarContraseA.text = "Ocultar"
+            }
+        }
+
         binding.btnLogIn.setOnClickListener {
             try {
                 if (validarCamposLogin()) {
@@ -58,6 +68,7 @@ class Login : Fragment() {
                     viewModel.validarRegistro(usuario, contraseña)
                         .observe(viewLifecycleOwner) { registro ->
                             if (registro != null) {
+                                SharedPrefUtil.guardarUsuario(requireContext(), usuario)
                                 (activity as MainActivity).showBottomNavigationView()
                                 it.findNavController().navigate(R.id.login_menu)
                                 val bundle = bundleOf("disableBackToLogin" to true)

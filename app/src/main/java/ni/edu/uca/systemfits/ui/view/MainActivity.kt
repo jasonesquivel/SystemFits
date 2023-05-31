@@ -1,5 +1,6 @@
 package ni.edu.uca.systemfits.ui.view
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -11,7 +12,9 @@ import ni.edu.uca.systemfits.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-
+    companion object {
+        private const val PREF_NAME = "my_preferences"
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -38,6 +41,18 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        limpiarSharedPreferences()
+    }
+
+    private fun limpiarSharedPreferences() {
+        val sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.clear()
+        editor.apply()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

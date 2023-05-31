@@ -10,18 +10,25 @@ interface RegistrosDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertar(Registros: Registros): Long
 
-    @Update
-    fun actualizar(Registros: Registros): Int
-
     @Delete
     fun eliminar(Registros: Registros): Int
 
-    @Query("Select * From tblregistros")
-    fun obtenerTodos(): LiveData<List<Registros>>
+    @Query("UPDATE tblregistros SET nombre = :nombre, apellido = :apellido, fechaNac = :fechaNac, genéro = :genero, peso = :peso, altura = :altura, contraseña = :contraseña WHERE usuario = :usuario")
+    fun actualizarRegistro(
+        usuario: String,
+        nombre: String,
+        apellido: String,
+        fechaNac: String,
+        genero: String,
+        peso: Double,
+        altura: Double,
+        contraseña: String
+    )
+
 
     @Query("SELECT * FROM tblregistros WHERE usuario = :usuario AND contraseña = :contraseña")
     fun validarRegistro(usuario: String, contraseña: String): LiveData<Registros?>
 
-    @Query("SELECT * FROM tblregistros WHERE nombre = :nombre")
-    fun obtenerUsuarioPorNombre(nombre: String): LiveData<Registros>
+    @Query("SELECT * FROM tblregistros WHERE usuario = :usuario")
+    fun obtenerUsuarioPorNombre(usuario: String): LiveData<Registros>
 }

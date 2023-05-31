@@ -3,7 +3,9 @@ package ni.edu.uca.systemfits.ui.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import ni.edu.uca.systemfits.data.database.AppDatabase
 import ni.edu.uca.systemfits.data.database.dao.RegistrosDao
@@ -22,12 +24,23 @@ class RegistrosViewModel(application: Application) : AndroidViewModel(applicatio
         RegistrosDao.insertar(Registros)
     }
 
-    suspend fun actualizar(Registros: Registros) = withContext(Dispatchers.IO) {
-        RegistrosDao.actualizar(Registros)
-    }
-
     suspend fun eliminar(Registros: Registros) = withContext(Dispatchers.IO) {
         RegistrosDao.eliminar(Registros)
+    }
+
+    suspend fun actualizarRegistro(Registros: Registros) {
+        withContext(Dispatchers.IO) {
+            RegistrosDao.actualizarRegistro(
+                Registros.usuario,
+                Registros.nombre,
+                Registros.apellido,
+                Registros.fechaNac,
+                Registros.genéro,
+                Registros.peso,
+                Registros.altura,
+                Registros.contraseña
+            )
+        }
     }
 
     fun validarRegistro(usuario: String, contraseña: String): LiveData<Registros?> {
@@ -37,5 +50,4 @@ class RegistrosViewModel(application: Application) : AndroidViewModel(applicatio
     fun obtenerUsuario(usuario: String): LiveData<Registros> {
         return RegistrosDao.obtenerUsuarioPorNombre(usuario)
     }
-
 }

@@ -72,11 +72,20 @@
                     android:textColor="@color/black"
                     android:textColorHighlight="@color/cardview_dark_background" />
 
+
+                <Button
+                    android:id="@+id/btnMostrarContraseña"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:backgroundTint="@color/purple"
+                    android:text="Mostrar"
+                    android:textColor="@color/white"/>
                 <Button
                     android:id="@+id/btnLogIn"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="0dp"
                     android:backgroundTint="@color/purple"
                     android:text="Ingresar"
                     android:textSize="16sp"
