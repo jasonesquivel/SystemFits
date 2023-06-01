@@ -54,6 +54,22 @@ class SemanaEjercicios : Fragment() {
         return valido
     }
 
+    private fun validarCamposEditar(): Boolean {
+        var valido = true
+
+        val grupomuscular = binding3.etGrupoMuscularEditable.text.toString()
+
+        if (grupomuscular.isBlank()) {
+            Toast.makeText(
+                requireContext(), "Debes ingresar el grupo muscular",
+                Toast.LENGTH_LONG
+            ).show()
+            valido = false
+        }
+
+        return valido
+    }
+
     private fun showCustomPopupAgregarGrupoMuscularLunes() {
         val inflater =
             requireContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -114,7 +130,7 @@ class SemanaEjercicios : Fragment() {
         binding3 = FragmentInputDialogEditarSemanaEjerciciosBinding.bind(popupView)
 
 
-        binding3.etGrupoMuscularEditable.setText(tvGrupoMuscularLunes.text.toString())
+        binding3.etGrupoMuscularEditable.setText(binding.tvGrupoMuscularLunes.text.toString())
 
 
         val popupWindow = PopupWindow(
@@ -135,7 +151,7 @@ class SemanaEjercicios : Fragment() {
 
         binding3.btnEditarGrupoMuscular.setOnClickListener {
             try {
-                if (validarCampos()) {
+                if (validarCamposEditar()) {
                     val diaLunes = binding.tvLunes.text.toString()
                     val grupomuscularLunes = binding3.etGrupoMuscularEditable.text.toString()
 
@@ -264,7 +280,7 @@ class SemanaEjercicios : Fragment() {
 
         binding3.btnEditarGrupoMuscular.setOnClickListener {
             try {
-                if (validarCampos()) {
+                if (validarCamposEditar()) {
                     val diaMartes = binding.tvMartes.text.toString()
                     val grupomuscularMartes = binding3.etGrupoMuscularEditable.text.toString()
 
@@ -393,7 +409,7 @@ class SemanaEjercicios : Fragment() {
 
         binding3.btnEditarGrupoMuscular.setOnClickListener {
             try {
-                if (validarCampos()) {
+                if (validarCamposEditar()) {
                     val diaMiercoles = binding.tvMiercoles.text.toString()
                     val grupomuscularMiercoles = binding3.etGrupoMuscularEditable.text.toString()
 
@@ -522,7 +538,7 @@ class SemanaEjercicios : Fragment() {
 
         binding3.btnEditarGrupoMuscular.setOnClickListener {
             try {
-                if (validarCampos()) {
+                if (validarCamposEditar()) {
                     val diaJueves = binding.tvJueves.text.toString()
                     val grupomuscularJueves = binding3.etGrupoMuscularEditable.text.toString()
 
@@ -651,7 +667,7 @@ class SemanaEjercicios : Fragment() {
 
         binding3.btnEditarGrupoMuscular.setOnClickListener {
             try {
-                if (validarCampos()) {
+                if (validarCamposEditar()) {
                     val diaViernes = binding.tvViernes.text.toString()
                     val grupomuscularViernes = binding3.etGrupoMuscularEditable.text.toString()
 
@@ -780,7 +796,7 @@ class SemanaEjercicios : Fragment() {
 
         binding3.btnEditarGrupoMuscular.setOnClickListener {
             try {
-                if (validarCampos()) {
+                if (validarCamposEditar()) {
                     val diaSabado = binding.tvSabado.text.toString()
                     val grupomuscularSabado = binding3.etGrupoMuscularEditable.text.toString()
 
@@ -909,7 +925,7 @@ class SemanaEjercicios : Fragment() {
 
         binding3.btnEditarGrupoMuscular.setOnClickListener {
             try {
-                if (validarCampos()) {
+                if (validarCamposEditar()) {
                     val diaDomingo = binding.tvDomingo.text.toString()
                     val grupomuscularDomingo = binding3.etGrupoMuscularEditable.text.toString()
 
@@ -967,6 +983,10 @@ class SemanaEjercicios : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSemanaEjerciciosBinding.inflate(inflater, container, false)
+        binding3 =
+            FragmentInputDialogEditarSemanaEjerciciosBinding.inflate(inflater, container, false)
+        binding2 =
+            FragmentDialogInputAgregarGrupoMuscularBinding.inflate(inflater, container, false)
         return binding.root
     }
 

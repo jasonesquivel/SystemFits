@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#99000000"
-    tools:context="ni.edu.uca.systemfits.ui.view.dialogs.dialog_input_editar_ejercicio">
+    tools:context="ni.edu.uca.systemfits.ui.dialogs.dialog_input_editar_ejercicio">
 
     <LinearLayout
         android:layout_width="wrap_content"

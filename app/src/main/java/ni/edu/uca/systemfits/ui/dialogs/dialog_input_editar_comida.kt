@@ -1,14 +1,15 @@
-package ni.edu.uca.systemfits.ui.view.dialogs
+package ni.edu.uca.systemfits.ui.dialogs
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import ni.edu.uca.systemfits.databinding.FragmentInputDialogEditarSemanaEjerciciosBinding
+import ni.edu.uca.systemfits.databinding.FragmentDialogInputEditarComidaBinding
 
-class input_dialog_editar_semana_ejercicios : Fragment() {
-    private lateinit var binding: FragmentInputDialogEditarSemanaEjerciciosBinding
+class dialog_input_editar_comida : Fragment() {
+
+    private lateinit var binding: FragmentDialogInputEditarComidaBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,8 +22,8 @@ class input_dialog_editar_semana_ejercicios : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding =
-            FragmentInputDialogEditarSemanaEjerciciosBinding.inflate(inflater, container, false)
+
+        binding = FragmentDialogInputEditarComidaBinding.inflate(inflater, container, false)
         return binding.root
     }
 }
