@@ -138,4 +138,9 @@
         android:name="ni.edu.uca.systemfits.ui.view.configuracion"
         android:label="fragment_configuracion"
         tools:layout="@layout/fragment_configuracion" />
+    <fragment
+        android:id="@+id/autores"
+        android:name="ni.edu.uca.systemfits.ui.dialogs.autores"
+        android:label="fragment_autores"
+        tools:layout="@layout/fragment_autores" />
 </navigation>

@@ -80,7 +80,17 @@
                     android:layout_gravity="end"
                     android:backgroundTint="@color/purple"
                     android:text="Mostrar"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/btnAutores"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:backgroundTint="@color/purple"
+                    android:text="Autores"
+                    android:textColor="@color/white" />
+
                 <Button
                     android:id="@+id/btnLogIn"
                     android:layout_width="match_parent"
